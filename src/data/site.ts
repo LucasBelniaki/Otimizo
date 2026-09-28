@@ -41,11 +41,23 @@ export function linkWhatsApp(mensagem: string = mensagensWhatsApp.home) {
 
 export const servicos = [
   { nome: 'Google Ads', href: '/servicos/google-ads', grupo: 'Atrair', frase: 'Apareça para quem já está procurando o que você vende.' },
-  { nome: 'Meta Ads', href: '/servicos/meta-ads', grupo: 'Atrair', frase: 'Facebook e Instagram para gerar demanda e reativar sua base.' },
-  { nome: 'Sites e landing pages', href: '/servicos/sites-e-landing-pages', grupo: 'Converter', frase: 'Páginas rápidas e claras, feitas para gerar contato.' },
+  { nome: 'Meta Ads', href: '/servicos/meta-ads', grupo: 'Atrair', frase: 'Facebook e Instagram para gerar demanda para alcançar seus possíveis clientes.' },
+  { nome: 'Sites e landing pages', href: '/servicos/sites-e-landing-pages', grupo: 'Converter', frase: 'Sites completos para gerar autoridade e confiança. Páginas rápidas e claras, feitas para gerar venda.' },
   { nome: 'Social media', href: '/servicos/social-media', grupo: 'Fortalecer a marca', frase: 'Conteúdo constante que sustenta a decisão de compra.' },
   { nome: 'Branding e identidade visual', href: '/servicos/branding', grupo: 'Fortalecer a marca', frase: 'Uma marca coerente em todos os pontos de contato.' },
 ] as const;
+
+// Opções do campo "Como podemos te ajudar?" do formulário (pode marcar mais de uma)
+export const opcoesAjuda = [
+  'Site',
+  'Landing page',
+  'Google Ads',
+  'Meta Ads',
+  'Redes sociais',
+  'Identidade visual',
+  'Outros anúncios',
+  'Ainda não sei',
+];
 
 export const menu = [
   { nome: 'Home', href: '/' },
@@ -57,7 +69,7 @@ export const menu = [
 
 export const rodape = {
   apresentacao:
-    'Agência de marketing e vendas para escritórios de contabilidade, advocacia e pequenas e médias empresas de todo o Brasil. Estratégia, execução e números na mesma mesa.',
+    'Agência de marketing e vendas para empresas e empreendedores de todo o Brasil. Estratégia, execução e números na mesma mesa.',
   otimizo: [
     { nome: 'Sobre', href: '/sobre' },
     { nome: 'Consultoria gratuita', href: '/consultoria-gratuita' },
@@ -66,5 +78,5 @@ export const rodape = {
     { nome: 'Trabalhe conosco', href: '/trabalhe-conosco' },
     { nome: 'Política de privacidade', href: '/politica-de-privacidade' },
   ],
-  selos: ['Sócio Investidor do Hospital Pequeno Príncipe', '[Google Partner]', '[Meta Business Partner]'],
+  selos: ['Sócio Investidor do Hospital Pequeno Príncipe'],
 };

@@ -1,11 +1,16 @@
 ---
 // Composição do hero: painel de campanha, celular com conversa e o símbolo da marca.
-// Decorativo: os gráficos não mostram valores (nenhum número fora da copy).
+// Decorativo: os gráficos não mostram valores e as mensagens não têm texto.
+const bolhasIniciais = [
+  { lado: 'in', linhas: [9, 14] },
+  { lado: 'out', linhas: [13, 8] },
+  { lado: 'in', linhas: [12] },
+];
 ---
 <div class="hv relative mx-auto aspect-[1/0.94] w-full max-w-[36rem] [container-type:inline-size]" aria-hidden="true">
   <!-- brilho de fundo -->
-  <div class="absolute left-[8%] top-[6%] size-[80%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.28),rgba(31,94,255,.14)_55%,transparent)] blur-2xl"></div>
-  <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="absolute -right-[4%] -top-[4%] w-[70%] drop-shadow-[0_30px_40px_rgba(91,60,240,.25)]" fetchpriority="high" />
+  <div class="deriva-2 absolute left-[8%] top-[6%] size-[80%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.3),rgba(31,94,255,.14)_55%,transparent)] blur-2xl"></div>
+  <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="flutua absolute -right-[4%] -top-[4%] w-[70%] drop-shadow-[0_30px_40px_rgba(91,60,240,.25)]" fetchpriority="high" />
 
   <!-- painel -->
   <div class="painel absolute left-[25%] top-[15%] grid w-[75%] gap-[3cqw] rounded-[4.5cqw] border border-white/70 bg-white/80 p-[4cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.45)] backdrop-blur-xl">
@@ -15,20 +20,21 @@
       <span class="rounded-full border border-linha bg-white px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] text-[#3a3852]">Meta Ads</span>
     </div>
     <div class="grid gap-[1.2cqw]">
-      <span class="font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.08em] text-tinta">Custo por venda</span>
-      <svg viewBox="0 0 330 120" class="block h-auto w-full">
+      <span class="font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.08em] text-tinta">Vendas</span>
+      <svg viewBox="0 0 330 120" class="block h-auto w-full overflow-visible">
         <defs>
-          <linearGradient id="hv-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F5EFF" stop-opacity=".24" /><stop offset="1" stop-color="#1F5EFF" stop-opacity="0" /></linearGradient>
-          <linearGradient id="hv-linha" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5B3CF0" /><stop offset="1" stop-color="#1F5EFF" /></linearGradient>
+          <linearGradient id="hv-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B3CF0" stop-opacity=".22" /><stop offset="1" stop-color="#1F5EFF" stop-opacity="0" /></linearGradient>
+          <linearGradient id="hv-linha" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F5EFF" /><stop offset="1" stop-color="#5B3CF0" /></linearGradient>
         </defs>
         <g stroke="#E6E4F0" stroke-width="1" stroke-dasharray="3 4"><line x1="0" y1="20" x2="330" y2="20" /><line x1="0" y1="55" x2="330" y2="55" /><line x1="0" y1="90" x2="330" y2="90" /></g>
-        <path d="M4,24 C40,22 62,40 94,44 S150,58 182,66 S250,86 318,96 L318,118 L4,118 Z" fill="url(#hv-area)" />
-        <path class="hv-traco" d="M4,24 C40,22 62,40 94,44 S150,58 182,66 S250,86 318,96" fill="none" stroke="url(#hv-linha)" stroke-width="3" stroke-linecap="round" pathLength="1" />
-        <circle cx="318" cy="96" r="6" fill="#fff" stroke="#1F5EFF" stroke-width="3" />
+        <path class="hv-area" d="M4,104 C40,102 60,92 94,86 S148,76 176,64 S236,40 262,36 S300,24 318,18 L318,118 L4,118 Z" fill="url(#hv-area)" />
+        <path class="hv-traco" d="M4,104 C40,102 60,92 94,86 S148,76 176,64 S236,40 262,36 S300,24 318,18" fill="none" stroke="url(#hv-linha)" stroke-width="3" stroke-linecap="round" pathLength="1" />
+        <circle class="hv-pulso" cx="318" cy="18" r="6" fill="none" stroke="#5B3CF0" stroke-width="2" />
+        <circle class="hv-ponto" cx="318" cy="18" r="6" fill="#fff" stroke="#5B3CF0" stroke-width="3" />
       </svg>
     </div>
     <div class="grid grid-cols-2 gap-[2.4cqw]">
-      {[['Leads', [30, 44, 40, 60, 76, 100], 'bg-roxo'], ['Vendas', [22, 30, 44, 50, 70, 92], 'bg-azul']].map(([rotulo, barras, cor]) => (
+      {[['Leads', [30, 44, 40, 60, 76, 100], 'bg-roxo'], ['Custo por lead', [100, 84, 78, 60, 48, 36], 'bg-azul']].map(([rotulo, barras, cor]) => (
         <div class="grid gap-[2cqw] rounded-[3cqw] border border-linha bg-white p-[2.6cqw]">
           <span class="font-mono text-[max(9px,2.3cqw)] uppercase tracking-[0.08em] text-cinza">{rotulo}</span>
           <div class="flex h-[9cqw] items-end gap-[1.2cqw]">
@@ -41,40 +47,126 @@
     </div>
   </div>
 
-  <!-- celular -->
-  <div class="absolute bottom-[1%] left-0 aspect-[9/18.5] w-[31%] rounded-[6cqw] bg-tinta p-[1.3cqw] shadow-[0_40px_60px_-28px_rgba(17,14,38,.6)]">
+  <!-- celular com conversa -->
+  <div class="celular absolute bottom-[1%] left-0 aspect-[9/18.5] w-[31%] rounded-[6cqw] bg-tinta p-[1.3cqw] shadow-[0_40px_60px_-28px_rgba(17,14,38,.6)]">
     <div class="grid h-full grid-rows-[auto_1fr_auto] overflow-hidden rounded-[4.8cqw] bg-[#f5f4fa]">
-      <div class="flex items-center gap-[1.6cqw] border-b border-linha bg-white px-[2.4cqw] pb-[2cqw] pt-[3.8cqw]">
+      <div class="relative z-10 flex items-center gap-[1.6cqw] border-b border-linha bg-white px-[2.4cqw] pb-[2cqw] pt-[3.8cqw]">
         <span class="size-[5cqw] shrink-0 rounded-full bg-gradient-to-br from-roxo to-azul"></span>
-        <span class="block h-[1.3cqw] w-[55%] rounded-full bg-[#dad7e8]"></span>
+        <span class="grid flex-1 gap-[0.8cqw]">
+          <span class="block h-[1.3cqw] w-[70%] rounded-full bg-[#dad7e8]"></span>
+          <span class="hv-online block h-[0.9cqw] w-[40%] rounded-full bg-[#b9e8cf]"></span>
+        </span>
       </div>
-      <div class="grid content-start gap-[1.8cqw] p-[2.4cqw]">
-        <div class="hv-msg grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] border border-linha bg-white p-[1.8cqw]" style="--i:0"><span class="block h-[1.3cqw] w-[9cqw] rounded-full bg-[#dad7e8]"></span><span class="block h-[1.3cqw] w-[14cqw] rounded-full bg-[#dad7e8]"></span></div>
-        <div class="hv-msg grid max-w-[82%] gap-[1.1cqw] justify-self-end rounded-[2.4cqw] bg-roxo p-[1.8cqw]" style="--i:1"><span class="block h-[1.3cqw] w-[13cqw] rounded-full bg-white/55"></span><span class="block h-[1.3cqw] w-[8cqw] rounded-full bg-white/55"></span></div>
-        <div class="hv-msg grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] border border-linha bg-white p-[1.8cqw]" style="--i:2"><span class="block h-[1.3cqw] w-[12cqw] rounded-full bg-[#dad7e8]"></span></div>
+      <div class="relative overflow-hidden">
+        <div class="hv-chat absolute inset-x-0 bottom-0 flex flex-col gap-[1.8cqw] p-[2.4cqw]" data-chat>
+          {bolhasIniciais.map((b) => (
+            <div class:list={['bolha grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] p-[1.8cqw]', b.lado === 'in' ? 'self-start border border-linha bg-white' : 'self-end bg-roxo']}>
+              {b.linhas.map((w) => <span class:list={['block h-[1.3cqw] rounded-full', b.lado === 'in' ? 'bg-[#dad7e8]' : 'bg-white/55']} style={`width:${w}cqw`}></span>)}
+            </div>
+          ))}
+        </div>
       </div>
-      <div class="m-[2.4cqw] h-[5cqw] rounded-full border border-linha bg-white"></div>
+      <div class="relative z-10 m-[2.4cqw] h-[5cqw] rounded-full border border-linha bg-white"></div>
     </div>
   </div>
 
   <!-- etiquetas flutuantes -->
-  <span class="absolute right-[1%] top-[5%] inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]">
+  <span class="flutua absolute right-[1%] top-[5%] inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-2s">
     <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 9h18" /></svg></b>Site
   </span>
-  <span class="absolute bottom-[4%] left-[23%] inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]">
+  <span class="flutua absolute bottom-[4%] left-[23%] z-10 inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-4.5s">
     <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="currentColor"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20Z" /></svg></b>WhatsApp
   </span>
 </div>
 
-<style>
+<style is:global>
+  .hv .bolha { flex: none; }
+    .hv .digitando { display: flex; gap: 0.9cqw; align-items: center; padding: 1.8cqw 2.2cqw; }
+  .hv .digitando i { width: 1.3cqw; height: 1.3cqw; border-radius: 999px; background: #b9b5cf; display: block; }
+
   @media (prefers-reduced-motion: no-preference) {
-    .hv-traco { stroke-dasharray: 1; stroke-dashoffset: 1; animation: desenhar 1.6s .3s cubic-bezier(.3,.7,.2,1) forwards; }
-    .hv-barra { transform-origin: bottom; animation: crescer .7s calc(.5s + var(--i) * 70ms) cubic-bezier(.3,.7,.2,1) both; }
-    .hv-msg { animation: surgir .5s calc(.9s + var(--i) * 350ms) ease-out both; }
-    .painel { animation: flutuar 7s ease-in-out infinite alternate; }
+    .hv .hv-traco { stroke-dasharray: 1; stroke-dashoffset: 1; animation: desenhar 1.8s .3s cubic-bezier(.3,.7,.2,1) forwards; }
+    .hv .hv-area { animation: aparecer 1.2s .9s ease-out both; }
+    .hv .hv-ponto { animation: aparecer .4s 1.9s ease-out both; }
+    .hv .hv-pulso { transform-box: fill-box; transform-origin: center; animation: pulso 2.4s 2.2s ease-out infinite; opacity: 0; }
+    .hv .hv-barra { transform-origin: bottom; animation: crescer .8s calc(.5s + var(--i) * 80ms) cubic-bezier(.3,.7,.2,1) both; }
+    .hv .painel { animation: flutua-painel 8s ease-in-out infinite alternate; }
+    .hv .celular { animation: flutua-painel 9s -3s ease-in-out infinite alternate-reverse; }
+    .hv .hv-online { animation: piscar 2.6s ease-in-out infinite; }
+    .hv .digitando i { animation: pontinho 1.1s ease-in-out infinite; }
+    .hv .digitando i:nth-child(2) { animation-delay: .15s; }
+    .hv .digitando i:nth-child(3) { animation-delay: .3s; }
   }
   @keyframes desenhar { to { stroke-dashoffset: 0; } }
-  @keyframes crescer { from { transform: scaleY(.15); } }
-  @keyframes surgir { from { opacity: .0; transform: translateY(6px); } }
-  @keyframes flutuar { to { transform: translateY(-6px); } }
+  @keyframes aparecer { from { opacity: 0; } }
+  @keyframes crescer { from { transform: scaleY(.12); } }
+  @keyframes flutua-painel { to { transform: translateY(-7px); } }
+  @keyframes pulso { 0% { opacity: .7; transform: scale(1); } 100% { opacity: 0; transform: scale(3.2); } }
+  @keyframes piscar { 50% { opacity: .45; } }
+  @keyframes pontinho { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-0.8cqw); opacity: 1; } }
 </style>
+
+<script>
+  // Conversa em loop no celular: mensagens recebidas (brancas) e enviadas (roxas)
+  // sobem como num chat real. Sem texto, só o desenho das mensagens.
+  const lista = document.querySelector<HTMLElement>('[data-chat]');
+  const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (lista && !semMovimento) {
+    let visivel = true;
+    let lado: 'in' | 'out' = 'out';
+    const sorteio = (a: number, b: number) => a + Math.random() * (b - a);
+
+    const criarBolha = (tipo: 'in' | 'out') => {
+      const el = document.createElement('div');
+      el.className = `bolha grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] p-[1.8cqw] ${tipo === 'in' ? 'self-start border border-linha bg-white' : 'self-end bg-roxo'}`;
+      const linhas = Math.random() < 0.45 ? 2 : 1;
+      for (let i = 0; i < linhas; i++) {
+        const s = document.createElement('span');
+        s.className = `block h-[1.3cqw] rounded-full ${tipo === 'in' ? 'bg-[#dad7e8]' : 'bg-white/55'}`;
+        s.style.width = `${Math.round(sorteio(6, 15))}cqw`;
+        el.appendChild(s);
+      }
+      return el;
+    };
+
+    const empurrar = (el: HTMLElement) => {
+      lista.appendChild(el);
+      const altura = el.offsetHeight + parseFloat(getComputedStyle(lista).rowGap || '0');
+      lista.style.transition = 'none';
+      lista.style.transform = `translateY(${altura}px)`;
+      void lista.offsetHeight;
+      lista.style.transition = 'transform .65s cubic-bezier(.2,.8,.2,1)';
+      lista.style.transform = 'translateY(0)';
+      el.animate(
+        [{ opacity: 0, transform: 'translateY(8px) scale(.92)' }, { opacity: 1, transform: 'none' }],
+        { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' },
+      );
+      while (lista.children.length > 8) lista.firstElementChild?.remove();
+    };
+
+    const proxima = () => {
+      if (!visivel || document.hidden) { setTimeout(proxima, 1200); return; }
+      // Alterna a maior parte das vezes, às vezes a mesma pessoa manda duas seguidas
+      lado = Math.random() < 0.72 ? (lado === 'in' ? 'out' : 'in') : lado;
+      if (lado === 'in') {
+        const digitando = document.createElement('div');
+        digitando.className = 'bolha digitando self-start w-max rounded-[2.4cqw] border border-linha bg-white';
+        digitando.innerHTML = '<i></i><i></i><i></i>';
+        empurrar(digitando);
+        setTimeout(() => {
+          const nova = criarBolha('in');
+          digitando.replaceWith(nova);
+          nova.animate([{ opacity: 0.4 }, { opacity: 1 }], { duration: 300 });
+          setTimeout(proxima, sorteio(1100, 2000));
+        }, sorteio(900, 1500));
+      } else {
+        empurrar(criarBolha('out'));
+        setTimeout(proxima, sorteio(1300, 2300));
+      }
+    };
+
+    new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }).observe(lista);
+    setTimeout(proxima, 2200);
+  }
+</script>

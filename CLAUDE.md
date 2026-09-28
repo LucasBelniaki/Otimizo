@@ -18,6 +18,7 @@ Novo site da Otimizo, agência de marketing e vendas de Araucária (PR) que aten
 - Use `docs/copy-site.md` como base do texto. Não invente texto por conta própria.
 - Quando eu pedir uma mudança de texto, ou pedir que você reescreva ou melhore um trecho, aplique no site e atualize `docs/copy-site.md` para os dois continuarem iguais.
 - Nunca invente números, depoimentos, nomes de clientes ou selos, mesmo ao reescrever.
+- Os textos falam com empresas e empreendedores em geral. Não citar contabilidade e advocacia como público-alvo nos textos do site (sem dizer que atendemos "qualquer um").
 - Trechos entre [colchetes] são pendências. Mantenha-os visíveis e destacados no layout (ex.: fundo amarelo claro) para o time preencher depois.
 - Linhas de orientação interna na copy (ex.: "Cards sem link", "Pautas sugeridas", notas sobre noindex) não aparecem no site.
 - Na página e nas chamadas da consultoria gratuita, não mencionar vagas, faturamento, critérios de seleção nem temas específicos.

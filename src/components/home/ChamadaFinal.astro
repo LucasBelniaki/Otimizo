@@ -1,5 +1,5 @@
 ---
-// Chamada final com formulário padrão (Home 2.13 e demais páginas).
+// Chamada final com formulário padrão (Home 2.12 e demais páginas).
 import FormConsultoria from '../forms/FormConsultoria.astro';
 import Microcopy from '../ui/Microcopy.astro';
 interface Props { chamada?: string; titulo: string; texto: string; id?: string }
@@ -7,18 +7,18 @@ const { chamada, titulo, texto, id = 'agendar' } = Astro.props;
 ---
 <section id={id} class="escuro granulado relative overflow-hidden bg-tinta text-white" style="--grao:.2" aria-labelledby={`${id}-titulo`}>
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute -left-40 top-1/3 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.45),transparent)]"></div>
-    <div class="absolute -right-32 -top-40 size-[34rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.3),transparent)]"></div>
+    <div class="deriva-1 absolute -left-40 top-1/3 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.45),transparent)]"></div>
+    <div class="deriva-2 absolute -right-32 -top-40 size-[34rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.3),transparent)]"></div>
     <div class="grade-fundo absolute inset-0 opacity-[0.07] [--cor-grade:#fff] [mask-image:radial-gradient(70%_70%_at_30%_50%,#000,transparent)]"></div>
     <img src="/img/simbolo-branco.svg" alt="" width="700" height="515" loading="lazy" class="absolute -bottom-10 left-[-6rem] w-[30rem] opacity-[0.06] lg:w-[44rem]" />
   </div>
   <div class="container-site secao grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-    <div class="grid content-start gap-6">
+    <div class="grid content-start gap-6" data-revelar>
       {chamada && <span class="chamada">{chamada}</span>}
       <h2 id={`${id}-titulo`} class="titulo-secao !text-white">{titulo}</h2>
       <p class="texto-secao">{texto}</p>
       <Microcopy />
     </div>
-    <FormConsultoria />
+    <div data-revelar style="--d:2"><FormConsultoria /></div>
   </div>
 </section>

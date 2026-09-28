@@ -1,17 +1,23 @@
 ---
 // Faixa de logos de clientes (Home 2.3). Logos obtidas do site atual (otimizo.com.br).
-// Grupo Aliança: logo ainda não recebida, aparece como espaço reservado com o nome.
+// Para adicionar um cliente: salve a logo em public/img/clientes/ (WebP) e troque
+// um dos itens { nome: null } pelo novo cliente.
+type Cliente = { nome: string | null; img?: string; w?: number; h?: number };
 interface Props { titulo?: string; class?: string }
 const { titulo = 'Empresas que confiam na Otimizo', class: classe = '' } = Astro.props;
-const clientes = [
+const clientes: Cliente[] = [
   { nome: 'Expresscard', img: 'expresscard', w: 440, h: 128 },
   { nome: 'Pioneira Contabilidade', img: 'pioneira-contabilidade', w: 440, h: 123 },
+  { nome: null },
   { nome: 'Cetrez', img: 'cetrez', w: 440, h: 141 },
+  { nome: null },
   { nome: 'Dominium', img: 'dominium', w: 271, h: 200 },
   { nome: 'Cred Mais Fácil', img: 'cred-mais-facil', w: 288, h: 200 },
+  { nome: null },
   { nome: 'Chahine Contabilidade', img: 'chahine-contabilidade', w: 440, h: 133 },
+  { nome: null },
   { nome: 'Joelma Mattiuz', img: 'joelma-mattiuz', w: 277, h: 200 },
-  { nome: 'Grupo Aliança', img: null, w: 0, h: 0 },
+  { nome: null },
 ];
 ---
 <section class:list={['py-14 lg:py-20', classe]} aria-labelledby="clientes-titulo">
@@ -23,11 +29,11 @@ const clientes = [
       {[0, 1].map((copia) => (
         <ul class="flex shrink-0 items-center gap-6 pr-6 lg:gap-8 lg:pr-8" aria-hidden={copia === 1 ? 'true' : undefined}>
           {clientes.map((c) => (
-            <li class="grid h-20 w-40 shrink-0 place-items-center rounded-2xl border border-linha bg-white px-5 lg:h-24 lg:w-48">
+            <li class:list={['grid h-20 w-40 shrink-0 place-items-center rounded-2xl border px-5 transition-[border-color,box-shadow,transform] duration-300 lg:h-24 lg:w-48', c.img ? 'border-linha bg-white hover:-translate-y-0.5 hover:border-[#d8d1fb] hover:shadow-[0_16px_30px_-22px_rgba(91,60,240,.6)]' : 'border-dashed border-[#d6d1ec] bg-white/60']}>
               {c.img ? (
                 <img src={`/img/clientes/${c.img}.webp`} alt={copia === 0 ? c.nome : ''} width={c.w} height={c.h} loading="lazy" decoding="async" class="max-h-12 w-auto max-w-full object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 lg:max-h-14" />
               ) : (
-                <span class="text-center font-display text-sm font-semibold tracking-tight text-cinza">{c.nome}</span>
+                <span class="text-center font-mono text-[0.6875rem]"><mark class="pend">[logo de cliente]</mark></span>
               )}
             </li>
           ))}

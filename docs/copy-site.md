@@ -82,7 +82,7 @@ Número: 5541999842667 · exibição: (41) 99984-2667
 - WhatsApp *
 - E-mail *
 - Empresa *
-- Segmento: Contabilidade · Advocacia · Outro
+- Como podemos te ajudar? (pode marcar mais de uma opção): Site · Landing page · Google Ads · Meta Ads · Redes sociais · Identidade visual · Outros anúncios · Ainda não sei
 - O que você quer alcançar com o seu negócio nos próximos 12 meses?
 - Botão: **Agendar minha consultoria gratuita**
 - Abaixo do botão: *Nosso time entra em contato pelo WhatsApp para combinar o horário. Seus dados são usados só para o contato da Otimizo.* (link para a Política de Privacidade)
@@ -91,7 +91,7 @@ Após o envio, redirecionar para /obrigado.
 
 ## Rodapé
 
-**Texto de apresentação:** Agência de marketing e vendas para escritórios de contabilidade, advocacia e pequenas e médias empresas de todo o Brasil. Estratégia, execução e números na mesma mesa.
+**Texto de apresentação:** Agência de marketing e vendas para empresas e empreendedores de todo o Brasil. Estratégia, execução e números na mesma mesa.
 
 | Coluna | Links |
 | --- | --- |
@@ -99,7 +99,7 @@ Após o envio, redirecionar para /obrigado.
 | Otimizo | Sobre · Consultoria gratuita · Projetos sociais · Blog · Trabalhe conosco · Política de privacidade |
 | Contato | (41) 99984-2667 · contato@otimizodigital.com.br · Rua Adelino Basso, 28, Centro, Araucária (PR) · Instagram (https://www.instagram.com/otimizodigital/) · LinkedIn (https://www.linkedin.com/company/otimizo-marketing/) |
 
-**Faixa de selos:** Sócio Investidor do Hospital Pequeno Príncipe · [Google Partner] · [Meta Business Partner]
+**Faixa de selos:** Sócio Investidor do Hospital Pequeno Príncipe
 
 **Linha final:** © 2026 Otimizo Marketing e Assessoria Ltda · CNPJ 54.732.693/0001-36 · Todos os direitos reservados.
 
@@ -110,7 +110,7 @@ Após o envio, redirecionar para /obrigado.
 | SEO | Texto |
 | --- | --- |
 | Title | Otimizo · Agência de marketing e vendas para empresas de serviço |
-| Meta description | Google Ads, Meta Ads, sites e redes sociais para escritórios de contabilidade, advocacia e PMEs de todo o Brasil. Agende uma consultoria gratuita. |
+| Meta description | Google Ads, Meta Ads, sites e redes sociais para empresas e empreendedores de todo o Brasil. Agende uma consultoria gratuita. |
 
 ## 2.1 Hero
 
@@ -118,7 +118,7 @@ Após o envio, redirecionar para /obrigado.
 
 **Título (H1):** Marketing digital que termina em venda, não em relatório bonito.
 
-**Subtítulo:** Estruturamos a captação de clientes de escritórios de contabilidade, advocacia e pequenas e médias empresas de todo o Brasil. Campanhas, site e conteúdo medidos por um número só: quanto custa cada cliente novo.
+**Subtítulo:** Estruturamos a captação de clientes de empresas e empreendedores de todo o Brasil. Campanhas, site e conteúdo medidos por um número só: quanto custa cada cliente novo.
 
 **Botões:** Agendar minha consultoria gratuita · Falar no WhatsApp
 
@@ -128,16 +128,18 @@ Após o envio, redirecionar para /obrigado.
 
 | Número | Legenda |
 | --- | --- |
-| [X] | empresas atendidas |
-| +[X] | projetos entregues |
-| R$ [X] | em mídia gerenciada |
-| [X] estados | com clientes ativos |
+| +100 | empresas atendidas |
+| +500 | projetos entregues |
+| +R$ 1 milhão | em mídia gerenciada |
+| +5 anos | de experiência |
 
 ## 2.3 Logos de clientes
 
 **Título:** Empresas que confiam na Otimizo
 
-Expresscard · Pioneira Contabilidade · Cetrez · Dominium · Cred Mais Fácil · Chahine Contabilidade · Joelma Mattiuz · Grupo Aliança
+Expresscard · Pioneira Contabilidade · Cetrez · Dominium · Cred Mais Fácil · Chahine Contabilidade · Joelma Mattiuz
+
+Mais 5 espaços reservados para logos de novos clientes (o time envia depois).
 
 ## 2.4 O problema
 
@@ -148,47 +150,31 @@ Expresscard · Pioneira Contabilidade · Cetrez · Dominium · Cred Mais Fácil 
 **Texto:** Quase toda empresa que chega até nós já investe em marketing. O que falta é saber o que volta. Os sintomas costumam se repetir:
 
 - Anúncios rodando há meses sem ninguém saber quanto custa um cliente novo.
-- Contatos que chegam pelo WhatsApp e esfriam antes de alguém responder.
+- Contatos que chegam no WhatsApp desqualificados.
 - Um site que existe, mas não gera pedido de orçamento.
-- Relatórios cheios de curtidas e alcance, sem nenhuma palavra sobre faturamento.
+- Relatórios cheios de curtidas e alcance, mas sem resultados reais.
 
 **Fechamento:** Se você se reconheceu em algum item, o problema raramente é falta de verba. É falta de estrutura. É por ela que começamos.
 
-## 2.5 Para quem trabalhamos
-
-**Chamada:** PARA QUEM TRABALHAMOS
-
-**Título:** Especialistas em negócios que vendem confiança
-
-**Texto:** Em contabilidade e advocacia, o cliente pesquisa, compara e só contrata quando confia. É onde temos mais experiência, e o que aprendemos ali aplicamos a outras empresas de serviço e varejo.
-
-| Card | Texto |
-| --- | --- |
-| Contabilidade | Captação de empresas com o perfil que dá lucro para o seu escritório, por região, porte e especialidade. |
-| Advocacia | Marketing jurídico que gera autoridade e contatos qualificados, dentro das regras do Provimento 205/2021 da OAB. |
-| Outros segmentos | Serviços financeiros, indústria, gráficas, varejo especializado e outras PMEs que precisam de demanda previsível. |
-
-Cards sem link (não há páginas de segmento nesta versão).
-
-## 2.6 Serviços
+## 2.5 Serviços
 
 **Chamada:** O QUE FAZEMOS
 
-**Título:** Tudo o que acontece entre o primeiro clique e o contrato assinado
+**Título:** Tudo o que acontece entre o primeiro clique e a venda
 
 **Texto:** Você contrata o que faz sentido hoje e amplia conforme o resultado aparece. Cada frente tem um responsável, entregas definidas e indicadores acompanhados.
 
 | Grupo | Serviço | Frase do card |
 | --- | --- | --- |
 | Atrair | Google Ads | Apareça para quem já está procurando o que você vende. |
-| Atrair | Meta Ads | Facebook e Instagram para gerar demanda e reativar sua base. |
-| Converter | Sites e landing pages | Páginas rápidas e claras, feitas para gerar contato. |
+| Atrair | Meta Ads | Facebook e Instagram para gerar demanda para alcançar seus possíveis clientes. |
+| Converter | Sites e landing pages | Sites completos para gerar autoridade e confiança. Páginas rápidas e claras, feitas para gerar venda. |
 | Fortalecer a marca | Social media | Conteúdo constante que sustenta a decisão de compra. |
 | Fortalecer a marca | Branding e identidade visual | Uma marca coerente em todos os pontos de contato. |
 
 **Botão:** Ver todos os serviços
 
-## 2.7 Método OTI
+## 2.6 Método OTI
 
 **Chamada:** COMO TRABALHAMOS
 
@@ -203,7 +189,7 @@ Cards sem link (não há páginas de segmento nesta versão).
 
 **Frase de fechamento:** E o ciclo recomeça. Otimização não é uma etapa, é o nosso nome.
 
-## 2.8 Diferenciais
+## 2.7 Diferenciais
 
 **Chamada:** POR QUE A OTIMIZO
 
@@ -216,9 +202,9 @@ Cards sem link (não há páginas de segmento nesta versão).
 - **Experiência no seu nicho.** Repetimos o que já funcionou em negócios parecidos, sem queimar verba com testes desnecessários.
 - **Contato direto.** Você fala pelo WhatsApp com o responsável pelo seu projeto, sem ticket nem fila.
 - **Olhar até a venda.** Acompanhamos o contato depois do clique e ajudamos seu time a responder rápido.
-- **Sem amarras.** Seguimos juntos porque o número justifica. [validar política de contrato]
+- **Sem amarras.** Seguimos juntos porque o número justifica.
 
-## 2.9 Depoimentos
+## 2.8 Depoimentos
 
 **Título:** Quem trabalha com a gente, recomenda
 
@@ -232,19 +218,19 @@ Formato de cada card: frase curta com um resultado concreto + nome, cargo, empre
 
 Abaixo dos cards: **Ver avaliações no Google →** [se houver]
 
-## 2.10 Quem está por trás
+## 2.9 Quem está por trás
 
 **Título:** Você fala com quem decide
 
-**Texto:** A Otimizo é conduzida por Lucas e Lais Belniaki, que unem estratégia de marketing e experiência comercial. Os sócios participam das consultorias e das reuniões de resultado. [validar]
+**Texto:** A Otimizo é conduzida por Lucas e Lais Belniaki, que unem estratégia de marketing e experiência comercial. Os sócios participam das consultorias e das reuniões de resultado.
 
 **Link:** Conheça a Otimizo →
 
-## 2.11 Faixa de impacto social
+## 2.10 Faixa de impacto social
 
 Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. A Otimizo é Sócio Investidor do hospital. **Saiba mais →**
 
-## 2.12 Perguntas frequentes
+## 2.11 Perguntas frequentes
 
 **Quanto custa trabalhar com a Otimizo?** Depende das frentes contratadas e da verba de mídia. Depois da consultoria gratuita, se fizer sentido, você recebe uma proposta com escopo, prazos e valores fechados. [Opcional: "Projetos a partir de R$ X por mês"]
 
@@ -252,15 +238,11 @@ Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior ho
 
 **Em quanto tempo vejo resultado?** Campanhas de Google Ads e Meta Ads costumam gerar os primeiros contatos nas primeiras semanas. O custo por venda fica consistente entre o 2º e o 3º mês de otimização. [validar prazos]
 
-**Preciso de uma verba mínima para anúncios?** A verba depende do seu objetivo e da concorrência na sua região. Na consultoria gratuita mostramos um investimento realista antes de você decidir qualquer coisa.
-
 **Existe fidelidade no contrato?** [Resposta conforme a política real da Otimizo]
-
-**Vocês fazem marketing para advogados dentro das regras da OAB?** Sim. Todas as campanhas e conteúdos jurídicos seguem o Provimento 205/2021: comunicação informativa, sem promessa de resultado e sem captação indevida de clientela.
 
 **Como funciona a consultoria gratuita?** É uma conversa on-line de cerca de uma hora com um especialista em marketing da Otimizo. Você sai com os pilares do marketing digital prontos para aplicar no seu negócio, contratando a Otimizo ou não.
 
-## 2.13 Chamada final e formulário
+## 2.12 Chamada final e formulário
 
 **Chamada:** CONSULTORIA GRATUITA
 
@@ -380,7 +362,7 @@ Nosso diferencial vem da origem. Antes de sermos agência, vivemos o lado comerc
 
 ## 4.4 Números
 
-Mesmo bloco da Home: [X] empresas atendidas · +[X] projetos entregues · R$ [X] em mídia gerenciada · [X] estados com clientes ativos.
+Mesmo bloco da Home: +100 empresas atendidas · +500 projetos entregues · +R$ 1 milhão em mídia gerenciada · +5 anos de experiência.
 
 ## 4.5 Sócios
 
@@ -470,13 +452,13 @@ Quer crescer com a gente? **Veja como fazer parte do time →**
 **Subtítulo do grupo:** Levar as pessoas certas até você.
 
 - **Google Ads.** Apareça para quem já está procurando o que você vende. → Ver detalhes
-- **Meta Ads.** Facebook e Instagram para gerar demanda e reativar sua base. → Ver detalhes
+- **Meta Ads.** Facebook e Instagram para gerar demanda para alcançar seus possíveis clientes. → Ver detalhes
 
 ## 5.3 Converter
 
 **Subtítulo do grupo:** Transformar visita em conversa e conversa em contrato.
 
-- **Sites e landing pages.** Páginas rápidas e claras, feitas para gerar contato. → Ver detalhes
+- **Sites e landing pages.** Sites completos para gerar autoridade e confiança. Páginas rápidas e claras, feitas para gerar venda. → Ver detalhes
 
 ## 5.4 Fortalecer a marca
 

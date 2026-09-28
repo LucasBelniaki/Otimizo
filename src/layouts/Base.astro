@@ -21,7 +21,7 @@ const schema = {
   '@id': `${site.url}/#empresa`,
   name: 'Otimizo',
   legalName: site.razaoSocial,
-  description: 'Agência de marketing e vendas para escritórios de contabilidade, advocacia e pequenas e médias empresas de todo o Brasil.',
+  description: 'Agência de marketing e vendas para empresas e empreendedores de todo o Brasil.',
   url: site.url,
   logo: `${site.url}/img/logo-otimizo.svg`,
   telephone: '+55 41 99984-2667',
@@ -84,6 +84,49 @@ const schema = {
     <BarraMobile hrefConsultoria={hrefConsultoria} mensagem={mensagemWhatsApp} />
 
     <script>
+      const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Revelação suave ao rolar (só liga com JS e movimento permitido)
+      if (!semMovimento && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('anima');
+        const io = new IntersectionObserver((itens) => {
+          itens.forEach((i) => {
+            if (i.isIntersecting) { i.target.classList.add('visivel'); io.unobserve(i.target); }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        document.querySelectorAll('[data-revelar]').forEach((el) => io.observe(el));
+      }
+
+      // Luz que acompanha o ponteiro nos cards
+      document.addEventListener('pointermove', (e) => {
+        const el = (e.target as HTMLElement).closest<HTMLElement>('.luz');
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        el.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }, { passive: true });
+
+      // Contagem dos números quando aparecem na tela
+      const contadores = document.querySelectorAll<HTMLElement>('[data-contar]');
+      if (!semMovimento && contadores.length && 'IntersectionObserver' in window) {
+        const ioN = new IntersectionObserver((itens) => {
+          itens.forEach((i) => {
+            if (!i.isIntersecting) return;
+            ioN.unobserve(i.target);
+            const el = i.target as HTMLElement;
+            const alvo = Number(el.dataset.contar);
+            const t0 = performance.now();
+            const passo = (t: number) => {
+              const p = Math.min(1, (t - t0) / 1400);
+              el.textContent = String(Math.round(alvo * (1 - Math.pow(1 - p, 3))));
+              if (p < 1) requestAnimationFrame(passo);
+            };
+            requestAnimationFrame(passo);
+          });
+        }, { threshold: 0.4 });
+        contadores.forEach((el) => ioN.observe(el));
+      }
+
       // Envia cliques de CTA para o dataLayer (usado pelo GTM)
       document.addEventListener('click', (e) => {
         const el = (e.target as HTMLElement).closest<HTMLElement>('[data-evento]');

@@ -232,3 +232,105 @@
     background-size: 72px 72px;
   }
 }
+
+/* ============================================================
+   Movimento e interação
+   Tudo respeita prefers-reduced-motion e a página fica completa
+   mesmo sem JavaScript (as classes de animação só entram com JS).
+   ============================================================ */
+
+@layer components {
+  /* Luz que segue o ponteiro (hover). Cor ajustável por --luz-cor. */
+  .luz { position: relative; isolation: isolate; --mx: 50%; --my: 50%; --luz-cor: rgba(91, 60, 240, 0.13); }
+  .luz::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(22rem circle at var(--mx) var(--my), var(--luz-cor), transparent 65%);
+    transition: opacity 0.35s ease;
+  }
+  .luz:hover::before, .luz:focus-within::before { opacity: 1; }
+  .luz > * { position: relative; z-index: 1; }
+  .escuro .luz, .luz-clara { --luz-cor: rgba(169, 155, 255, 0.16); }
+
+  /* Vidro líquido: desfoque do fundo que se intensifica no hover */
+  .vidro {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+    backdrop-filter: blur(10px) saturate(130%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: background-color 0.35s, border-color 0.35s, box-shadow 0.35s, transform 0.35s, backdrop-filter 0.35s;
+  }
+  .vidro:hover {
+    background: rgba(255, 255, 255, 0.085);
+    border-color: rgba(255, 255, 255, 0.22);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+    backdrop-filter: blur(18px) saturate(170%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 24px 50px -30px rgba(91, 60, 240, 0.7);
+  }
+  .vidro-claro {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 12px 30px -18px rgba(17, 14, 38, 0.35);
+  }
+
+  /* Card claro com leve degradê roxo */
+  .card-roxo {
+    background:
+      radial-gradient(120% 90% at 100% 0%, rgba(91, 60, 240, 0.09), transparent 55%),
+      linear-gradient(165deg, #ffffff 35%, #f4f1ff 100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Revelação ao rolar */
+  .anima [data-revelar] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--d, 0) * 90ms);
+  }
+  .anima [data-revelar].visivel { opacity: 1; transform: none; }
+
+  /* Entrada do hero ao carregar */
+  .entrada > * { animation: entrar 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .entrada > :nth-child(2) { animation-delay: 0.08s; }
+  .entrada > :nth-child(3) { animation-delay: 0.16s; }
+  .entrada > :nth-child(4) { animation-delay: 0.24s; }
+  .entrada > :nth-child(5) { animation-delay: 0.32s; }
+
+  /* Degradês de fundo com movimento orgânico e lento */
+  .deriva-1 { animation: deriva-1 26s ease-in-out infinite alternate; }
+  .deriva-2 { animation: deriva-2 32s ease-in-out infinite alternate; }
+  .deriva-3 { animation: deriva-3 38s ease-in-out infinite alternate; }
+
+  .flutua { animation: flutua 7s ease-in-out infinite alternate; }
+  .giro { animation: giro 14s linear infinite; }
+}
+@keyframes giro { to { transform: rotate(360deg); } }
+
+@keyframes entrar { from { opacity: 0; transform: translateY(18px); } }
+@keyframes flutua { to { transform: translateY(-8px); } }
+@keyframes deriva-1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  35% { transform: translate3d(-6%, 5%, 0) scale(1.08); }
+  70% { transform: translate3d(4%, 9%, 0) scale(0.96); }
+  100% { transform: translate3d(-3%, -4%, 0) scale(1.05); }
+}
+@keyframes deriva-2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  40% { transform: translate3d(8%, -6%, 0) scale(1.1); }
+  100% { transform: translate3d(-5%, 6%, 0) scale(0.94); }
+}
+@keyframes deriva-3 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  50% { transform: translate3d(-7%, -3%, 0) rotate(8deg) scale(1.12); }
+  100% { transform: translate3d(5%, 4%, 0) rotate(-4deg) scale(1); }
+}

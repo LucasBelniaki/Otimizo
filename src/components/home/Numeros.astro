@@ -1,20 +1,22 @@
 ---
-// Bloco de números (Home 2.2 e Sobre 4.4). Valores ainda pendentes na copy.
-import { copy } from '../../lib/texto';
+// Bloco de números (Home e Sobre). O valor final já vem no HTML;
+// a contagem animada só roda com JavaScript (data-contar).
 const numeros = [
-  { valor: '[X]', legenda: 'empresas atendidas' },
-  { valor: '+[X]', legenda: 'projetos entregues' },
-  { valor: 'R$ [X]', legenda: 'em mídia gerenciada' },
-  { valor: '[X] estados', legenda: 'com clientes ativos' },
+  { antes: '+', valor: 100, depois: '', legenda: 'empresas atendidas' },
+  { antes: '+', valor: 500, depois: '', legenda: 'projetos entregues' },
+  { antes: '+R$ ', valor: 1, depois: ' milhão', legenda: 'em mídia gerenciada', semContagem: true },
+  { antes: '+', valor: 5, depois: ' anos', legenda: 'de experiência' },
 ];
 interface Props { class?: string }
 const { class: classe = '' } = Astro.props;
 ---
-<dl class:list={['grid grid-cols-2 overflow-hidden rounded-[1.75rem] border border-linha bg-white/80 backdrop-blur lg:grid-cols-4', classe]}>
+<dl class:list={['vidro-claro grid grid-cols-2 overflow-hidden rounded-[1.75rem] lg:grid-cols-4', classe]}>
   {numeros.map((n, i) => (
-    <div class:list={['grid content-start gap-1.5 p-5 sm:p-7', { 'border-l border-linha': i % 2 === 1, 'border-t border-linha lg:border-t-0': i >= 2, 'lg:border-l': i === 2 }]}>
+    <div class:list={['luz grid content-start gap-1.5 p-5 transition-colors duration-300 hover:bg-white/60 sm:p-7', { 'border-l border-linha': i % 2 === 1, 'border-t border-linha lg:border-t-0': i >= 2, 'lg:border-l': i === 2 }]}>
       <dt class="order-2 text-sm text-cinza sm:text-[0.9375rem]">{n.legenda}</dt>
-      <dd class="order-1 whitespace-nowrap font-display text-[1.625rem] font-semibold leading-tight tracking-[-0.03em] sm:text-[2.25rem] lg:text-[2.125rem] xl:text-[2.375rem]" set:html={copy(n.valor)} />
+      <dd class="order-1 whitespace-nowrap font-display text-[1.625rem] font-semibold leading-tight tracking-[-0.03em] tabular-nums sm:text-[2.25rem] lg:text-[2.125rem] xl:text-[2.375rem]">
+        <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">{n.antes}</span><span data-contar={n.semContagem ? undefined : n.valor}>{n.valor}</span>{n.depois}
+      </dd>
     </div>
   ))}
 </dl>

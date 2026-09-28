@@ -56,7 +56,10 @@ if ($tipo === 'consultoria') {
         'WhatsApp' => $whatsapp,
         'E-mail' => $email,
         'Empresa' => $empresa,
-        'Segmento' => $campo('segmento', 40) ?: 'Não informado',
+        'Como podemos ajudar' => implode(', ', array_map(
+            static fn($v) => mb_substr(strip_tags((string)$v), 0, 40),
+            array_slice((array)($_POST['ajuda'] ?? []), 0, 12)
+        )) ?: 'Não informado',
         'Objetivo para os próximos 12 meses' => $campo('objetivo', 2000) ?: 'Não informado',
         'Página de origem' => $origem,
     ];
