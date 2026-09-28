@@ -97,7 +97,7 @@ Após o envio, redirecionar para /obrigado.
 | --- | --- |
 | Serviços | Google Ads · Meta Ads · Sites e landing pages · Social media · Branding e identidade visual |
 | Otimizo | Sobre · Consultoria gratuita · Projetos sociais · Blog · Trabalhe conosco · Política de privacidade |
-| Contato | (41) 99984-2667 · [e-mail a definir] · Rua Adelino Basso, 28, Centro, Araucária (PR) · Instagram (https://www.instagram.com/otimizodigital/) · LinkedIn (https://www.linkedin.com/company/otimizo-marketing/) |
+| Contato | (41) 99984-2667 · contato@otimizodigital.com.br · Rua Adelino Basso, 28, Centro, Araucária (PR) · Instagram (https://www.instagram.com/otimizodigital/) · LinkedIn (https://www.linkedin.com/company/otimizo-marketing/) |
 
 **Faixa de selos:** Sócio Investidor do Hospital Pequeno Príncipe · [Google Partner] · [Meta Business Partner]
 
@@ -910,7 +910,7 @@ Google Ads · Meta Ads · SEO · CRM e vendas · Sites e conversão · Marketing
 ## 13.2 Canais
 
 - **WhatsApp:** (41) 99984-2667 · botão "Chamar agora"
-- **E-mail:** [e-mail a definir]
+- **E-mail:** contato@otimizodigital.com.br
 - **Endereço:** Rua Adelino Basso, 28, Centro, Araucária (PR)
 - **Horário:** [segunda a sexta, das X h às Y h]
 
