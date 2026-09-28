@@ -1,0 +1,80 @@
+---
+// Composição do hero: painel de campanha, celular com conversa e o símbolo da marca.
+// Decorativo: os gráficos não mostram valores (nenhum número fora da copy).
+---
+<div class="hv relative mx-auto aspect-[1/0.94] w-full max-w-[36rem] [container-type:inline-size]" aria-hidden="true">
+  <!-- brilho de fundo -->
+  <div class="absolute left-[8%] top-[6%] size-[80%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.28),rgba(31,94,255,.14)_55%,transparent)] blur-2xl"></div>
+  <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="absolute -right-[4%] -top-[4%] w-[70%] drop-shadow-[0_30px_40px_rgba(91,60,240,.25)]" fetchpriority="high" />
+
+  <!-- painel -->
+  <div class="painel absolute left-[25%] top-[15%] grid w-[75%] gap-[3cqw] rounded-[4.5cqw] border border-white/70 bg-white/80 p-[4cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.45)] backdrop-blur-xl">
+    <div class="flex flex-wrap items-center gap-[1.6cqw]">
+      <span class="mr-auto font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.1em] text-cinza">Campanhas</span>
+      <span class="rounded-full bg-lavanda px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] font-medium text-roxo-700">Google Ads</span>
+      <span class="rounded-full border border-linha bg-white px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] text-[#3a3852]">Meta Ads</span>
+    </div>
+    <div class="grid gap-[1.2cqw]">
+      <span class="font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.08em] text-tinta">Custo por venda</span>
+      <svg viewBox="0 0 330 120" class="block h-auto w-full">
+        <defs>
+          <linearGradient id="hv-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F5EFF" stop-opacity=".24" /><stop offset="1" stop-color="#1F5EFF" stop-opacity="0" /></linearGradient>
+          <linearGradient id="hv-linha" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5B3CF0" /><stop offset="1" stop-color="#1F5EFF" /></linearGradient>
+        </defs>
+        <g stroke="#E6E4F0" stroke-width="1" stroke-dasharray="3 4"><line x1="0" y1="20" x2="330" y2="20" /><line x1="0" y1="55" x2="330" y2="55" /><line x1="0" y1="90" x2="330" y2="90" /></g>
+        <path d="M4,24 C40,22 62,40 94,44 S150,58 182,66 S250,86 318,96 L318,118 L4,118 Z" fill="url(#hv-area)" />
+        <path class="hv-traco" d="M4,24 C40,22 62,40 94,44 S150,58 182,66 S250,86 318,96" fill="none" stroke="url(#hv-linha)" stroke-width="3" stroke-linecap="round" pathLength="1" />
+        <circle cx="318" cy="96" r="6" fill="#fff" stroke="#1F5EFF" stroke-width="3" />
+      </svg>
+    </div>
+    <div class="grid grid-cols-2 gap-[2.4cqw]">
+      {[['Leads', [30, 44, 40, 60, 76, 100], 'bg-roxo'], ['Vendas', [22, 30, 44, 50, 70, 92], 'bg-azul']].map(([rotulo, barras, cor]) => (
+        <div class="grid gap-[2cqw] rounded-[3cqw] border border-linha bg-white p-[2.6cqw]">
+          <span class="font-mono text-[max(9px,2.3cqw)] uppercase tracking-[0.08em] text-cinza">{rotulo}</span>
+          <div class="flex h-[9cqw] items-end gap-[1.2cqw]">
+            {(barras as number[]).map((h, i, arr) => (
+              <i class:list={['hv-barra block flex-1 rounded-t-[1cqw]', i === arr.length - 1 ? cor : 'bg-lavanda']} style={`height:${h}%;--i:${i}`}></i>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- celular -->
+  <div class="absolute bottom-[1%] left-0 aspect-[9/18.5] w-[31%] rounded-[6cqw] bg-tinta p-[1.3cqw] shadow-[0_40px_60px_-28px_rgba(17,14,38,.6)]">
+    <div class="grid h-full grid-rows-[auto_1fr_auto] overflow-hidden rounded-[4.8cqw] bg-[#f5f4fa]">
+      <div class="flex items-center gap-[1.6cqw] border-b border-linha bg-white px-[2.4cqw] pb-[2cqw] pt-[3.8cqw]">
+        <span class="size-[5cqw] shrink-0 rounded-full bg-gradient-to-br from-roxo to-azul"></span>
+        <span class="block h-[1.3cqw] w-[55%] rounded-full bg-[#dad7e8]"></span>
+      </div>
+      <div class="grid content-start gap-[1.8cqw] p-[2.4cqw]">
+        <div class="hv-msg grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] border border-linha bg-white p-[1.8cqw]" style="--i:0"><span class="block h-[1.3cqw] w-[9cqw] rounded-full bg-[#dad7e8]"></span><span class="block h-[1.3cqw] w-[14cqw] rounded-full bg-[#dad7e8]"></span></div>
+        <div class="hv-msg grid max-w-[82%] gap-[1.1cqw] justify-self-end rounded-[2.4cqw] bg-roxo p-[1.8cqw]" style="--i:1"><span class="block h-[1.3cqw] w-[13cqw] rounded-full bg-white/55"></span><span class="block h-[1.3cqw] w-[8cqw] rounded-full bg-white/55"></span></div>
+        <div class="hv-msg grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] border border-linha bg-white p-[1.8cqw]" style="--i:2"><span class="block h-[1.3cqw] w-[12cqw] rounded-full bg-[#dad7e8]"></span></div>
+      </div>
+      <div class="m-[2.4cqw] h-[5cqw] rounded-full border border-linha bg-white"></div>
+    </div>
+  </div>
+
+  <!-- etiquetas flutuantes -->
+  <span class="absolute right-[1%] top-[5%] inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]">
+    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 9h18" /></svg></b>Site
+  </span>
+  <span class="absolute bottom-[4%] left-[23%] inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]">
+    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="currentColor"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20Z" /></svg></b>WhatsApp
+  </span>
+</div>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .hv-traco { stroke-dasharray: 1; stroke-dashoffset: 1; animation: desenhar 1.6s .3s cubic-bezier(.3,.7,.2,1) forwards; }
+    .hv-barra { transform-origin: bottom; animation: crescer .7s calc(.5s + var(--i) * 70ms) cubic-bezier(.3,.7,.2,1) both; }
+    .hv-msg { animation: surgir .5s calc(.9s + var(--i) * 350ms) ease-out both; }
+    .painel { animation: flutuar 7s ease-in-out infinite alternate; }
+  }
+  @keyframes desenhar { to { stroke-dashoffset: 0; } }
+  @keyframes crescer { from { transform: scaleY(.15); } }
+  @keyframes surgir { from { opacity: .0; transform: translateY(6px); } }
+  @keyframes flutuar { to { transform: translateY(-6px); } }
+</style>

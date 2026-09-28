@@ -1,0 +1,303 @@
+---
+// Home. Texto: docs/copy-site.md, seção 2.
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+import Icone from '../components/ui/Icone.astro';
+import HeroVisual from '../components/home/HeroVisual.astro';
+import Numeros from '../components/home/Numeros.astro';
+import LogosClientes from '../components/home/LogosClientes.astro';
+import Faq from '../components/home/Faq.astro';
+import ChamadaFinal from '../components/home/ChamadaFinal.astro';
+import { servicos } from '../data/site';
+import { copy } from '../lib/texto';
+
+const sintomas = [
+  'Anúncios rodando há meses sem ninguém saber quanto custa um cliente novo.',
+  'Contatos que chegam pelo WhatsApp e esfriam antes de alguém responder.',
+  'Um site que existe, mas não gera pedido de orçamento.',
+  'Relatórios cheios de curtidas e alcance, sem nenhuma palavra sobre faturamento.',
+];
+
+const segmentos = [
+  { nome: 'Contabilidade', icone: 'calculadora', texto: 'Captação de empresas com o perfil que dá lucro para o seu escritório, por região, porte e especialidade.' },
+  { nome: 'Advocacia', icone: 'balanca', texto: 'Marketing jurídico que gera autoridade e contatos qualificados, dentro das regras do Provimento 205/2021 da OAB.' },
+  { nome: 'Outros segmentos', icone: 'grade', texto: 'Serviços financeiros, indústria, gráficas, varejo especializado e outras PMEs que precisam de demanda previsível.' },
+] as const;
+
+const grupos = ['Atrair', 'Converter', 'Fortalecer a marca'].map((g) => ({
+  nome: g,
+  itens: servicos.filter((s) => s.grupo === g),
+}));
+
+const etapas = [
+  { nome: 'Diagnóstico', texto: 'Analisamos seu posicionamento digital, os concorrentes, o histórico de campanhas e como o seu time atende hoje.' },
+  { nome: 'Organização', texto: 'Definimos oferta, canais, verba e metas de custo por lead e por venda. Estruturamos ferramentas, páginas e o alinhamento com o comercial.' },
+  { nome: 'Tração', texto: 'Especialistas de cada canal colocam a estratégia no ar e fazem ajustes semanais com base nos primeiros números.' },
+  { nome: 'Investigação', texto: 'Todo mês, reunião de resultado com a liderança: o que vendeu, quanto custou e o que muda no próximo ciclo.' },
+];
+
+const diferenciais = [
+  { titulo: 'Relatório que fala de venda.', texto: 'Custo por lead e por venda, não só cliques e alcance.', icone: 'relatorio' },
+  { titulo: 'Especialista por canal.', texto: 'Quem cuida do seu Google Ads não é quem cria seus posts.', icone: 'pessoa' },
+  { titulo: 'Experiência no seu nicho.', texto: 'Repetimos o que já funcionou em negócios parecidos, sem queimar verba com testes desnecessários.', icone: 'alvo' },
+  { titulo: 'Contato direto.', texto: 'Você fala pelo WhatsApp com o responsável pelo seu projeto, sem ticket nem fila.', icone: 'chat' },
+  { titulo: 'Olhar até a venda.', texto: 'Acompanhamos o contato depois do clique e ajudamos seu time a responder rápido.', icone: 'funil' },
+  { titulo: 'Sem amarras.', texto: 'Seguimos juntos porque o número justifica. [validar política de contrato]', icone: 'elo' },
+] as const;
+
+const depoimentos = [
+  { frase: '[Depoimento real de um cliente de contabilidade, com número]', autor: '[Nome], [cargo], [escritório]' },
+  { frase: '[Depoimento real de um cliente de advocacia]', autor: '[Nome], [cargo], [escritório]' },
+  { frase: '[Depoimento real de outro segmento]', autor: '[Nome], [cargo], [empresa]' },
+];
+
+const faq = [
+  { p: 'Quanto custa trabalhar com a Otimizo?', r: 'Depende das frentes contratadas e da verba de mídia. Depois da consultoria gratuita, se fizer sentido, você recebe uma proposta com escopo, prazos e valores fechados. [Opcional: "Projetos a partir de R$ X por mês"]' },
+  { p: 'Vocês atendem fora de Curitiba?', r: 'Sim. Atendemos empresas de todo o Brasil com reuniões on-line. Em Araucária, Curitiba e região metropolitana, também presencialmente.' },
+  { p: 'Em quanto tempo vejo resultado?', r: 'Campanhas de Google Ads e Meta Ads costumam gerar os primeiros contatos nas primeiras semanas. O custo por venda fica consistente entre o 2º e o 3º mês de otimização. [validar prazos]' },
+  { p: 'Preciso de uma verba mínima para anúncios?', r: 'A verba depende do seu objetivo e da concorrência na sua região. Na consultoria gratuita mostramos um investimento realista antes de você decidir qualquer coisa.' },
+  { p: 'Existe fidelidade no contrato?', r: '[Resposta conforme a política real da Otimizo]' },
+  { p: 'Vocês fazem marketing para advogados dentro das regras da OAB?', r: 'Sim. Todas as campanhas e conteúdos jurídicos seguem o Provimento 205/2021: comunicação informativa, sem promessa de resultado e sem captação indevida de clientela.' },
+  { p: 'Como funciona a consultoria gratuita?', r: 'É uma conversa on-line de cerca de uma hora com um especialista em marketing da Otimizo. Você sai com os pilares do marketing digital prontos para aplicar no seu negócio, contratando a Otimizo ou não.' },
+];
+---
+<Base
+  title="Otimizo · Agência de marketing e vendas para empresas de serviço"
+  description="Google Ads, Meta Ads, sites e redes sociais para escritórios de contabilidade, advocacia e PMEs de todo o Brasil. Agende uma consultoria gratuita."
+  hrefConsultoria="#agendar"
+>
+  <!-- 2.1 Hero + 2.2 Números -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="hero-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.12),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_72%_35%,#000_10%,transparent_75%)]"></div>
+    </div>
+
+    <div class="container-site grid gap-14 lg:gap-20">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_1fr] lg:gap-10">
+        <div class="grid content-start gap-6 lg:gap-7">
+          <span class="chamada">Agência de marketing e vendas</span>
+          <h1 id="hero-titulo" class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[3.75rem] lg:leading-[1.04]">
+            Marketing digital que termina em venda, <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">não em relatório bonito.</span>
+          </h1>
+          <p class="texto-secao max-w-[54ch]">Estruturamos a captação de clientes de escritórios de contabilidade, advocacia e pequenas e médias empresas de todo o Brasil. Campanhas, site e conteúdo medidos por um número só: quanto custa cada cliente novo.</p>
+          <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Botao href="#agendar" />
+            <Botao variante="whatsapp" />
+          </div>
+          <ul class="micro">
+            <li>Consultoria de 1 hora</li><li>Sem custo</li><li>Atendemos todo o Brasil</li>
+          </ul>
+        </div>
+        <HeroVisual />
+      </div>
+
+      <Numeros />
+    </div>
+  </section>
+
+  <!-- 2.3 Logos de clientes -->
+  <LogosClientes class="border-y border-linha bg-nevoa" />
+
+  <!-- 2.4 O problema -->
+  <section class="escuro granulado relative overflow-hidden bg-tinta text-white" style="--grao:.2" aria-labelledby="problema-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -right-40 -top-40 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.38),transparent)]"></div>
+      <div class="absolute -bottom-60 left-1/4 size-[36rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.18),transparent)]"></div>
+    </div>
+    <div class="container-site secao grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+      <div class="grid content-start gap-6">
+        <span class="chamada">O problema</span>
+        <h2 id="problema-titulo" class="titulo-secao !text-white">Sua empresa não precisa de mais cliques. Precisa de mais clientes.</h2>
+        <p class="texto-secao">Quase toda empresa que chega até nós já investe em marketing. O que falta é saber o que volta. Os sintomas costumam se repetir:</p>
+      </div>
+      <div class="grid content-start gap-8">
+        <ul class="grid gap-3">
+          {sintomas.map((s) => (
+            <li class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm">
+              <span class="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-[#ff6b6b]/15 text-[#ffb4b4]"><Icone nome="x" class="size-4" /></span>
+              <span class="text-[1.0625rem] leading-relaxed text-[#e6e4f2]">{s}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="border-l-2 border-roxo-claro pl-5 text-[1.0625rem] leading-relaxed text-white lg:text-lg">Se você se reconheceu em algum item, o problema raramente é falta de verba. É falta de estrutura. É por ela que começamos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.5 Para quem trabalhamos -->
+  <section class="secao relative bg-nevoa" aria-labelledby="segmentos-titulo">
+    <div class="container-site grid gap-12">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <div class="grid gap-6">
+          <span class="chamada">Para quem trabalhamos</span>
+          <h2 id="segmentos-titulo" class="titulo-secao">Especialistas em negócios que vendem confiança</h2>
+        </div>
+        <p class="texto-secao">Em contabilidade e advocacia, o cliente pesquisa, compara e só contrata quando confia. É onde temos mais experiência, e o que aprendemos ali aplicamos a outras empresas de serviço e varejo.</p>
+      </div>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {segmentos.map((s, i) => (
+          <li class:list={['granulado relative grid content-start gap-5 overflow-hidden rounded-[var(--radius-card)] border p-7 lg:min-h-72 lg:p-8', i === 2 ? 'border-linha bg-white' : 'border-transparent bg-white']} style="--grao:.08">
+            {i < 2 && <div aria-hidden="true" class="absolute -right-16 -top-16 -z-10 size-56 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.16),transparent)]"></div>}
+            <span class="grid size-12 place-items-center rounded-2xl bg-lavanda text-roxo"><Icone nome={s.icone} class="size-6" /></span>
+            <h3 class="text-xl lg:text-2xl">{s.nome}</h3>
+            <p class="leading-relaxed text-cinza">{s.texto}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2.6 Serviços -->
+  <section class="secao" aria-labelledby="servicos-titulo">
+    <div class="container-site grid gap-12">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <div class="grid gap-6">
+          <span class="chamada">O que fazemos</span>
+          <h2 id="servicos-titulo" class="titulo-secao">Tudo o que acontece entre o primeiro clique e o contrato assinado</h2>
+        </div>
+        <p class="texto-secao">Você contrata o que faz sentido hoje e amplia conforme o resultado aparece. Cada frente tem um responsável, entregas definidas e indicadores acompanhados.</p>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-3">
+        {grupos.map((g, gi) => (
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3 px-1">
+              <span class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-roxo">{g.nome}</span>
+              <span class="h-px flex-1 bg-linha"></span>
+            </div>
+            {g.itens.map((s) => (
+              <a href={s.href} class:list={['group relative grid min-h-52 flex-1 content-between gap-8 overflow-hidden rounded-[var(--radius-card)] border p-7 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 lg:p-8', gi === 1 ? 'escuro granulado border-tinta bg-tinta text-white hover:shadow-[0_30px_60px_-30px_rgba(17,14,38,.7)]' : 'border-linha bg-white hover:border-[#cfc8f5] hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)]']} style={gi === 1 ? '--grao:.2' : undefined}>
+                {gi === 1 && <div aria-hidden="true" class="absolute -bottom-24 -right-24 -z-10 size-72 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.55),transparent)]"></div>}
+                <div class="grid gap-3">
+                  <h3 class:list={['text-[1.375rem] lg:text-2xl', { '!text-white': gi === 1 }]}>{s.nome}</h3>
+                  <p class:list={['leading-relaxed', gi === 1 ? 'text-cinza-claro' : 'text-cinza']}>{s.frase}</p>
+                </div>
+                <span class="link-seta">Ver detalhes <Icone nome="seta" class="size-4 transition-transform group-hover:translate-x-1" /></span>
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <a href="/servicos" class="btn btn-secundario">Ver todos os serviços <Icone nome="seta" class="size-4" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.7 Método OTI -->
+  <section class="escuro granulado relative overflow-hidden bg-tinta text-white" style="--grao:.2" aria-labelledby="metodo-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute left-1/2 top-0 h-[30rem] w-[70rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.4),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-[0.06] [--cor-grade:#fff] [mask-image:linear-gradient(180deg,#000,transparent_70%)]"></div>
+    </div>
+    <div class="container-site secao grid gap-14">
+      <div class="grid max-w-3xl gap-6">
+        <span class="chamada">Como trabalhamos</span>
+        <h2 id="metodo-titulo" class="titulo-secao !text-white">Método OTI: sem fórmula mágica, com disciplina</h2>
+        <p class="texto-secao">Antes de investir o primeiro real em anúncio, entendemos o seu negócio. Depois, repetimos o mesmo ciclo todo mês.</p>
+      </div>
+
+      <ol class="relative grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {etapas.map((e, i) => (
+          <li class="relative grid content-start gap-5 rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm lg:p-7">
+            <span class="relative grid size-12 place-items-center rounded-full border border-white/15 bg-tinta-2 font-mono text-sm text-roxo-claro shadow-[0_0_0_6px_#110e26]">0{i + 1}</span>
+            <h3 class="text-xl !text-white">{e.nome}</h3>
+            <p class="leading-relaxed text-cinza-claro">{e.texto}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p class="flex items-center gap-4 font-display text-xl font-medium tracking-[-0.02em] text-white lg:text-2xl">
+        <svg viewBox="0 0 24 24" class="size-8 shrink-0 text-roxo-claro" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4.5h-4.5" /></svg>
+        E o ciclo recomeça. Otimização não é uma etapa, é o nosso nome.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2.8 Diferenciais -->
+  <section class="secao" aria-labelledby="diferenciais-titulo">
+    <div class="container-site grid gap-14">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <div class="grid gap-6">
+          <span class="chamada">Por que a Otimizo</span>
+          <h2 id="diferenciais-titulo" class="titulo-secao">Marketing e comercial tratados como um só time</h2>
+        </div>
+        <p class="texto-secao">A maior parte das empresas não tem problema de tráfego, tem problema de conversão e acompanhamento. É ali que atuamos primeiro.</p>
+      </div>
+      <ul class="grid border-t border-linha sm:grid-cols-2 lg:grid-cols-3">
+        {diferenciais.map((d, i) => (
+          <li class:list={['grid content-start gap-4 border-b border-linha py-8 sm:px-6 lg:px-8 lg:py-10', { 'sm:border-l': i % 2 === 1, 'lg:border-l': i % 3 !== 0, 'lg:[&]:border-l-0': i % 3 === 0 }, i % 3 === 0 ? 'sm:pl-0 lg:pl-0' : '']}>
+            <span class="grid size-11 place-items-center rounded-xl bg-lavanda text-roxo"><Icone nome={d.icone} class="size-5" /></span>
+            <h3 class="text-lg lg:text-xl">{d.titulo}</h3>
+            <p class="leading-relaxed text-cinza" set:html={copy(d.texto)} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2.9 Depoimentos -->
+  <section class="granulado secao relative overflow-hidden bg-nevoa" style="--grao:.08" aria-labelledby="depoimentos-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute -right-40 top-0 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.12),transparent)]"></div>
+    <div class="container-site grid gap-12">
+      <h2 id="depoimentos-titulo" class="titulo-secao max-w-2xl">Quem trabalha com a gente, recomenda</h2>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {depoimentos.map((d) => (
+          <li>
+            <figure class="grid h-full content-between gap-8 rounded-[var(--radius-card)] border border-linha bg-white p-7 lg:p-8">
+              <div class="grid gap-5">
+                <Icone nome="aspas" class="size-8 text-roxo" />
+                <blockquote class="font-display text-lg font-medium leading-snug tracking-[-0.015em]" set:html={copy(d.frase)} />
+              </div>
+              <figcaption class="flex items-center gap-3 border-t border-linha pt-5 text-sm">
+                <span class="placeholder-img size-11 shrink-0 rounded-full !p-0" title="Foto ou logo do cliente, 1:1"></span>
+                <span class="text-cinza" set:html={copy(d.autor)} />
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <p class="text-[0.9375rem]"><span class="font-medium text-roxo">Ver avaliações no Google →</span> <mark class="pend">[se houver]</mark></p>
+    </div>
+  </section>
+
+  <!-- 2.10 Quem está por trás -->
+  <section class="secao" aria-labelledby="socios-titulo">
+    <div class="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+      <div class="placeholder-img aspect-[5/4] rounded-[var(--radius-card)]">
+        <div><strong>Foto dos sócios Lucas e Lais Belniaki juntos</strong><span>5:4 · 1600 × 1280 px · WebP</span></div>
+      </div>
+      <div class="grid content-start gap-6">
+        <h2 id="socios-titulo" class="titulo-secao">Você fala com quem decide</h2>
+        <p class="texto-secao" set:html={copy('A Otimizo é conduzida por Lucas e Lais Belniaki, que unem estratégia de marketing e experiência comercial. Os sócios participam das consultorias e das reuniões de resultado. [validar]')} />
+        <a href="/sobre" class="link-seta text-[1.0625rem]">Conheça a Otimizo <Icone nome="seta" class="size-4" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.11 Faixa de impacto social -->
+  <section class="container-site" aria-label="Impacto social">
+    <div class="granulado relative flex flex-col gap-6 overflow-hidden rounded-[var(--radius-card)] bg-[linear-gradient(110deg,#ece8ff_0%,#e6ecff_100%)] p-7 sm:flex-row sm:items-center lg:p-10" style="--grao:.14">
+      <div class="placeholder-img grid h-20 w-36 shrink-0 place-items-center rounded-2xl !p-2">
+        <div class="!p-1.5"><strong class="!text-[0.6875rem] leading-tight">Selo Sócio Investidor Pequeno Príncipe</strong></div>
+      </div>
+      <p class="max-w-[70ch] text-[1.0625rem] leading-relaxed text-tinta">
+        Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. A Otimizo é Sócio Investidor do hospital.
+        <a href="/projetos-sociais" class="link-seta ml-1 whitespace-nowrap">Saiba mais <Icone nome="seta" class="size-4" /></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 2.12 Perguntas frequentes -->
+  <Faq perguntas={faq} />
+
+  <!-- 2.13 Chamada final e formulário -->
+  <ChamadaFinal
+    chamada="Consultoria gratuita"
+    titulo="Uma hora com um especialista pode mudar a forma como sua empresa vende"
+    texto="Agende uma consultoria gratuita e on-line de cerca de uma hora com um especialista em marketing da Otimizo. Você sai com conteúdo de valor para aplicar na prática, logo depois da conversa."
+  />
+</Base>

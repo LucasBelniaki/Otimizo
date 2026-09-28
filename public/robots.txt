@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /obrigado/
+Disallow: /api/
+
+Sitemap: https://otimizo.com.br/sitemap-index.xml

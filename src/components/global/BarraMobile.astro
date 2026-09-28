@@ -1,0 +1,14 @@
+---
+import Icone from '../ui/Icone.astro';
+import { linkWhatsApp, mensagensWhatsApp } from '../../data/site';
+interface Props { hrefConsultoria?: string; mensagem?: string }
+const { hrefConsultoria = '/consultoria-gratuita', mensagem = mensagensWhatsApp.home } = Astro.props;
+---
+<div class="fixed inset-x-0 bottom-0 z-40 border-t border-linha bg-white/92 px-3 pt-2.5 backdrop-blur-xl lg:hidden" style="padding-bottom:calc(.625rem + env(safe-area-inset-bottom, 0px))">
+  <div class="mx-auto grid max-w-md grid-cols-[1fr_1.45fr] gap-2">
+    <a href={linkWhatsApp(mensagem)} target="_blank" rel="noopener" class="btn btn-secundario !py-3 !text-sm" data-evento="clique_whatsapp">
+      <Icone nome="whatsapp" /> WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+    </a>
+    <a href={hrefConsultoria} class="btn btn-primario !py-3 !text-sm" data-evento="clique_consultoria">Consultoria gratuita</a>
+  </div>
+</div>

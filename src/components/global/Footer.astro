@@ -1,0 +1,58 @@
+---
+import Icone from '../ui/Icone.astro';
+import { site, servicos, rodape } from '../../data/site';
+import { copy } from '../../lib/texto';
+---
+<footer class="escuro granulado relative overflow-hidden bg-tinta pb-28 pt-20 text-white lg:pb-10 lg:pt-24" style="--grao:.22">
+  <div aria-hidden="true" class="pointer-events-none absolute -right-40 -top-40 -z-10 size-[36rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.35),rgba(31,94,255,.12)_60%,transparent)]"></div>
+  <img src="/img/simbolo-branco.svg" alt="" aria-hidden="true" width="760" height="558" loading="lazy" class="pointer-events-none absolute -bottom-24 -right-24 -z-10 w-[26rem] opacity-[0.05] lg:w-[46rem]" />
+
+  <div class="container-site grid gap-14">
+    <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] lg:gap-10">
+      <div class="grid content-start gap-5">
+        <img src="/img/logo-otimizo-branco.svg" alt="Otimizo marketing e vendas" width="170" height="41" class="h-[41px] w-auto" />
+        <p class="max-w-[38ch] text-[0.9375rem] leading-relaxed text-cinza-claro">{rodape.apresentacao}</p>
+      </div>
+
+      <nav aria-labelledby="rodape-servicos" class="grid content-start gap-4">
+        <h2 id="rodape-servicos" class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-roxo-claro">Serviços</h2>
+        <ul class="grid gap-2.5 text-[0.9375rem]">
+          {servicos.map((s) => <li><a href={s.href} class="text-[#d9d7e8] transition-colors hover:text-white">{s.nome}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="rodape-otimizo" class="grid content-start gap-4">
+        <h2 id="rodape-otimizo" class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-roxo-claro">Otimizo</h2>
+        <ul class="grid gap-2.5 text-[0.9375rem]">
+          {rodape.otimizo.map((l) => <li><a href={l.href} class="text-[#d9d7e8] transition-colors hover:text-white">{l.nome}</a></li>)}
+        </ul>
+      </nav>
+
+      <div class="grid content-start gap-4">
+        <h2 class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-roxo-claro">Contato</h2>
+        <ul class="grid gap-2.5 text-[0.9375rem] text-[#d9d7e8]">
+          <li><a href={`tel:+${site.whatsappNumero}`} class="transition-colors hover:text-white">{site.telefone}</a></li>
+          <li><a href={`mailto:${site.email}`} class="break-all transition-colors hover:text-white">{site.email}</a></li>
+          <li>{site.endereco.rua}, {site.endereco.bairro}, {site.endereco.cidade} ({site.endereco.uf})</li>
+          <li class="flex gap-2 pt-2">
+            <a href={site.instagram} target="_blank" rel="noopener" class="rounded-full border border-white/20 px-4 py-2 text-sm transition-colors hover:border-white hover:text-white">Instagram</a>
+            <a href={site.linkedin} target="_blank" rel="noopener" class="rounded-full border border-white/20 px-4 py-2 text-sm transition-colors hover:border-white hover:text-white">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="flex flex-wrap gap-3 border-y border-white/10 py-6" aria-label="Selos">
+      {rodape.selos.map((s, i) => (
+        <li class="inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.04] py-2 pl-2.5 pr-4 text-sm text-[#d9d7e8]">
+          <span class="grid size-6 place-items-center rounded-full bg-white/10 text-roxo-claro">
+            <Icone nome={i === 0 ? 'coracao' : 'alvo'} class="size-3.5" />
+          </span>
+          <span set:html={copy(s)} />
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-[0.8125rem] leading-relaxed text-[#9e9bb8]">© 2026 {site.razaoSocial} · CNPJ {site.cnpj} · Todos os direitos reservados.</p>
+  </div>
+</footer>

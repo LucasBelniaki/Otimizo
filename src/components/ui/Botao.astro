@@ -1,0 +1,31 @@
+---
+import Icone from './Icone.astro';
+import { cta, linkWhatsApp } from '../../data/site';
+
+interface Props {
+  variante?: 'primario' | 'whatsapp' | 'escuro' | 'secundario';
+  href?: string;
+  mensagem?: string; // mensagem pré-preenchida do WhatsApp
+  texto?: string;
+  class?: string;
+  rastreio?: string; // nome do evento no dataLayer
+}
+const { variante = 'primario', href, mensagem, texto, class: classe = '', rastreio } = Astro.props;
+
+const ehWhats = variante === 'whatsapp';
+const destino = ehWhats ? linkWhatsApp(mensagem) : href ?? '/consultoria-gratuita';
+const rotulo = texto ?? (ehWhats ? cta.secundario : cta.principal);
+const evento = rastreio ?? (ehWhats ? 'clique_whatsapp' : variante === 'primario' ? 'clique_consultoria' : undefined);
+const estilo = { primario: 'btn-primario', whatsapp: 'btn-secundario', secundario: 'btn-secundario', escuro: 'btn-escuro' }[variante];
+---
+<a
+  href={destino}
+  class:list={['btn', estilo, classe]}
+  data-evento={evento}
+  {...(ehWhats ? { target: '_blank', rel: 'noopener' } : {})}
+>
+  {ehWhats && <Icone nome="whatsapp" />}
+  <span>{rotulo}</span>
+  {variante === 'primario' && <span class="seta" aria-hidden="true"><Icone nome="seta" class="size-3.5" /></span>}
+  {ehWhats && <span class="sr-only">(abre o WhatsApp em nova aba)</span>}
+</a>

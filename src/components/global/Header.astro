@@ -1,0 +1,121 @@
+---
+import Icone from '../ui/Icone.astro';
+import { menu, servicos, linkWhatsApp, cta } from '../../data/site';
+
+const atual = Astro.url.pathname.replace(/\/$/, '') || '/';
+const ativo = (href: string) => (href === '/' ? atual === '/' : atual.startsWith(href));
+---
+<header id="topo" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-200 data-[rolou]:border-linha data-[rolou]:bg-white/85 data-[rolou]:backdrop-blur-xl">
+  <div class="container-site flex h-[4.5rem] items-center justify-between gap-6">
+    <a href="/" class="shrink-0" aria-label="Otimizo, página inicial">
+      <img src="/img/logo-otimizo.svg" alt="Otimizo marketing e vendas" width="140" height="34" class="h-[34px] w-auto" />
+    </a>
+
+    <nav aria-label="Menu principal" class="hidden lg:block">
+      <ul class="flex items-center gap-0.5 rounded-full border border-linha bg-white/70 p-1 text-sm backdrop-blur">
+        {menu.map((item) => item.submenu ? (
+          <li class="group relative">
+            <button type="button" class:list={['flex items-center gap-1 rounded-full px-4 py-2 text-[#3a3852] transition-colors hover:text-tinta', { 'bg-white text-tinta shadow-[0_1px_3px_rgba(17,14,38,.1)]': ativo(item.href) }]} aria-expanded="false" aria-controls="submenu-servicos" data-submenu>
+              {item.nome}
+              <Icone nome="chevron" class="size-4 transition-transform group-[.aberto]:rotate-180" />
+            </button>
+            <div id="submenu-servicos" class="invisible absolute left-1/2 top-full w-[34rem] -translate-x-1/2 pt-3 opacity-0 transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-[.aberto]:visible group-[.aberto]:opacity-100">
+              <div class="grid grid-cols-2 gap-1 rounded-3xl border border-linha bg-white p-2 shadow-[0_24px_60px_-24px_rgba(17,14,38,.3)]">
+                {servicos.map((s) => (
+                  <a href={s.href} class="grid gap-1 rounded-2xl p-4 transition-colors hover:bg-nevoa">
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-roxo">{s.grupo}</span>
+                    <span class="font-display font-semibold tracking-tight">{s.nome}</span>
+                    <span class="text-[0.8125rem] leading-snug text-cinza">{s.frase}</span>
+                  </a>
+                ))}
+                <a href="/servicos" class="flex items-center justify-between gap-2 rounded-2xl bg-lavanda p-4 font-medium text-roxo-700 transition-colors hover:bg-[#e2dcff]">
+                  Serviços <Icone nome="seta" class="size-4" />
+                </a>
+              </div>
+            </div>
+          </li>
+        ) : (
+          <li>
+            <a href={item.href} class:list={['block rounded-full px-4 py-2 text-[#3a3852] transition-colors hover:text-tinta', { 'bg-white text-tinta shadow-[0_1px_3px_rgba(17,14,38,.1)]': ativo(item.href) }]} aria-current={ativo(item.href) ? 'page' : undefined}>{item.nome}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/consultoria-gratuita" class="btn btn-escuro hidden !px-5 !py-2.5 !text-sm sm:inline-flex" data-evento="clique_consultoria">Consultoria gratuita</a>
+      <button type="button" class="grid size-11 place-items-center rounded-2xl border border-linha bg-white lg:hidden" aria-expanded="false" aria-controls="menu-mobile" data-abrir-menu>
+        <Icone nome="menu" class="size-5" />
+        <span class="sr-only">Abrir menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu do celular -->
+<div id="menu-mobile" class="fixed inset-0 z-[60] hidden flex-col overflow-y-auto bg-white lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="container-site flex h-[4.5rem] shrink-0 items-center justify-between">
+    <img src="/img/logo-otimizo.svg" alt="Otimizo" width="140" height="34" class="h-[34px] w-auto" />
+    <button type="button" class="grid size-11 place-items-center rounded-2xl border border-linha" data-fechar-menu>
+      <Icone nome="fechar" class="size-5" />
+      <span class="sr-only">Fechar menu</span>
+    </button>
+  </div>
+  <nav aria-label="Menu principal" class="container-site grid flex-1 content-start gap-1 pb-8 pt-4">
+    {menu.map((item) => (
+      <>
+        <a href={item.href} class="flex items-center justify-between border-b border-linha py-4 font-display text-2xl font-semibold tracking-tight">
+          {item.nome}<Icone nome="seta" class="size-5 text-cinza" />
+        </a>
+        {item.submenu && (
+          <ul class="grid gap-0.5 border-b border-linha py-3">
+            {item.submenu.map((s) => <li><a href={s.href} class="block py-2 pl-4 text-cinza">{s.nome}</a></li>)}
+          </ul>
+        )}
+      </>
+    ))}
+    <div class="mt-6 grid gap-3">
+      <a href="/consultoria-gratuita" class="btn btn-primario" data-evento="clique_consultoria">{cta.principal}</a>
+      <a href={linkWhatsApp()} target="_blank" rel="noopener" class="btn btn-secundario" data-evento="clique_whatsapp"><Icone nome="whatsapp" />{cta.secundario}</a>
+    </div>
+  </nav>
+</div>
+
+<script>
+  const topo = document.getElementById('topo')!;
+  const marcar = () => topo.toggleAttribute('data-rolou', window.scrollY > 8);
+  marcar();
+  window.addEventListener('scroll', marcar, { passive: true });
+
+  // Submenu de serviços (teclado e toque)
+  document.querySelectorAll<HTMLButtonElement>('[data-submenu]').forEach((botao) => {
+    const li = botao.parentElement!;
+    const alternar = (abrir: boolean) => {
+      li.classList.toggle('aberto', abrir);
+      botao.setAttribute('aria-expanded', String(abrir));
+    };
+    botao.addEventListener('click', () => alternar(!li.classList.contains('aberto')));
+    li.addEventListener('focusout', (e) => {
+      if (!li.contains(e.relatedTarget as Node)) alternar(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && li.classList.contains('aberto')) { alternar(false); botao.focus(); }
+    });
+  });
+
+  // Menu do celular
+  const painel = document.getElementById('menu-mobile')!;
+  const abrir = document.querySelector<HTMLButtonElement>('[data-abrir-menu]')!;
+  const fechar = document.querySelector<HTMLButtonElement>('[data-fechar-menu]')!;
+  const definir = (aberto: boolean) => {
+    painel.classList.toggle('hidden', !aberto);
+    painel.classList.toggle('flex', aberto);
+    abrir.setAttribute('aria-expanded', String(aberto));
+    document.documentElement.style.overflow = aberto ? 'hidden' : '';
+    (aberto ? fechar : abrir).focus();
+  };
+  abrir.addEventListener('click', () => definir(true));
+  fechar.addEventListener('click', () => definir(false));
+  painel.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) definir(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !painel.classList.contains('hidden')) definir(false); });
+</script>

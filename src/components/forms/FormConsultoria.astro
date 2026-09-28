@@ -1,0 +1,111 @@
+---
+// Formulário padrão da consultoria gratuita (copy: Elementos globais).
+// Envia para /api/enviar.php, que manda o e-mail e redireciona para /obrigado.
+import { cta } from '../../data/site';
+interface Props { origem?: string; id?: string; class?: string }
+const { origem = Astro.url.pathname, id = 'form-consultoria', class: classe = '' } = Astro.props;
+const segmentos = ['Contabilidade', 'Advocacia', 'Outro'];
+const campo = 'w-full rounded-xl border border-[#cfcce0] bg-white px-3.5 py-3 text-[0.9375rem] text-tinta placeholder:text-[#8e8ca3] transition-[border-color,box-shadow] focus:border-roxo focus:shadow-[0_0_0_3px_rgba(91,60,240,.18)] focus:outline-none aria-[invalid=true]:border-[#c0262d]';
+const rotulo = 'text-sm font-medium text-tinta';
+---
+<form
+  id={id}
+  action="/api/enviar.php"
+  method="post"
+  novalidate
+  class:list={['grid gap-4 rounded-[1.75rem] border border-linha bg-white p-5 text-tinta shadow-[0_30px_80px_-40px_rgba(17,14,38,.45)] sm:p-7', classe]}
+  data-form-consultoria
+>
+  <input type="hidden" name="tipo" value="consultoria" />
+  <input type="hidden" name="origem" value={origem} />
+  <input type="hidden" name="inicio" value="" data-inicio />
+  <div class="absolute -left-[9999px]" aria-hidden="true">
+    <label for={`${id}-site`}>Não preencha este campo</label>
+    <input id={`${id}-site`} type="text" name="site_url" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid gap-1.5">
+      <label for={`${id}-nome`} class={rotulo}>Nome <span aria-hidden="true">*</span></label>
+      <input id={`${id}-nome`} name="nome" type="text" required autocomplete="name" class={campo} />
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-whatsapp`} class={rotulo}>WhatsApp <span aria-hidden="true">*</span></label>
+      <input id={`${id}-whatsapp`} name="whatsapp" type="tel" inputmode="tel" required autocomplete="tel" placeholder="(00) 00000-0000" class={campo} data-mascara-tel />
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-email`} class={rotulo}>E-mail <span aria-hidden="true">*</span></label>
+      <input id={`${id}-email`} name="email" type="email" required autocomplete="email" class={campo} />
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-empresa`} class={rotulo}>Empresa <span aria-hidden="true">*</span></label>
+      <input id={`${id}-empresa`} name="empresa" type="text" required autocomplete="organization" class={campo} />
+    </div>
+  </div>
+
+  <fieldset class="grid gap-2">
+    <legend class:list={[rotulo, 'mb-2']}>Segmento</legend>
+    <div class="flex flex-wrap gap-2">
+      {segmentos.map((s) => (
+        <label class="relative">
+          <input type="radio" name="segmento" value={s} class="peer absolute inset-0 opacity-0" />
+          <span class="inline-block cursor-pointer rounded-full border border-[#cfcce0] px-4 py-2 text-sm transition-colors peer-checked:border-roxo peer-checked:bg-lavanda peer-checked:text-roxo-700 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-roxo">{s}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="grid gap-1.5">
+    <label for={`${id}-objetivo`} class={rotulo}>O que você quer alcançar com o seu negócio nos próximos 12 meses?</label>
+    <textarea id={`${id}-objetivo`} name="objetivo" rows="3" class:list={[campo, 'min-h-24 resize-y']}></textarea>
+  </div>
+
+  <p class="hidden rounded-xl bg-[#fdecec] px-3.5 py-2.5 text-sm text-[#9b1c22]" role="alert" data-erro></p>
+
+  <button type="submit" class="btn btn-primario w-full">
+    <span>{cta.principal}</span>
+    <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+  </button>
+
+  <p class="text-[0.8125rem] leading-relaxed text-cinza">
+    Nosso time entra em contato pelo WhatsApp para combinar o horário. Seus dados são usados só para o contato da Otimizo. (<a href="/politica-de-privacidade" class="text-roxo underline underline-offset-2">Política de Privacidade</a>)
+  </p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-form-consultoria]').forEach((form) => {
+    const inicio = form.querySelector<HTMLInputElement>('[data-inicio]')!;
+    inicio.value = String(Date.now());
+    const erro = form.querySelector<HTMLElement>('[data-erro]')!;
+
+    // Máscara simples de telefone brasileiro
+    form.querySelectorAll<HTMLInputElement>('[data-mascara-tel]').forEach((el) => {
+      el.addEventListener('input', () => {
+        const d = el.value.replace(/\D/g, '').slice(0, 11);
+        el.value = d.length > 10
+          ? d.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3')
+          : d.replace(/(\d{2})(\d{0,4})(\d{0,4})/, (_, a, b, c) => (b ? `(${a}) ${b}` : a) + (c ? `-${c}` : ''));
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      const obrigatorios = [...form.querySelectorAll<HTMLInputElement>('[required]')];
+      const invalidos = obrigatorios.filter((el) => {
+        const ok = el.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())
+          : el.name === 'whatsapp' ? el.value.replace(/\D/g, '').length >= 10
+          : el.value.trim().length > 1;
+        el.setAttribute('aria-invalid', String(!ok));
+        return !ok;
+      });
+      if (invalidos.length) {
+        e.preventDefault();
+        erro.textContent = 'Preencha nome, WhatsApp com DDD, e-mail e empresa para continuar.';
+        erro.classList.remove('hidden');
+        invalidos[0].focus();
+        return;
+      }
+      erro.classList.add('hidden');
+      (window as any).dataLayer.push({ event: 'envio_formulario', tipo_formulario: 'consultoria', pagina: location.pathname });
+    });
+  });
+</script>

@@ -1,0 +1,8 @@
+---
+import { cta } from '../../data/site';
+interface Props { itens?: readonly string[]; class?: string }
+const { itens = cta.micro, class: classe = '' } = Astro.props;
+---
+<ul class:list={['micro', classe]}>
+  {itens.map((i) => <li>{i}</li>)}
+</ul>

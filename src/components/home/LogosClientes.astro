@@ -1,0 +1,51 @@
+---
+// Faixa de logos de clientes (Home 2.3). Logos obtidas do site atual (otimizo.com.br).
+// Grupo Aliança: logo ainda não recebida, aparece como espaço reservado com o nome.
+interface Props { titulo?: string; class?: string }
+const { titulo = 'Empresas que confiam na Otimizo', class: classe = '' } = Astro.props;
+const clientes = [
+  { nome: 'Expresscard', img: 'expresscard', w: 440, h: 128 },
+  { nome: 'Pioneira Contabilidade', img: 'pioneira-contabilidade', w: 440, h: 123 },
+  { nome: 'Cetrez', img: 'cetrez', w: 440, h: 141 },
+  { nome: 'Dominium', img: 'dominium', w: 271, h: 200 },
+  { nome: 'Cred Mais Fácil', img: 'cred-mais-facil', w: 288, h: 200 },
+  { nome: 'Chahine Contabilidade', img: 'chahine-contabilidade', w: 440, h: 133 },
+  { nome: 'Joelma Mattiuz', img: 'joelma-mattiuz', w: 277, h: 200 },
+  { nome: 'Grupo Aliança', img: null, w: 0, h: 0 },
+];
+---
+<section class:list={['py-14 lg:py-20', classe]} aria-labelledby="clientes-titulo">
+  <div class="container-site grid gap-8">
+    <h2 id="clientes-titulo" class="text-center font-mono text-xs font-medium uppercase tracking-[0.12em] text-cinza">{titulo}</h2>
+  </div>
+  <div class="logos relative mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+    <div class="trilho flex w-max items-center">
+      {[0, 1].map((copia) => (
+        <ul class="flex shrink-0 items-center gap-6 pr-6 lg:gap-8 lg:pr-8" aria-hidden={copia === 1 ? 'true' : undefined}>
+          {clientes.map((c) => (
+            <li class="grid h-20 w-40 shrink-0 place-items-center rounded-2xl border border-linha bg-white px-5 lg:h-24 lg:w-48">
+              {c.img ? (
+                <img src={`/img/clientes/${c.img}.webp`} alt={copia === 0 ? c.nome : ''} width={c.w} height={c.h} loading="lazy" decoding="async" class="max-h-12 w-auto max-w-full object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 lg:max-h-14" />
+              ) : (
+                <span class="text-center font-display text-sm font-semibold tracking-tight text-cinza">{c.nome}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .trilho { animation: rolar 38s linear infinite; }
+    .logos:hover .trilho, .logos:focus-within .trilho { animation-play-state: paused; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trilho { flex-wrap: wrap; justify-content: center; width: auto; }
+    .trilho > ul[aria-hidden] { display: none; }
+    .trilho > ul { flex-wrap: wrap; justify-content: center; padding-inline: 1.25rem; }
+  }
+  @keyframes rolar { to { transform: translateX(-50%); } }
+</style>
