@@ -78,5 +78,5 @@ export const rodape = {
     { nome: 'Trabalhe conosco', href: '/trabalhe-conosco' },
     { nome: 'Política de privacidade', href: '/politica-de-privacidade' },
   ],
-  selos: ['Sócio Investidor do Hospital Pequeno Príncipe'],
+  selos: ['Empresa Apoiadora do Hospital Pequeno Príncipe'],
 };

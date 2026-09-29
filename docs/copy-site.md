@@ -100,7 +100,7 @@ Após o envio, redirecionar para /obrigado.
 | Otimizo | Sobre · Consultoria gratuita · Projetos sociais · Blog · Trabalhe conosco · Política de privacidade |
 | Contato | (41) 99984-2667 · contato@otimizodigital.com.br · Rua Adelino Basso, 28, Centro, Araucária (PR) · Instagram (https://www.instagram.com/otimizodigital/) · LinkedIn (https://www.linkedin.com/company/otimizo-marketing/) |
 
-**Faixa de selos:** Sócio Investidor do Hospital Pequeno Príncipe
+**Faixa de selos:** Empresa Apoiadora do Hospital Pequeno Príncipe
 
 **Linha final:** © 2026 Otimizo Marketing e Assessoria Ltda · CNPJ 54.732.693/0001-36 · Todos os direitos reservados.
 
@@ -242,7 +242,7 @@ Abaixo dos cards: **Ver avaliações no Google →** (https://share.google/fCjjs
 
 ## 2.10 Faixa de impacto social
 
-Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. A Otimizo é Sócio Investidor do hospital. **Saiba mais →**
+Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. A Otimizo é Empresa Apoiadora do hospital. **Saiba mais →**
 
 ## 2.11 Perguntas frequentes
 
@@ -427,7 +427,7 @@ Cada card: foto profissional, link para o LinkedIn e uma credencial concreta. [p
 
 **Título:** Crescer também é devolver
 
-**Texto:** A Otimizo é Sócio Investidor do Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. Cada projeto que dá certo com um cliente ajuda a sustentar esse apoio.
+**Texto:** A Otimizo é Empresa Apoiadora do Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. Cada projeto que dá certo com um cliente ajuda a sustentar esse apoio.
 
 **Link:** Conheça nossos projetos sociais →
 
@@ -789,7 +789,7 @@ Ser lembrado e percebido como a escolha de maior valor no seu mercado.
 | --- | --- |
 | URL | /projetos-sociais |
 | Title | Projetos sociais · Otimizo e Hospital Pequeno Príncipe |
-| Meta description | A Otimizo é Sócio Investidor do Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. Conheça nosso compromisso social. |
+| Meta description | A Otimizo é Empresa Apoiadora do Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. Conheça nosso compromisso social. |
 
 ## 11.1 Abertura
 
@@ -801,7 +801,7 @@ Ser lembrado e percebido como a escolha de maior valor no seu mercado.
 
 ## 11.2 Hospital Pequeno Príncipe
 
-**Título:** Sócio Investidor do Hospital Pequeno Príncipe
+**Título:** Empresa Apoiadora do Hospital Pequeno Príncipe
 
 **Texto:**
 O Pequeno Príncipe, em Curitiba, é o maior hospital exclusivamente pediátrico do Brasil e referência nacional em média e alta complexidade. Todos os anos, milhares de crianças e adolescentes de todo o país recebem ali um cuidado integral e humanizado, grande parte deles pelo SUS.
