@@ -1,0 +1,166 @@
+---
+// Consultoria gratuita. Texto: docs/copy-site.md, seção 3.
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+import Icone from '../components/ui/Icone.astro';
+import Microcopy from '../components/ui/Microcopy.astro';
+import LogosClientes from '../components/home/LogosClientes.astro';
+import Faq from '../components/home/Faq.astro';
+import ChamadaFinal from '../components/home/ChamadaFinal.astro';
+
+const paraQuem = [
+  'Você é dono ou sócio e quer crescer o próprio negócio.',
+  'Quer entender como usar o marketing digital para conquistar mais clientes.',
+  'Está disposto a colocar em prática o que aprender.',
+];
+
+const passos = [
+  { titulo: 'Você preenche o formulário', texto: 'com alguns dados sobre a sua empresa.' },
+  { titulo: 'Nosso time entra em contato', texto: 'pelo WhatsApp em até 1 dia útil para combinar o melhor horário.' },
+  { titulo: 'Consultoria on-line de cerca de 1 hora', texto: 'com um especialista em marketing da Otimizo.' },
+  { titulo: 'Você aplica o que aprendeu.', texto: 'E, se quiser ajuda para ir mais longe, apresentamos como a Otimizo pode trabalhar com você.' },
+];
+
+const faq = [
+  { p: 'É gratuita mesmo?', r: 'Sim. Não tem custo e não obriga a contratar nada.' },
+  { p: 'Como a consultoria acontece?', r: 'On-line, por videochamada, com cerca de uma hora de duração. Você participa de onde estiver.' },
+  { p: 'Preciso preparar alguma coisa?', r: 'Não. Basta vir com vontade de entender como o marketing pode ajudar o seu negócio a crescer.' },
+  { p: 'Vou ouvir uma proposta comercial?', r: 'O foco da conversa é o conteúdo. Se fizer sentido para você, no final explicamos como a Otimizo pode ajudar.' },
+];
+---
+<Base
+  title="Consultoria gratuita de marketing digital · Otimizo"
+  description="Uma hora on-line com um especialista em marketing da Otimizo. Saia com os pilares do marketing digital prontos para aplicar no seu negócio."
+  hrefConsultoria="#agendar"
+>
+  <!-- 3.1 Abertura -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="consultoria-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="deriva-3 absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.12),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_72%_35%,#000_10%,transparent_75%)]"></div>
+    </div>
+
+    <div class="container-site grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
+      <div class="entrada grid content-start gap-6 lg:gap-7">
+        <span class="chamada">Consultoria gratuita</span>
+        <h1 id="consultoria-titulo" class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
+          Uma hora que pode mudar a forma como a sua empresa <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">vende</span>
+        </h1>
+        <p class="texto-secao max-w-[56ch]">Uma consultoria gratuita e on-line para empresários que querem fazer o negócio crescer. Em cerca de uma hora, um especialista em marketing da Otimizo conversa sobre a sua empresa e compartilha conteúdo de valor que você aplica na prática, logo depois.</p>
+        <div><Botao href="#agendar" /></div>
+        <Microcopy />
+      </div>
+
+      <!-- visual: videochamada (decorativo, sem texto inventado) -->
+      <div class="relative mx-auto w-full max-w-[34rem] [container-type:inline-size]" aria-hidden="true">
+        <div class="deriva-2 absolute inset-[8%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.3),rgba(31,94,255,.12)_55%,transparent)] blur-2xl"></div>
+        <div class="flutua relative overflow-hidden rounded-[5cqw] border border-white/70 bg-white/80 p-[3cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.5)] backdrop-blur-xl">
+          <div class="mb-[3cqw] flex items-center gap-[1.5cqw]">
+            <i class="size-[2.2cqw] rounded-full bg-[#ff6b6b]/70"></i><i class="size-[2.2cqw] rounded-full bg-[#ffc94d]/80"></i><i class="size-[2.2cqw] rounded-full bg-[#4cd18a]/80"></i>
+            <span class="ml-auto inline-flex items-center gap-[1.2cqw] rounded-full bg-lavanda px-[2.4cqw] py-[.8cqw] font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.08em] text-roxo-700"><span class="aovivo size-[1.6cqw] rounded-full bg-roxo"></span>On-line</span>
+          </div>
+          <div class="grid grid-cols-[1.35fr_1fr] gap-[2.4cqw]">
+            <div class="relative grid aspect-[4/3.4] place-items-center overflow-hidden rounded-[3.5cqw] bg-[linear-gradient(150deg,#2a2355,#110e26)]">
+              <img src="/img/simbolo-gradiente.svg" alt="" width="200" height="147" class="w-[42%] opacity-90" />
+              <span class="absolute bottom-[3cqw] left-[3cqw] rounded-full bg-white/15 px-[2cqw] py-[.6cqw] text-[max(9px,2.3cqw)] text-white backdrop-blur">Otimizo</span>
+              <span class="fala absolute right-[3cqw] top-[3cqw] flex h-[4cqw] items-end gap-[.6cqw]"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div class="grid gap-[2.4cqw]">
+              <div class="grid aspect-[4/3] place-items-center rounded-[3.5cqw] bg-[linear-gradient(150deg,#ece8ff,#dfe8ff)]">
+                <span class="grid size-[12cqw] place-items-center rounded-full bg-white text-roxo shadow-sm"><svg viewBox="0 0 24 24" class="size-[6cqw]" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5" /><path d="M5 20a7 7 0 0 1 14 0" /></svg></span>
+              </div>
+              <div class="grid content-center gap-[1.6cqw] rounded-[3.5cqw] border border-linha bg-white p-[3cqw]">
+                <span class="block h-[1.4cqw] w-[80%] rounded-full bg-[#dad7e8]"></span>
+                <span class="block h-[1.4cqw] w-[60%] rounded-full bg-[#dad7e8]"></span>
+                <span class="block h-[1.4cqw] w-[70%] rounded-full bg-lavanda"></span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-[3cqw] flex justify-center gap-[2cqw]">
+            {['M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3ZM6 11a6 6 0 0 0 12 0M12 17v4', 'M4 7h11v10H4zM15 10l5-3v10l-5-3', 'M4 5h16v11H9l-5 4z'].map((d) => (
+              <span class="grid size-[8cqw] place-items-center rounded-full border border-linha bg-white text-tinta"><svg viewBox="0 0 24 24" class="size-[4cqw]" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={d} /></svg></span>
+            ))}
+          </div>
+        </div>
+        <span class="flutua absolute -left-[3%] -bottom-[5%] inline-flex items-center gap-[1.4cqw] rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.6cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-3s">
+          <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l3 2" /></svg></b>Cerca de 1 hora
+        </span>
+        <span class="flutua absolute -right-[2%] -top-[5%] inline-flex items-center gap-[1.4cqw] rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.6cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-5s">
+          <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10" /></svg></b>Sem custo
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.2 O que você leva + 3.3 Para quem é -->
+  <section class="secao" aria-labelledby="leva-titulo">
+    <div class="container-site grid gap-6 lg:grid-cols-2 lg:gap-8">
+      <div class="luz card-roxo grid content-start gap-6 rounded-[var(--radius-card)] border border-[#ebe7fa] p-8 lg:p-12" data-revelar>
+        <span class="grid size-12 place-items-center rounded-2xl bg-lavanda text-roxo"><Icone nome="alvo" class="size-6" /></span>
+        <h2 id="leva-titulo" class="titulo-secao">Você sai com os pilares do marketing digital prontos para aplicar</h2>
+        <p class="texto-secao">Não é uma apresentação de vendas. É uma hora de conteúdo prático, pensado para o seu negócio, com os fundamentos que fazem o marketing gerar clientes de verdade. Você pode colocar em prática no dia seguinte, contratando a Otimizo ou não.</p>
+      </div>
+      <div class="escuro granulado luz relative grid content-start gap-8 overflow-hidden rounded-[var(--radius-card)] bg-tinta p-8 text-white lg:p-12" style="--grao:.2;--d:2" data-revelar>
+        <div aria-hidden="true" class="deriva-2 !absolute -right-24 -top-24 !-z-10 size-96 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.55),transparent)]"></div>
+        <h2 class="titulo-secao !text-white">A consultoria é para você se</h2>
+        <ul class="grid gap-3">
+          {paraQuem.map((item, i) => (
+            <li class="vidro flex items-start gap-4 rounded-2xl p-5" data-revelar style={`--d:${i + 1}`}>
+              <span class="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-roxo text-white"><svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 10 17l9-10" /></svg></span>
+              <span class="text-[1.0625rem] leading-relaxed text-[#e6e4f2]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.4 Como funciona -->
+  <section class="secao bg-nevoa" aria-labelledby="funciona-titulo">
+    <div class="container-site grid gap-12">
+      <h2 id="funciona-titulo" class="titulo-secao" data-revelar>Como funciona</h2>
+      <ol class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {passos.map((p, i) => (
+          <li class="luz group grid content-start gap-5 rounded-[var(--radius-card)] border border-linha bg-white p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)] lg:p-7" data-revelar style={`--d:${i + 1}`}>
+            <span class="grid size-11 place-items-center rounded-full bg-lavanda font-mono text-sm text-roxo-700 transition-colors duration-300 group-hover:bg-roxo group-hover:text-white">0{i + 1}</span>
+            <p class="leading-relaxed text-cinza"><strong class="font-display font-semibold text-tinta">{p.titulo}</strong> {p.texto}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="grid justify-items-start gap-3" data-revelar>
+        <Botao href="#agendar" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.5 Quem conduz -->
+  <section class="pt-20 lg:pt-28" aria-labelledby="conduz-titulo">
+    <div class="container-site" data-revelar>
+      <p id="conduz-titulo" class="mx-auto max-w-3xl text-center font-display text-[1.375rem] font-medium leading-snug tracking-[-0.02em] text-tinta lg:text-[1.75rem]">A consultoria é conduzida por um especialista em marketing da Otimizo, com experiência prática em campanhas e vendas para empresas de todo o Brasil.</p>
+    </div>
+    <LogosClientes />
+  </section>
+
+  <!-- 3.6 Perguntas frequentes -->
+  <Faq perguntas={faq} class="border-t border-linha" />
+
+  <!-- 3.7 Chamada final -->
+  <ChamadaFinal
+    titulo="Reserve uma hora para o crescimento do seu negócio"
+    texto="Preencha o formulário e nosso time entra em contato para agendar a sua consultoria on-line."
+  />
+
+  <style>
+    .fala i { display: block; width: .8cqw; height: 100%; border-radius: 99px; background: #a99bff; transform-origin: bottom; }
+    @media (prefers-reduced-motion: no-preference) {
+      .fala i { animation: falar 1s ease-in-out infinite; }
+      .fala i:nth-child(2) { animation-delay: .15s; }
+      .fala i:nth-child(3) { animation-delay: .3s; }
+      .fala i:nth-child(4) { animation-delay: .45s; }
+      .aovivo { animation: piscar-v 1.8s ease-in-out infinite; }
+    }
+    @keyframes falar { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+    @keyframes piscar-v { 50% { opacity: .35; } }
+  </style>
+</Base>
