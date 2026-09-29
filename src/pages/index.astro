@@ -8,6 +8,7 @@ import Numeros from '../components/home/Numeros.astro';
 import LogosClientes from '../components/home/LogosClientes.astro';
 import Faq from '../components/home/Faq.astro';
 import ChamadaFinal from '../components/home/ChamadaFinal.astro';
+import DepoimentoWhatsApp, { type Mensagem } from '../components/home/DepoimentoWhatsApp.astro';
 import { servicos } from '../data/site';
 import { copy } from '../lib/texto';
 
@@ -39,10 +40,27 @@ const diferenciais = [
   { titulo: 'Sem amarras.', texto: 'Seguimos juntos porque o número justifica.', icone: 'elo' },
 ] as const;
 
-const depoimentos = [
-  { frase: '[Depoimento real de um cliente de contabilidade, com número]', autor: '[Nome], [cargo], [escritório]' },
-  { frase: '[Depoimento real de um cliente de advocacia]', autor: '[Nome], [cargo], [escritório]' },
-  { frase: '[Depoimento real de outro segmento]', autor: '[Nome], [cargo], [empresa]' },
+const depoimentos: { nome: string; mensagens: Mensagem[] }[] = [
+  {
+    nome: 'Pedal Fit Bike Studio',
+    mensagens: [
+      { de: 'cliente', texto: 'Oi, pessoal! Tudo bem?\n\nRecebi o relatório dessa semana, valeu! Fiquei feliz de ver que o custo por conversão caiu de novo, parabéns pelo trabalho.' },
+    ],
+  },
+  {
+    nome: 'Marcos',
+    mensagens: [
+      { de: 'cliente', texto: 'Boa tarde a todos!', hora: '14:24' },
+      { de: 'cliente', texto: 'Obrigado!\n\nUm dos leads já está em potencial contratação 🙏🏼🙏🏼', hora: '14:24', citacao: { autor: 'Otimizo', texto: 'Excelente dia e uma semana abençoada a todos!', anexo: true } },
+    ],
+  },
+  {
+    nome: 'Gabriel',
+    mensagens: [
+      { de: 'otimizo', texto: 'Mas eai Gabriel, como estão os leads?', hora: '11:56' },
+      { de: 'cliente', texto: 'Excelentes!\nDiria que 95% das pessoas chegam pedindo produtos que podemos atender.\n\nDe vez em nunca tem uns que pedem algo que não fazemos, mas é bem difícil', hora: '13:02', reacao: '😎' },
+    ],
+  },
 ];
 
 const faq = [
@@ -213,23 +231,10 @@ const faq = [
     <div aria-hidden="true" class="pointer-events-none absolute -right-40 top-0 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.12),transparent)]"></div>
     <div class="container-site grid gap-12">
       <h2 id="depoimentos-titulo" data-revelar class="titulo-secao max-w-2xl">Quem trabalha com a gente, recomenda</h2>
-      <ul class="grid gap-4 md:grid-cols-3">
-        {depoimentos.map((d, i) => (
-          <li data-revelar style={`--d:${i + 1}`}>
-            <figure class="luz card-roxo grid h-full content-between gap-8 rounded-[var(--radius-card)] border border-linha p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)] lg:p-8">
-              <div class="grid gap-5">
-                <Icone nome="aspas" class="size-8 text-roxo" />
-                <blockquote class="font-display text-lg font-medium leading-snug tracking-[-0.015em]" set:html={copy(d.frase)} />
-              </div>
-              <figcaption class="flex items-center gap-3 border-t border-linha pt-5 text-sm">
-                <span class="placeholder-img size-11 shrink-0 rounded-full !p-0" title="Foto ou logo do cliente, 1:1"></span>
-                <span class="text-cinza" set:html={copy(d.autor)} />
-              </figcaption>
-            </figure>
-          </li>
-        ))}
+      <ul class="grid items-stretch gap-4 md:grid-cols-3">
+        {depoimentos.map((d, i) => <DepoimentoWhatsApp nome={d.nome} mensagens={d.mensagens} d={i + 1} />)}
       </ul>
-      <p class="text-[0.9375rem]"><span class="font-medium text-roxo">Ver avaliações no Google →</span> <mark class="pend">[se houver]</mark></p>
+      <p data-revelar><a href="https://share.google/fCjjs15JKIybWve7z" target="_blank" rel="noopener" class="link-seta text-[1.0625rem]">Ver avaliações no Google <Icone nome="seta" class="size-4" /><span class="sr-only"> (abre em nova aba)</span></a></p>
     </div>
   </section>
 
@@ -261,10 +266,8 @@ const faq = [
 
   <!-- 2.10 Faixa de impacto social -->
   <section class="container-site" aria-label="Impacto social" data-revelar>
-    <div class="luz granulado relative flex flex-col gap-6 overflow-hidden rounded-[var(--radius-card)] bg-[linear-gradient(110deg,#ece8ff_0%,#e6ecff_100%)] p-7 sm:flex-row sm:items-center lg:p-10" style="--grao:.14">
-      <div class="placeholder-img grid h-20 w-36 shrink-0 place-items-center rounded-2xl !p-2">
-        <div class="!p-1.5"><strong class="!text-[0.6875rem] leading-tight">Selo Sócio Investidor Pequeno Príncipe</strong></div>
-      </div>
+    <div class="luz group granulado relative flex flex-col gap-6 overflow-hidden rounded-[var(--radius-card)] bg-[linear-gradient(110deg,#ece8ff_0%,#e6ecff_100%)] p-7 sm:flex-row sm:items-center lg:p-10" style="--grao:.14">
+      <img src="/img/selos/pequeno-principe-empresa-apoiadora.webp" alt="Selo Empresa Apoiadora 2026 do Hospital Pequeno Príncipe" width="320" height="320" loading="lazy" decoding="async" class="size-24 shrink-0 drop-shadow-[0_10px_18px_rgba(17,14,38,.18)] transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-105 lg:size-28" />
       <p class="max-w-[70ch] text-[1.0625rem] leading-relaxed text-tinta">
         Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. A Otimizo é Sócio Investidor do hospital.
         <a href="/projetos-sociais" class="link-seta ml-1 whitespace-nowrap">Saiba mais <Icone nome="seta" class="size-4" /></a>

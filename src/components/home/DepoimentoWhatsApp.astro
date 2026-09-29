@@ -1,0 +1,80 @@
+---
+// Depoimento real de cliente representado como conversa de WhatsApp.
+// Os textos são transcrições das mensagens enviadas pelos clientes (sem imagem).
+export interface Mensagem {
+  de: 'cliente' | 'otimizo';
+  texto: string;
+  hora?: string;
+  citacao?: { autor: string; texto: string; anexo?: boolean };
+  reacao?: string;
+}
+interface Props {
+  nome: string;
+  rotulo?: string;
+  mensagens: Mensagem[];
+  d?: number;
+}
+const { nome, rotulo = 'Cliente Otimizo', mensagens, d = 0 } = Astro.props;
+const iniciais = nome.split(' ').slice(0, 2).map((p) => p[0]).join('').toUpperCase();
+---
+<li data-revelar style={`--d:${d}`} class="h-full">
+  <figure class="luz group flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-linha bg-white shadow-[0_24px_50px_-38px_rgba(17,14,38,.45)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_34px_60px_-34px_rgba(91,60,240,.5)]">
+    <!-- cabeçalho da conversa -->
+    <figcaption class="flex items-center gap-3 border-b border-linha bg-white px-5 py-4">
+      <span class="grid size-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul font-display text-sm font-semibold text-white" aria-hidden="true">{iniciais}</span>
+      <span class="grid min-w-0 leading-tight">
+        <span class="truncate font-display text-[0.9375rem] font-semibold tracking-[-0.01em] text-tinta">{nome}</span>
+        <span class="text-[0.8125rem] text-cinza">{rotulo}</span>
+      </span>
+      <svg viewBox="0 0 24 24" class="ml-auto size-5 shrink-0 text-[#1f9e5a]" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2c0 1.2.9 2.3 1 2.5.1.2 1.7 2.6 4.2 3.7 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.5Z" /></svg>
+    </figcaption>
+
+    <!-- conversa -->
+    <div class="chat-whats flex flex-1 flex-col gap-2.5 px-4 py-5 sm:px-5">
+      {mensagens.map((m) => (
+        <div class:list={['bolha-whats relative max-w-[88%] rounded-xl px-3 pb-1.5 pt-2 text-[0.9375rem] leading-snug text-[#111b21] shadow-[0_1px_0.5px_rgba(11,20,26,.13)]', m.de === 'cliente' ? 'recebida self-start rounded-tl-none bg-white' : 'enviada self-end rounded-tr-none bg-[#d9fdd3]', { 'mb-3': m.reacao }]}>
+          <span class="sr-only">{m.de === 'cliente' ? `${nome}:` : 'Otimizo:'}</span>
+          {m.citacao && (
+            <span class="mb-1.5 block rounded-md border-l-4 border-roxo bg-[#f5f6f6] px-2.5 py-1.5 text-[0.8125rem] leading-snug">
+              <span class="block font-semibold text-roxo-700">{m.citacao.autor}</span>
+              <span class="flex items-center gap-1.5 text-[#54656f]">
+                {m.citacao.anexo && <svg viewBox="0 0 24 24" class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" /><path d="M14 3v5h5" /></svg>}
+                {m.citacao.texto}
+              </span>
+            </span>
+          )}
+          {m.de === 'cliente' ? (
+            <blockquote class="whitespace-pre-line">{m.texto}</blockquote>
+          ) : (
+            <p class="whitespace-pre-line">{m.texto}</p>
+          )}
+          <span class="mt-0.5 flex items-center justify-end gap-1 text-[0.6875rem] text-[#54656f]">
+            {m.hora}
+            {m.de === 'otimizo' && <svg viewBox="0 0 16 11" class="h-2.5 w-3.5 text-[#1d8fd1]" fill="currentColor" aria-hidden="true"><path d="M11.1.7 5.1 7.9 2.6 5.5 1.5 6.6l3.7 3.6L12.3 1.7zM14.5.7 8.5 7.9l-.6-.6-1.1 1.1 1.8 1.8L15.6 1.7z" /></svg>}
+          </span>
+          {m.reacao && <span class="absolute -bottom-3.5 left-2 rounded-full border border-linha bg-white px-1.5 text-sm leading-6 shadow-sm" aria-hidden="true">{m.reacao}</span>}
+        </div>
+      ))}
+    </div>
+  </figure>
+</li>
+
+<style is:global>
+  .chat-whats {
+    background-color: #efeae2;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(120, 104, 80, 0.12) 1px, transparent 1.5px),
+      radial-gradient(circle at 13px 13px, rgba(120, 104, 80, 0.08) 1px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+  .bolha-whats.recebida::before,
+  .bolha-whats.enviada::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 12px;
+  }
+  .bolha-whats.recebida::before { left: -7px; background: linear-gradient(225deg, #fff 50%, transparent 50%); }
+  .bolha-whats.enviada::before { right: -7px; background: linear-gradient(135deg, #d9fdd3 50%, transparent 50%); }
+</style>

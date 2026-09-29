@@ -36,6 +36,7 @@ Novo site da Otimizo, agência de marketing e vendas de Araucária (PR) que aten
 
 ## Como trabalhar
 
+- Trabalhe direto na branch `main`. Cada alteração enviada para a `main` publica o site na Hostinger automaticamente (`.github/workflows/publicar.yml`), então só envie o que foi revisado.
 - Antes de construir, apresente um plano (estrutura, componentes, direção visual) e espere aprovação.
 - Construa uma página por vez, começando pelos componentes globais e pela Home.
 - Depois de cada página, tire prints em 390px e 1440px, revise e corrija antes de seguir.

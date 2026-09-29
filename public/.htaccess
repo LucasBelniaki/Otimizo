@@ -12,8 +12,8 @@ DirectoryIndex index.html index.php
   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 </IfModule>
 
-# Arquivo com a senha do SMTP nunca pode ser acessado pelo navegador
-<FilesMatch "^config(\.example)?\.php$">
+# Arquivo com a senha do SMTP e controle da publicação nunca podem ser acessados pelo navegador
+<FilesMatch "^(config(\.example)?\.php|\.ftp-deploy-sync-state\.json)$">
   Require all denied
 </FilesMatch>
 

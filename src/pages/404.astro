@@ -1,0 +1,22 @@
+---
+// Página 404 (arquivo 404.html, usado pelo .htaccess). Texto registrado em docs/copy-site.md.
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+---
+<Base title="Página não encontrada · Otimizo" description="Esta página não existe ou ainda está em construção." noindex>
+  <section class="granulado relative overflow-hidden pb-24 pt-36 lg:pb-32 lg:pt-48" style="--grao:.12" aria-labelledby="titulo-404">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_30%,#000_10%,transparent_75%)]"></div>
+    </div>
+    <div class="container-site entrada grid max-w-2xl justify-items-center gap-6 text-center">
+      <span class="chamada">Erro 404</span>
+      <h1 id="titulo-404" class="text-[2.25rem] leading-[1.08] tracking-[-0.035em] sm:text-5xl">Esta página não existe ou ainda está em construção</h1>
+      <p class="texto-secao mx-auto">Enquanto isso, você pode voltar para a página inicial ou agendar sua consultoria gratuita.</p>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <Botao href="/#agendar" />
+        <a href="/" class="btn btn-secundario">Voltar para a página inicial</a>
+      </div>
+    </div>
+  </section>
+</Base>

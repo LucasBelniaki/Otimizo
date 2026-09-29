@@ -1,0 +1,82 @@
+# Publica o site na Hostinger sempre que algo muda na branch main.
+#
+# Configuração (uma vez só): no GitHub, Settings > Secrets and variables > Actions >
+# New repository secret. Veja o passo a passo no README.md.
+#   FTP_SERVIDOR, FTP_USUARIO, FTP_SENHA   obrigatórios para publicar
+#   FTP_PASTA                              opcional (padrão: public_html/)
+#   FTP_PROTOCOLO                          opcional (padrão: ftps; use ftp se der erro de conexão)
+#   SMTP_USUARIO, SMTP_SENHA               opcionais: e-mail da Hostinger que envia os formulários
+#
+# Sem os segredos de FTP, o site é só compilado (para conferir se não há erro) e não é publicado.
+
+name: Publicar site na Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: publicar-site
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    env:
+      TEM_FTP: ${{ secrets.FTP_SERVIDOR != '' }}
+      TEM_SMTP: ${{ secrets.SMTP_USUARIO != '' }}
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Gerar o site
+        run: npm run build
+
+      - name: Configurar o envio dos formulários
+        if: env.TEM_SMTP == 'true'
+        env:
+          SMTP_USUARIO: ${{ secrets.SMTP_USUARIO }}
+          SMTP_SENHA: ${{ secrets.SMTP_SENHA }}
+        run: |
+          u=$(printf %s "$SMTP_USUARIO" | base64 -w0)
+          s=$(printf %s "$SMTP_SENHA" | base64 -w0)
+          cat > dist/api/config.php <<PHP
+          <?php
+          // Gerado automaticamente pelo GitHub Actions. Não editar no servidor.
+          return [
+              'destino'    => 'contato@otimizodigital.com.br',
+              'smtp_host'  => 'smtp.hostinger.com',
+              'smtp_porta' => 465,
+              'smtp_user'  => base64_decode('$u'),
+              'smtp_senha' => base64_decode('$s'),
+              'remetente'  => base64_decode('$u'),
+          ];
+          PHP
+
+      - name: Enviar para a Hostinger
+        if: env.TEM_FTP == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVIDOR }}
+          username: ${{ secrets.FTP_USUARIO }}
+          password: ${{ secrets.FTP_SENHA }}
+          protocol: ${{ secrets.FTP_PROTOCOLO || 'ftps' }}
+          # O certificado do FTP da Hostinger não leva o nome do seu domínio;
+          # "loose" mantém a conexão criptografada sem exigir esse nome.
+          security: loose
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_PASTA || 'public_html/' }}
+
+      - name: Aviso
+        if: env.TEM_FTP != 'true'
+        run: echo "::notice title=Site não publicado::O site foi gerado sem erros, mas faltam os segredos FTP_SERVIDOR, FTP_USUARIO e FTP_SENHA para publicar na Hostinger. Veja o README."

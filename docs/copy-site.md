@@ -18,6 +18,7 @@ Copy final do novo site, página por página. Trechos entre [colchetes] são pen
 13. Contato
 14. Trabalhe conosco
 15. Obrigado
+16. Página não encontrada (404)
 
 ## Mapa do site
 
@@ -137,9 +138,7 @@ Após o envio, redirecionar para /obrigado.
 
 **Título:** Empresas que confiam na Otimizo
 
-Expresscard · Pioneira Contabilidade · Cetrez · Dominium · Cred Mais Fácil · Chahine Contabilidade · Joelma Mattiuz
-
-Mais 5 espaços reservados para logos de novos clientes (o time envia depois).
+Expresscard · Saleh Advogados Associados · Pioneira Contabilidade · Shopping Pinheiros · Cetrez · Kotten · Dominium · Notta10 · Cred Mais Fácil · Chahine Contabilidade · Joelma Mattiuz
 
 ## 2.4 O problema
 
@@ -208,15 +207,30 @@ Mais 5 espaços reservados para logos de novos clientes (o time envia depois).
 
 **Título:** Quem trabalha com a gente, recomenda
 
-Formato de cada card: frase curta com um resultado concreto + nome, cargo, empresa e foto ou logo.
+Formato: cada depoimento aparece como uma conversa de WhatsApp (texto transcrito das mensagens reais, sem imagem), com o nome do cliente e a legenda "Cliente Otimizo".
 
-> [Depoimento real de um cliente de contabilidade, com número] — [Nome], [cargo], [escritório]
+**Pedal Fit Bike Studio · Cliente Otimizo**
+> Oi, pessoal! Tudo bem?
+>
+> Recebi o relatório dessa semana, valeu! Fiquei feliz de ver que o custo por conversão caiu de novo, parabéns pelo trabalho.
 
-> [Depoimento real de um cliente de advocacia] — [Nome], [cargo], [escritório]
+**Marcos · Cliente Otimizo**
+> Boa tarde a todos! (14:24)
+>
+> (respondendo à mensagem da Otimizo "Excelente dia e uma semana abençoada a todos!", com o relatório anexo)
+> Obrigado!
+>
+> Um dos leads já está em potencial contratação 🙏🏼🙏🏼 (14:24)
 
-> [Depoimento real de outro segmento] — [Nome], [cargo], [empresa]
+**Gabriel · Cliente Otimizo**
+> Otimizo: Mas eai Gabriel, como estão os leads? (11:56)
+>
+> Gabriel: Excelentes!
+> Diria que 95% das pessoas chegam pedindo produtos que podemos atender.
+>
+> De vez em nunca tem uns que pedem algo que não fazemos, mas é bem difícil (13:02) 😎
 
-Abaixo dos cards: **Ver avaliações no Google →** [se houver]
+Abaixo dos cards: **Ver avaliações no Google →** (https://share.google/fCjjs15JKIybWve7z)
 
 ## 2.9 Quem está por trás
 
@@ -990,3 +1004,17 @@ Página exibida depois do envio do formulário da consultoria. Onde ficam os eve
 **Título:** Leituras rápidas para aproveitar ainda mais a consultoria
 
 3 posts do blog, escolhidos pelo segmento informado no formulário quando possível.
+
+---
+
+# 16. Página não encontrada (404)
+
+Página exibida quando o endereço não existe. Não indexar (noindex).
+
+**Chamada:** ERRO 404
+
+**Título (H1):** Esta página não existe ou ainda está em construção
+
+**Texto:** Enquanto isso, você pode voltar para a página inicial ou agendar sua consultoria gratuita.
+
+**Botões:** Agendar minha consultoria gratuita · Voltar para a página inicial

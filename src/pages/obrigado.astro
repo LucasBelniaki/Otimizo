@@ -1,0 +1,69 @@
+---
+// Obrigado. Texto: docs/copy-site.md, seção 15. Página noindex, fora do sitemap.
+// Aqui ficam os eventos de conversão (Google Ads e Meta) via GTM: evento "conversao_consultoria".
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+
+const passos = [
+  'Nosso time entra em contato pelo WhatsApp.',
+  'Combinamos o melhor horário para a consultoria on-line.',
+  'Você conversa por cerca de uma hora com um especialista em marketing e sai com conteúdo prático para aplicar no seu negócio.',
+];
+---
+<Base title="Recebemos seus dados · Otimizo" description="Seu pedido de consultoria gratuita chegou." noindex>
+  <section class="granulado relative overflow-hidden pb-20 pt-32 lg:pb-28 lg:pt-44" style="--grao:.12" aria-labelledby="obrigado-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_30%,#000_10%,transparent_75%)]"></div>
+    </div>
+
+    <div class="container-site grid max-w-3xl justify-items-center gap-6 text-center">
+      <div class="entrada grid justify-items-center gap-6">
+        <span class="grid size-16 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_18px_40px_-16px_rgba(91,60,240,.8)]">
+          <svg viewBox="0 0 24 24" class="check size-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 10 17l9-10" pathLength="1" /></svg>
+        </span>
+        <h1 id="obrigado-titulo" class="text-[2.25rem] leading-[1.08] tracking-[-0.035em] sm:text-5xl">Recebemos seus dados<span data-nome></span>!</h1>
+        <p class="texto-secao mx-auto">Seu pedido de consultoria gratuita chegou. Em até 1 dia útil, nosso time entra em contato pelo WhatsApp que você informou para confirmar o horário.</p>
+      </div>
+    </div>
+
+    <div class="container-site mt-14 grid max-w-5xl gap-4 lg:mt-20">
+      <h2 class="text-center font-mono text-xs font-medium uppercase tracking-[0.12em] text-cinza" data-revelar>Próximos passos</h2>
+      <ol class="grid gap-4 md:grid-cols-3">
+        {passos.map((p, i) => (
+          <li class="luz card-roxo grid content-start gap-4 rounded-[var(--radius-card)] border border-[#ebe7fa] p-6 lg:p-7" data-revelar style={`--d:${i + 1}`}>
+            <span class="grid size-11 place-items-center rounded-full bg-lavanda font-mono text-sm text-roxo-700">0{i + 1}</span>
+            <p class="leading-relaxed text-tinta">{p}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="escuro granulado luz relative mt-4 grid gap-5 overflow-hidden rounded-[var(--radius-card)] bg-tinta p-7 text-white sm:grid-cols-[1fr_auto] sm:items-center lg:p-9" style="--grao:.2" data-revelar>
+        <div aria-hidden="true" class="deriva-2 !absolute -right-24 -top-24 !-z-10 size-80 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.55),transparent)]"></div>
+        <div class="grid gap-2">
+          <h2 class="font-display text-xl font-semibold !text-white lg:text-2xl">Quer adiantar?</h2>
+          <p class="text-cinza-claro">Se preferir, chame agora no WhatsApp e já comece a conversa.</p>
+        </div>
+        <Botao variante="whatsapp" texto="Falar no WhatsApp agora" />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .check path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: marcar .7s .5s cubic-bezier(.3,.7,.2,1) forwards; }
+    }
+    @keyframes marcar { to { stroke-dashoffset: 0; } }
+  </style>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const nome = (params.get('nome') || '').trim().slice(0, 40);
+    const alvo = document.querySelector<HTMLElement>('[data-nome]');
+    if (nome && alvo) alvo.textContent = `, ${nome}`;
+
+    // Conversão para GTM (Google Ads, GA4 e Pixel da Meta). Candidaturas não contam como lead.
+    const tipo = params.get('tipo') || 'consultoria';
+    (window as any).dataLayer.push({ event: tipo === 'candidatura' ? 'envio_candidatura' : 'conversao_consultoria', tipo_formulario: tipo });
+  </script>
+</Base>

@@ -1,5 +1,4 @@
 ---
-import Icone from '../ui/Icone.astro';
 import { site, servicos, rodape } from '../../data/site';
 import { copy } from '../../lib/texto';
 ---
@@ -43,11 +42,9 @@ import { copy } from '../../lib/texto';
     </div>
 
     <ul class="flex flex-wrap gap-3 border-y border-white/10 py-6" aria-label="Selos">
-      {rodape.selos.map((s, i) => (
+      {rodape.selos.map((s) => (
         <li class="inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.04] py-2 pl-2.5 pr-4 text-sm text-[#d9d7e8]">
-          <span class="grid size-6 place-items-center rounded-full bg-white/10 text-roxo-claro">
-            <Icone nome={i === 0 ? 'coracao' : 'alvo'} class="size-3.5" />
-          </span>
+          <img src="/img/selos/pequeno-principe-empresa-apoiadora.webp" alt="" width="320" height="320" loading="lazy" class="size-7 rounded-full" />
           <span set:html={copy(s)} />
         </li>
       ))}
