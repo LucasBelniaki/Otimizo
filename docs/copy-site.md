@@ -834,7 +834,7 @@ A Otimizo contribui de forma mensal e contínua para sustentar esse trabalho. Pa
 | --- | --- |
 | URL | /blog |
 | Title | Blog da Otimizo · Marketing e vendas na prática |
-| Meta description | Artigos práticos sobre Google Ads, SEO, CRM e marketing para contabilidade e advocacia, escritos por quem gerencia campanhas todos os dias. |
+| Meta description | Artigos práticos sobre Google Ads, SEO, CRM e marketing para empresas e empreendedores, escritos por quem gerencia campanhas todos os dias. |
 
 ## 12.1 Abertura
 
@@ -842,11 +842,13 @@ A Otimizo contribui de forma mensal e contínua para sustentar esse trabalho. Pa
 
 **Título (H1):** Marketing e vendas sem enrolação
 
-**Texto:** O que aprendemos gerenciando campanhas e processos comerciais de escritórios de contabilidade, advocacia e PMEs, escrito para quem decide.
+**Texto:** O que aprendemos gerenciando campanhas e processos comerciais de empresas e empreendedores, escrito para quem decide.
 
 ## 12.2 Categorias
 
-Google Ads · Meta Ads · SEO · CRM e vendas · Sites e conversão · Marketing para contabilidade · Marketing jurídico
+Google Ads · Meta Ads · SEO · CRM e vendas · Sites e conversão
+
+Na listagem, o filtro mostra só as categorias que já têm posts.
 
 ## 12.3 Bloco no meio da listagem
 
@@ -868,9 +870,11 @@ Google Ads · Meta Ads · SEO · CRM e vendas · Sites e conversão · Marketing
 
 ## 12.5 Posts atuais (manter)
 
-- Quanto investir em Google Ads para começar a vender
-- CRM para pequenas empresas: por onde começar
-- Anatomia de uma landing page que converte
+- Quanto investir em Google Ads para começar a vender (/blog/quanto-investir-em-google-ads · Google Ads · 27/07/2026)
+- CRM para pequenas empresas: por onde começar (/blog/crm-para-pequenas-empresas · CRM e vendas · 20/07/2026)
+- Anatomia de uma landing page que converte (/blog/landing-page-que-converte · Sites e conversão · 10/07/2026)
+
+Textos completos mantidos como estavam no site anterior. Cada post fica em `src/content/blog` (um arquivo .md por post).
 
 ## 12.6 Pautas sugeridas (não publicar; referência para o time)
 

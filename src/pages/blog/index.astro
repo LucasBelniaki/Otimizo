@@ -1,0 +1,96 @@
+---
+// Blog. Texto: docs/copy-site.md, seção 12. Posts em src/content/blog.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Botao from '../../components/ui/Botao.astro';
+import Microcopy from '../../components/ui/Microcopy.astro';
+import CardPost from '../../components/blog/CardPost.astro';
+import { categoriasBlog, ordenarPosts } from '../../data/blog';
+
+const posts = ordenarPosts(await getCollection('blog'));
+const [destaque, ...demais] = posts;
+const categoriasComPosts = categoriasBlog.filter((c) => posts.some((p) => p.data.categoria === c));
+---
+<Base
+  title="Blog da Otimizo · Marketing e vendas na prática"
+  description="Artigos práticos sobre Google Ads, SEO, CRM e marketing para empresas e empreendedores, escritos por quem gerencia campanhas todos os dias."
+>
+  <!-- 12.1 Abertura + 12.2 Categorias -->
+  <section class="granulado relative overflow-hidden pb-12 pt-28 lg:pb-16 lg:pt-40" style="--grao:.12" aria-labelledby="blog-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(60%_70%_at_30%_30%,#000_10%,transparent_75%)]"></div>
+    </div>
+    <div class="container-site grid gap-10">
+      <div class="entrada grid max-w-4xl gap-6 lg:gap-7">
+        <span class="chamada">Blog</span>
+        <h1 id="blog-titulo" class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[4rem]">
+          Marketing e vendas <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">sem enrolação</span>
+        </h1>
+        <p class="texto-secao max-w-[56ch]">O que aprendemos gerenciando campanhas e processos comerciais de empresas e empreendedores, escrito para quem decide.</p>
+      </div>
+      <div class="entrada flex flex-wrap gap-2" style="--d:3" role="group" aria-label="Filtrar por categoria" data-filtros>
+        <button type="button" class="filtro" aria-pressed="true" data-categoria="">Todos</button>
+        {categoriasComPosts.map((c) => <button type="button" class="filtro" aria-pressed="false" data-categoria={c}>{c}</button>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Listagem -->
+  <section class="pb-20 lg:pb-28" aria-label="Posts">
+    <div class="container-site grid gap-6 lg:gap-8">
+      {destaque && (
+        <div data-post={destaque.data.categoria} data-revelar><CardPost post={destaque} destaque /></div>
+      )}
+
+      <!-- 12.3 Bloco no meio da listagem -->
+      <aside class="escuro granulado luz relative grid gap-6 overflow-hidden rounded-[var(--radius-card)] bg-tinta p-6 text-white max-sm:[&_.seta]:hidden sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12 lg:p-12" style="--grao:.2" aria-labelledby="meio-titulo" data-revelar>
+        <div aria-hidden="true" class="deriva-2 !absolute -right-28 -top-28 !-z-10 size-96 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.6),transparent)]"></div>
+        <div aria-hidden="true" class="deriva-3 !absolute -bottom-40 left-1/4 !-z-10 size-96 rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.3),transparent)]"></div>
+        <div class="grid gap-3">
+          <h2 id="meio-titulo" class="titulo-secao !text-white">Prefere que a gente olhe o seu caso?</h2>
+          <p class="texto-secao max-w-[56ch]">Em vez de só ler sobre marketing, converse uma hora com um especialista sobre o seu negócio. É gratuito.</p>
+        </div>
+        <div class="grid justify-items-start gap-3">
+          <Botao href="/consultoria-gratuita" class="w-full sm:w-auto" />
+          <Microcopy />
+        </div>
+      </aside>
+
+      {demais.length > 0 && (
+        <ul class:list={['grid gap-6 md:grid-cols-2', { 'lg:grid-cols-3': demais.length >= 3 }]}>
+          {demais.map((p, i) => (
+            <li data-post={p.data.categoria} data-revelar style={`--d:${(i % 3) + 1}`}><CardPost post={p} /></li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <style>
+    .filtro {
+      border-radius: 999px;
+      border: 1px solid var(--color-linha);
+      background: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #3a3852;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .filtro:hover { border-color: rgba(91, 60, 240, 0.5); color: var(--color-tinta); }
+    .filtro[aria-pressed='true'] { background: var(--color-tinta); border-color: var(--color-tinta); color: #fff; }
+  </style>
+
+  <script>
+    const grupo = document.querySelector<HTMLElement>('[data-filtros]');
+    const botoes = [...(grupo?.querySelectorAll<HTMLButtonElement>('button') ?? [])];
+    const itens = [...document.querySelectorAll<HTMLElement>('[data-post]')];
+    botoes.forEach((b) => b.addEventListener('click', () => {
+      const cat = b.dataset.categoria;
+      botoes.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      itens.forEach((el) => { el.hidden = !!cat && el.dataset.post !== cat; });
+    }));
+  </script>
+</Base>

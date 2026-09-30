@@ -1,0 +1,26 @@
+---
+// Capa ilustrada dos posts (sem foto): gradiente da marca com o ícone da categoria.
+import Icone from '../ui/Icone.astro';
+import { iconeCategoria, type CategoriaBlog } from '../../data/blog';
+
+interface Props { categoria: CategoriaBlog; class?: string }
+const { categoria, class: classe = '' } = Astro.props;
+
+const fundos: Record<CategoriaBlog, string> = {
+  'Google Ads': 'linear-gradient(135deg,#1f5eff 0%,#4a2bd6 100%)',
+  'Meta Ads': 'linear-gradient(135deg,#4a2bd6 0%,#8b6dff 100%)',
+  SEO: 'linear-gradient(135deg,#110e26 0%,#1f5eff 120%)',
+  'CRM e vendas': 'linear-gradient(135deg,#110e26 0%,#5b3cf0 110%)',
+  'Sites e conversão': 'linear-gradient(135deg,#2a1f6b 0%,#1f5eff 100%)',
+};
+---
+<div class:list={['granulado relative isolate overflow-hidden [container-type:inline-size]', classe]} style={`background:${fundos[categoria]};--grao:.22`} aria-hidden="true">
+  <div class="grade-fundo absolute inset-0 -z-10 opacity-[0.12] [--cor-grade:#fff] [mask-image:radial-gradient(90%_90%_at_80%_20%,#000,transparent)]"></div>
+  <div class="absolute -right-[15cqw] -top-[20cqw] -z-10 size-[70cqw] rounded-full bg-[radial-gradient(closest-side,rgba(255,255,255,.28),transparent)] transition-transform duration-700 group-hover:scale-110"></div>
+  <Icone nome={iconeCategoria[categoria]} class="absolute -bottom-[12cqw] right-[4cqw] size-[56cqw] -rotate-12 text-white/[0.13] transition-transform duration-700 group-hover:-rotate-6 group-hover:scale-105" />
+  <img src="/img/simbolo-branco.svg" alt="" width="700" height="515" loading="lazy" class="absolute left-[6cqw] top-[7cqw] w-[11cqw] opacity-80" />
+  <span class="absolute bottom-[6cqw] left-[6cqw] flex items-center gap-[1.6cqw] rounded-full border border-white/25 bg-white/15 py-[1.4cqw] pl-[1.4cqw] pr-[3cqw] backdrop-blur-md">
+    <span class="grid size-[6.5cqw] min-h-6 min-w-6 place-items-center rounded-full bg-white text-roxo"><Icone nome={iconeCategoria[categoria]} class="size-[55%]" /></span>
+    <span class="text-[max(11px,3.2cqw)] font-medium text-white">{categoria}</span>
+  </span>
+</div>

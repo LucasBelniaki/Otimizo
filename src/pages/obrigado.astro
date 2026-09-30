@@ -2,7 +2,12 @@
 // Obrigado. Texto: docs/copy-site.md, seção 15. Página noindex, fora do sitemap.
 // Aqui ficam os eventos de conversão (Google Ads e Meta) via GTM: evento "conversao_consultoria".
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 import Botao from '../components/ui/Botao.astro';
+import CardPost from '../components/blog/CardPost.astro';
+import { ordenarPosts } from '../data/blog';
+
+const leituras = ordenarPosts(await getCollection('blog')).slice(0, 3);
 
 const passos = [
   'Nosso time entra em contato pelo WhatsApp.',
@@ -55,6 +60,16 @@ const passos = [
         <Botao variante="whatsapp" texto="Falar no WhatsApp agora" />
       </div>
     </div>
+
+    <!-- 15.4 Enquanto isso -->
+    {leituras.length > 0 && (
+      <div class="container-site mt-20 grid max-w-6xl gap-8 lg:mt-28" data-variante="consultoria">
+        <h2 class="titulo-secao max-w-2xl" data-revelar>Leituras rápidas para aproveitar ainda mais a consultoria</h2>
+        <ul class="grid gap-6 md:grid-cols-3">
+          {leituras.map((p, i) => <li data-revelar style={`--d:${i + 1}`}><CardPost post={p} titulo="h3" /></li>)}
+        </ul>
+      </div>
+    )}
     <script is:inline>
       // Troca o conteúdo antes da pintura quando o envio foi uma candidatura
       if (new URLSearchParams(location.search).get('tipo') === 'candidatura') {

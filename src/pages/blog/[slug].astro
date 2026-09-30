@@ -1,0 +1,118 @@
+---
+// Post do blog. Bloco final conforme docs/copy-site.md, seção 12.4.
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ChamadaBotoes from '../../components/home/ChamadaBotoes.astro';
+import CapaPost from '../../components/blog/CapaPost.astro';
+import { dataPorExtenso, tempoDeLeitura } from '../../data/blog';
+import { site } from '../../data/site';
+import { copy } from '../../lib/texto';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> };
+const { titulo, resumo, categoria, data, autor } = post.data;
+const { Content } = await render(post);
+const minutos = tempoDeLeitura(post.body);
+const url = new URL(`/blog/${post.id}/`, site.url).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: titulo,
+  description: resumo,
+  datePublished: data.toISOString().slice(0, 10),
+  author: { '@type': 'Organization', name: autor },
+  publisher: { '@id': `${site.url}/#empresa` },
+  mainEntityOfPage: url,
+  inLanguage: 'pt-BR',
+};
+---
+<Base title={`${titulo} · Blog da Otimizo`} description={resumo} ogType="article">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <article>
+    <header class="granulado relative overflow-hidden pb-10 pt-28 lg:pb-14 lg:pt-40" style="--grao:.12">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_70%,#fff_100%)]">
+        <div class="deriva-1 absolute -right-48 -top-56 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.18),rgba(31,94,255,.07)_60%,transparent)]"></div>
+      </div>
+      <div class="container-site entrada grid max-w-4xl gap-6">
+        <nav aria-label="Você está em" class="text-sm text-cinza">
+          <a href="/blog/" class="transition-colors hover:text-roxo">Blog</a> <span aria-hidden="true">/</span> <span class="text-tinta">{categoria}</span>
+        </nav>
+        <h1 class="text-[2.25rem] leading-[1.08] tracking-[-0.035em] sm:text-[2.75rem] lg:text-[3.25rem]">{titulo}</h1>
+        <p class="texto-secao max-w-[60ch]">{resumo}</p>
+        <p class="font-mono text-xs uppercase tracking-[0.08em] text-cinza"><time datetime={data.toISOString().slice(0, 10)}>{dataPorExtenso(data)}</time> · {autor} · {minutos} min de leitura</p>
+      </div>
+    </header>
+
+    <div class="container-site max-w-4xl">
+      <CapaPost categoria={categoria} class="entrada aspect-[16/8] rounded-[var(--radius-card)] shadow-[0_40px_80px_-50px_rgba(17,14,38,.55)]" />
+    </div>
+
+    <div class="container-site max-w-3xl py-14 lg:py-20">
+      <div class="texto-post">
+        <Content />
+      </div>
+
+      <!-- 12.4 Autor -->
+      <div class="mt-14 flex items-center gap-4 border-t border-linha pt-8">
+        <span class="grid size-14 shrink-0 place-items-center rounded-full bg-tinta">
+          <img src="/img/simbolo-branco.svg" alt="" width="700" height="515" loading="lazy" class="w-8" />
+        </span>
+        <p class="grid gap-0.5">
+          <span class="font-mono text-xs uppercase tracking-[0.1em] text-cinza">Autor</span>
+          <span class="font-display text-lg font-semibold text-tinta">{autor} <span class="text-sm font-normal" set:html={copy('[ou nome do especialista]')} /></span>
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 12.4 Chamada no fim de cada post -->
+  <ChamadaBotoes
+    titulo="Quer aplicar isso na sua empresa?"
+    texto="Agende uma consultoria gratuita de cerca de uma hora. Conversamos sobre o seu negócio e mostramos por onde começar."
+  />
+
+  <style>
+    .texto-post { color: #3a3852; font-size: 1.0625rem; line-height: 1.8; }
+    @media (min-width: 1024px) { .texto-post { font-size: 1.125rem; } }
+    .texto-post :global(> * + *) { margin-top: 1.25em; }
+    .texto-post :global(> p:first-child) { font-size: 1.2em; line-height: 1.6; color: var(--color-tinta); }
+    .texto-post :global(h2) {
+      margin-top: 2.2em;
+      font-size: 1.5rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--color-tinta);
+    }
+    @media (min-width: 1024px) { .texto-post :global(h2) { font-size: 1.75rem; } }
+    .texto-post :global(h2 + *) { margin-top: 0.75em; }
+    .texto-post :global(ol) { display: grid; gap: 0.75rem; counter-reset: item; padding: 0; list-style: none; }
+    .texto-post :global(ol > li) {
+      counter-increment: item;
+      position: relative;
+      padding: 1rem 1.25rem 1rem 3.75rem;
+      border: 1px solid #ebe7fa;
+      border-radius: 1rem;
+      background: linear-gradient(165deg, #fff 35%, #f4f1ff 100%);
+    }
+    .texto-post :global(ol > li)::before {
+      content: counter(item, decimal-leading-zero);
+      position: absolute;
+      left: 1.25rem;
+      top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      line-height: 1.9rem;
+      color: var(--color-roxo);
+    }
+    .texto-post :global(ul) { padding-left: 1.25rem; list-style: disc; }
+    .texto-post :global(ul > li + li) { margin-top: 0.4em; }
+    .texto-post :global(a) { color: var(--color-roxo); text-decoration: underline; text-underline-offset: 3px; }
+    .texto-post :global(strong) { color: var(--color-tinta); font-weight: 600; }
+  </style>
+</Base>
