@@ -1,0 +1,131 @@
+---
+// Contato. Texto: docs/copy-site.md, seção 13.
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+import Icone from '../components/ui/Icone.astro';
+import FormConsultoria from '../components/forms/FormConsultoria.astro';
+import { site } from '../data/site';
+import { copy } from '../lib/texto';
+
+const e = site.endereco;
+const enderecoCurto = `${e.rua}, ${e.bairro}, ${e.cidade} (${e.uf})`;
+const busca = encodeURIComponent(`${e.rua}, ${e.bairro}, ${e.cidade} - ${e.uf}, ${e.cep}`);
+const perfilGoogle = 'https://share.google/fCjjs15JKIybWve7z';
+
+const passos = [
+  { titulo: 'Retornamos em até 1 dia útil', texto: 'pelo WhatsApp.' },
+  { titulo: 'Agendamos a consultoria gratuita,', texto: 'on-line e com cerca de uma hora de duração.' },
+  { titulo: 'Conversamos sobre o seu negócio', texto: 'e você sai com os pilares do marketing digital prontos para aplicar.' },
+];
+---
+<Base
+  title="Contato · Agende uma consultoria gratuita · Otimizo"
+  description="Fale com a Otimizo pelo formulário ou WhatsApp e agende uma consultoria gratuita de cerca de uma hora com um especialista."
+  hrefConsultoria="#formulario"
+>
+  <!-- 13.1 Abertura + 13.2 Canais + 13.3 Formulário -->
+  <section class="granulado relative overflow-hidden pb-20 pt-28 lg:pb-28 lg:pt-40" style="--grao:.12" aria-labelledby="contato-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-40 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.22),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="deriva-3 absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.12),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(60%_60%_at_25%_30%,#000_10%,transparent_75%)]"></div>
+    </div>
+
+    <div class="container-site grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-x-16 lg:gap-y-12">
+      <div class="entrada grid content-start gap-6 lg:gap-7">
+        <span class="chamada">Contato</span>
+        <h1 id="contato-titulo" class="text-[2.375rem] leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[3.375rem]">
+          Vamos falar sobre o próximo ciclo de crescimento <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">da sua empresa</span>
+        </h1>
+        <p class="texto-secao max-w-[52ch]">Preencha o formulário ou chame no WhatsApp. Em até 1 dia útil, nosso time retorna para agendar a sua consultoria gratuita.</p>
+      </div>
+
+      <div id="formulario" class="scroll-mt-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:sticky lg:top-28 lg:self-start" data-revelar>
+        <FormConsultoria id="form-contato" />
+      </div>
+
+      <ul class="grid content-start gap-3" aria-label="Canais de contato">
+        <li class="vidro-claro luz grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 rounded-[var(--radius-card)] p-5 sm:grid-cols-[auto_1fr_auto] sm:p-6" data-revelar style="--d:1">
+          <span class="grid size-11 place-items-center rounded-full bg-[#25d366] text-white shadow-[0_10px_24px_-10px_rgba(37,211,102,.8)]"><Icone nome="whatsapp" class="size-5" /></span>
+          <span class="grid gap-0.5">
+            <span class="font-mono text-xs uppercase tracking-[0.1em] text-cinza">WhatsApp</span>
+            <span class="font-display text-xl font-semibold tracking-tight text-tinta">{site.telefone}</span>
+          </span>
+          <Botao variante="whatsapp" texto="Chamar agora" class="col-span-2 !py-3 !text-sm sm:col-span-1 sm:!px-5" />
+        </li>
+        <li data-revelar style="--d:2">
+          <a href={`mailto:${site.email}`} class="vidro-claro luz group grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 rounded-[var(--radius-card)] p-5 transition-transform duration-300 hover:-translate-y-0.5 sm:p-6">
+            <span class="grid size-11 place-items-center rounded-full bg-lavanda text-roxo transition-colors duration-300 group-hover:bg-roxo group-hover:text-white"><Icone nome="email" class="size-5" /></span>
+            <span class="grid gap-0.5">
+              <span class="font-mono text-xs uppercase tracking-[0.1em] text-cinza">E-mail</span>
+              <span class="break-words font-medium text-tinta sm:text-[1.0625rem]">{site.email}</span>
+            </span>
+          </a>
+        </li>
+        <li data-revelar style="--d:3">
+          <a href="#mapa" class="vidro-claro luz group grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 rounded-[var(--radius-card)] p-5 transition-transform duration-300 hover:-translate-y-0.5 sm:p-6">
+            <span class="grid size-11 place-items-center rounded-full bg-lavanda text-roxo transition-colors duration-300 group-hover:bg-roxo group-hover:text-white"><Icone nome="pin" class="size-5" /></span>
+            <span class="grid gap-0.5">
+              <span class="font-mono text-xs uppercase tracking-[0.1em] text-cinza">Endereço</span>
+              <span class="font-medium text-tinta sm:text-[1.0625rem]">{enderecoCurto}</span>
+            </span>
+          </a>
+        </li>
+        <li class="vidro-claro luz grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 rounded-[var(--radius-card)] p-5 sm:p-6" data-revelar style="--d:4">
+          <span class="grid size-11 place-items-center rounded-full bg-lavanda text-roxo"><Icone nome="relogio" class="size-5" /></span>
+          <span class="grid gap-1">
+            <span class="font-mono text-xs uppercase tracking-[0.1em] text-cinza">Horário</span>
+            <span class="font-medium text-tinta sm:text-[1.0625rem]" set:html={copy('[segunda a sexta, das X h às Y h]')} />
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 13.4 O que acontece depois -->
+  <section class="escuro granulado relative overflow-hidden bg-tinta text-white" style="--grao:.2" aria-labelledby="depois-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="deriva-2 absolute -right-40 -top-40 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.4),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-[0.06] [--cor-grade:#fff] [mask-image:linear-gradient(180deg,#000,transparent_70%)]"></div>
+    </div>
+    <div class="container-site secao grid gap-12">
+      <h2 id="depois-titulo" class="titulo-secao !text-white" data-revelar>O que acontece depois</h2>
+      <ol class="grid gap-4 md:grid-cols-3">
+        {passos.map((p, i) => (
+          <li class="vidro luz group grid content-start gap-5 rounded-[var(--radius-card)] p-6 lg:p-8" data-revelar style={`--d:${i + 1}`}>
+            <span class="grid size-12 place-items-center rounded-full border border-white/15 bg-tinta-2 font-mono text-sm text-roxo-claro transition-[border-color,color] duration-300 group-hover:border-roxo-claro/60 group-hover:text-white">0{i + 1}</span>
+            <p class="text-[1.0625rem] leading-relaxed text-cinza-claro"><strong class="font-display text-xl font-semibold tracking-tight text-white">{p.titulo}</strong> {p.texto}</p>
+          </li>
+        ))}
+      </ol>
+      <p data-revelar class="max-w-3xl border-l-2 border-roxo-claro pl-5 text-[1.0625rem] leading-relaxed text-white lg:text-lg">Sem compromisso e sem insistência. Você sai da conversa com conteúdo prático, contratando a Otimizo ou não.</p>
+    </div>
+  </section>
+
+  <!-- 13.5 Mapa -->
+  <section id="mapa" class="secao scroll-mt-20" aria-labelledby="mapa-titulo">
+    <div class="container-site grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-8">
+      <div class="card-roxo grid content-start gap-5 rounded-[var(--radius-card)] border border-[#ebe7fa] p-7 lg:p-9" data-revelar>
+        <span class="grid size-12 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_14px_30px_-10px_rgba(91,60,240,.7)]"><Icone nome="pin" class="size-6" /></span>
+        <div class="grid gap-1.5">
+          <h2 id="mapa-titulo" class="text-[1.375rem] leading-snug lg:text-2xl">{e.rua}, {e.bairro}</h2>
+          <p class="font-medium text-tinta">{e.cidade} ({e.uf}) · CEP {e.cep}</p>
+        </div>
+        <p class="leading-relaxed text-cinza lg:text-[1.0625rem]">Atendemos empresas de todo o Brasil com reuniões on-line. Em Araucária, Curitiba e região metropolitana, também presencialmente.</p>
+        <a href={perfilGoogle} target="_blank" rel="noopener" class="link-seta">Ver a Otimizo no Google <Icone nome="seta" class="size-4" /><span class="sr-only"> (abre em nova aba)</span></a>
+      </div>
+      <div class="relative min-h-80 overflow-hidden rounded-[var(--radius-card)] border border-linha bg-nevoa lg:min-h-[26rem]" data-revelar style="--d:1">
+        <div aria-hidden="true" class="absolute inset-0 grid place-items-center">
+          <div class="grade-fundo absolute inset-0 opacity-80"></div>
+          <span class="relative grid size-14 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_14px_30px_-10px_rgba(91,60,240,.7),0_0_0_8px_rgba(255,255,255,.8)]"><Icone nome="pin" class="size-6" /></span>
+        </div>
+        <iframe
+          src={`https://www.google.com/maps?q=${busca}&z=16&output=embed`}
+          title="Mapa com o endereço da Otimizo em Araucária (PR)"
+          width="800" height="420" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          class="absolute inset-0 size-full border-0"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</Base>
