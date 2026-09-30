@@ -8,7 +8,7 @@ export default defineConfig({
   trailingSlash: 'ignore',
   build: { format: 'directory', inlineStylesheets: 'always' },
   integrations: [
-    sitemap({ filter: (page) => !page.includes('/obrigado') && !page.includes('/404') && !page.includes('/politica-de-privacidade') }),
+    sitemap({ filter: (page) => !page.includes('/obrigado') && !page.includes('/404') }),
   ],
   vite: { plugins: [tailwindcss()] },
 });

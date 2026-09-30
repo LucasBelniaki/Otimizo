@@ -1,29 +1,128 @@
 ---
-// Política de privacidade. Texto: docs/copy-site.md, seção 17 (pendente).
-// Fica fora do Google (noindex) até o texto definitivo ser publicado.
+// Política de privacidade. Texto: docs/copy-site.md, seção 17.
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
-import { copy } from '../lib/texto';
+
+const secoes: { titulo: string; texto?: string[]; itens?: string[] }[] = [
+  {
+    titulo: 'Quem somos',
+    texto: [
+      `Este site pertence à ${site.razaoSocial}, CNPJ ${site.cnpj}, com sede na ${site.endereco.rua}, ${site.endereco.bairro}, ${site.endereco.cidade} (${site.endereco.uf}). Nesta política, "Otimizo", "nós" e "nosso" se referem a ela.`,
+      'Aqui explicamos, de forma simples, quais dados coletamos pelo site, para que usamos e quais são os seus direitos, de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018, LGPD).',
+    ],
+  },
+  {
+    titulo: 'Quais dados coletamos',
+    texto: ['Coletamos apenas os dados que você mesmo nos envia pelos formulários do site:'],
+    itens: [
+      'No pedido de consultoria gratuita: nome, WhatsApp, e-mail, nome da empresa, os serviços de interesse e o que você escrever sobre os seus objetivos.',
+      'Na candidatura de Trabalhe conosco: nome, e-mail, WhatsApp, área de interesse, link do LinkedIn ou portfólio, currículo e o que você escrever sobre o seu interesse.',
+      'Quando você nos chama pelo WhatsApp ou por e-mail, recebemos as informações que você compartilhar na conversa.',
+    ],
+  },
+  {
+    titulo: 'Para que usamos os seus dados',
+    itens: [
+      'Entrar em contato com você, agendar e realizar a consultoria gratuita.',
+      'Enviar propostas e dar continuidade ao atendimento, se você tiver interesse.',
+      'Avaliar candidaturas e falar com você sobre vagas na Otimizo.',
+      'Entender como o site é usado para melhorar o conteúdo e as campanhas da Otimizo.',
+    ],
+    texto: ['Os dados são de uso interno da Otimizo. Não vendemos, não alugamos e não divulgamos os seus dados.'],
+  },
+  {
+    titulo: 'Com quem compartilhamos',
+    texto: [
+      'Só compartilhamos dados com fornecedores que precisamos para o site e o atendimento funcionarem, como hospedagem, e-mail e ferramentas de medição, e apenas na medida necessária para esse serviço. Também podemos informar dados quando houver obrigação legal ou ordem de autoridade competente.',
+    ],
+  },
+  {
+    titulo: 'Cookies e ferramentas de medição',
+    texto: [
+      'O site pode usar cookies e ferramentas como Google Analytics, Google Tag Manager, Google Ads e Pixel da Meta para medir visitas, entender quais páginas ajudam mais e avaliar o resultado das nossas campanhas. Essas ferramentas não recebem os dados que você digita nos formulários.',
+      'Você pode bloquear ou apagar cookies nas configurações do seu navegador. O site continua funcionando normalmente.',
+    ],
+  },
+  {
+    titulo: 'Por quanto tempo guardamos',
+    texto: [
+      'Guardamos os dados pelo tempo necessário para o atendimento e para cumprir obrigações legais. Currículos ficam guardados para as próximas vagas. Em qualquer caso, você pode pedir a exclusão quando quiser.',
+    ],
+  },
+  {
+    titulo: 'Como protegemos',
+    texto: [
+      'O site usa conexão segura (HTTPS) e o acesso aos dados recebidos fica restrito ao time da Otimizo que precisa deles para atender você.',
+    ],
+  },
+  {
+    titulo: 'Seus direitos',
+    texto: ['Pela LGPD, você pode, a qualquer momento:'],
+    itens: [
+      'Confirmar se temos dados seus e pedir uma cópia deles.',
+      'Corrigir dados incompletos ou desatualizados.',
+      'Pedir a exclusão dos seus dados.',
+      'Retirar o consentimento para o contato da Otimizo.',
+    ],
+  },
+  {
+    titulo: 'Como falar com a gente',
+    texto: [
+      `Para exercer os seus direitos ou tirar dúvidas sobre esta política, escreva para ${site.email} ou chame no WhatsApp ${site.telefone}. Respondemos o mais rápido possível.`,
+    ],
+  },
+  {
+    titulo: 'Atualizações desta política',
+    texto: ['Esta política pode ser atualizada. A versão em vigor é sempre a publicada nesta página.'],
+  },
+];
 ---
 <Base
   title="Política de privacidade · Otimizo"
-  description="Como a Otimizo trata os dados enviados pelos formulários do site."
-  noindex
+  description="Como a Otimizo coleta, usa e protege os dados enviados pelo site, e como você pode exercer os seus direitos pela LGPD."
 >
   <section class="granulado relative overflow-hidden pb-20 pt-28 lg:pb-28 lg:pt-40" style="--grao:.12" aria-labelledby="privacidade-titulo">
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_30%,#fff_60%)]">
       <div class="deriva-1 absolute -right-48 -top-56 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.18),rgba(31,94,255,.07)_60%,transparent)]"></div>
     </div>
     <div class="container-site">
-      <div class="entrada grid max-w-3xl gap-8">
-      <h1 id="privacidade-titulo" class="text-[2.375rem] leading-[1.06] tracking-[-0.035em] sm:text-5xl">Política de privacidade</h1>
-      <p class="text-[1.0625rem] leading-relaxed" set:html={copy('[Texto da política de privacidade a definir: quais dados os formulários coletam, para que são usados, por quanto tempo ficam guardados, com quem são compartilhados, uso de cookies e ferramentas de medição, e como pedir acesso, correção ou exclusão dos dados, conforme a LGPD]')} />
-      <div class="grid gap-1 rounded-[var(--radius-card)] border border-linha bg-white p-6 text-[0.9375rem] leading-relaxed text-cinza">
-        <p class="font-medium text-tinta">{site.razaoSocial} · CNPJ {site.cnpj}</p>
-        <p>{site.endereco.rua}, {site.endereco.bairro}, {site.endereco.cidade} ({site.endereco.uf}), CEP {site.endereco.cep}</p>
-        <p><a href={`mailto:${site.email}`} class="text-roxo underline underline-offset-2">{site.email}</a></p>
-      </div>
+      <div class="grid max-w-3xl gap-10">
+        <div class="entrada grid gap-5">
+          <h1 id="privacidade-titulo" class="text-[2.375rem] leading-[1.06] tracking-[-0.035em] sm:text-5xl">Política de privacidade</h1>
+          <p class="font-mono text-xs uppercase tracking-[0.08em] text-cinza">Última atualização: 30 de setembro de 2026</p>
+        </div>
+
+        <div class="texto-politica grid gap-10">
+          {secoes.map((s) => (
+            <section class="grid gap-3">
+              <h2 class="text-xl lg:text-2xl">{s.titulo}</h2>
+              {s.texto && s.itens && s.titulo === 'Para que usamos os seus dados' ? (
+                <>
+                  <ul>{s.itens.map((i) => <li>{i}</li>)}</ul>
+                  {s.texto.map((t) => <p class="font-medium text-tinta">{t}</p>)}
+                </>
+              ) : (
+                <>
+                  {s.texto?.map((t) => <p>{t}</p>)}
+                  {s.itens && <ul>{s.itens.map((i) => <li>{i}</li>)}</ul>}
+                </>
+              )}
+            </section>
+          ))}
+        </div>
+
+        <div class="grid gap-1 rounded-[var(--radius-card)] border border-linha bg-white p-6 text-[0.9375rem] leading-relaxed text-cinza">
+          <p class="font-medium text-tinta">{site.razaoSocial} · CNPJ {site.cnpj}</p>
+          <p>{site.endereco.rua}, {site.endereco.bairro}, {site.endereco.cidade} ({site.endereco.uf}), CEP {site.endereco.cep}</p>
+          <p><a href={`mailto:${site.email}`} class="text-roxo underline underline-offset-2">{site.email}</a></p>
+        </div>
       </div>
     </div>
   </section>
+
+  <style>
+    .texto-politica { color: #3a3852; font-size: 1.0625rem; line-height: 1.75; }
+    .texto-politica ul { display: grid; gap: 0.5rem; padding-left: 1.25rem; list-style: disc; }
+    .texto-politica li::marker { color: var(--color-roxo); }
+  </style>
 </Base>

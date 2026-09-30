@@ -12,7 +12,7 @@ const blog = defineCollection({
     resumo: z.string(),
     categoria: z.enum(categoriasBlog),
     data: z.coerce.date(),
-    autor: z.string().default('Equipe Otimizo'),
+    autor: z.string().default('Lucas Belniaki'),
   }),
 });
 

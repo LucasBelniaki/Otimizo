@@ -12,14 +12,14 @@ import { copy } from '../lib/texto';
 const socios = [
   {
     nome: 'Lucas Belniaki',
-    cargo: 'Sócio',
+    cargo: 'Sócio Administrador',
     foto: 'lucas-belniaki',
     alt: 'Lucas Belniaki, sócio da Otimizo, de terno cinza e braços cruzados',
-    texto: 'Empreendedor e estrategista, Lucas construiu sua trajetória na prática, entre negócios próprios, vendas e gestão. Acompanhando de perto os desafios de outros empresários, formou a visão que guia a Otimizo: marketing não se mede em anúncio publicado, e sim em crescimento do negócio. Hoje lidera a estratégia dos projetos. [validar função]',
+    texto: 'Empreendedor e estrategista, Lucas construiu sua trajetória na prática, entre negócios próprios, vendas e gestão. Acompanhando de perto os desafios de outros empresários, formou a visão que guia a Otimizo: marketing não se mede em anúncio publicado, e sim em crescimento do negócio. Hoje lidera a estratégia dos projetos.',
   },
   {
     nome: 'Lais Belniaki',
-    cargo: 'Sócia',
+    cargo: 'Sócia Administradora',
     foto: 'lais-belniaki',
     alt: 'Lais Belniaki, sócia da Otimizo, de blazer branco e braços cruzados',
     texto: 'Com trajetória na área comercial e em consultoria, Lais desenvolveu uma visão estratégica sobre relacionamento e vendas. Na Otimizo, transforma estratégia em oportunidade comercial, conectando marketing, time de vendas e pessoas para que o contato vire cliente.',
@@ -146,7 +146,9 @@ const principios = [
                 <span class="font-mono text-xs uppercase tracking-[0.1em] text-roxo">{s.cargo}</span>
               </div>
               <p class="leading-relaxed text-cinza" set:html={copy(s.texto)} />
-              <p class="border-t border-linha pt-4 text-sm" set:html={copy('[preencher: credencial concreta e link do LinkedIn]')} />
+              <p class="border-t border-linha pt-4">
+                <a href="https://br.linkedin.com/company/otimizodigital" target="_blank" rel="noopener" class="link-seta text-[0.9375rem]">LinkedIn da Otimizo <Icone nome="seta" class="size-4" /><span class="sr-only"> (abre em nova aba)</span></a>
+              </p>
             </div>
           </li>
         ))}

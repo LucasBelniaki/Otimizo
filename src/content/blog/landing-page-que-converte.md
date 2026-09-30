@@ -3,7 +3,7 @@ titulo: Anatomia de uma landing page que converte
 resumo: Os elementos que realmente influenciam a conversão de uma página de captação.
 categoria: Sites e conversão
 data: 2026-07-10
-autor: Equipe Otimizo
+autor: Lucas Belniaki
 ---
 
 Uma landing page não precisa ser bonita: precisa ser clara. Estes são os elementos que testamos em todos os projetos.

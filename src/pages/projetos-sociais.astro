@@ -4,7 +4,6 @@ import Base from '../layouts/Base.astro';
 import Icone from '../components/ui/Icone.astro';
 import ChamadaBotoes from '../components/home/ChamadaBotoes.astro';
 import { site } from '../data/site';
-import { copy } from '../lib/texto';
 
 const siteHospital = 'https://pequenoprincipe.org.br/';
 
@@ -78,10 +77,7 @@ const apoios = [
   <section class="granulado secao relative overflow-hidden bg-nevoa" style="--grao:.08" aria-labelledby="apoios-titulo">
     <div aria-hidden="true" class="deriva-3 pointer-events-none absolute -right-40 top-0 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.12),transparent)]"></div>
     <div class="container-site grid gap-12">
-      <div class="grid gap-3" data-revelar>
-        <h2 id="apoios-titulo" class="titulo-secao">Também apoiamos</h2>
-        <p set:html={copy('[manter só o que for real]')} />
-      </div>
+      <h2 id="apoios-titulo" class="titulo-secao" data-revelar>Também apoiamos</h2>
       <ul class="grid gap-4 md:grid-cols-3">
         {apoios.map((a, i) => (
           <li class="luz card-roxo group grid content-start gap-5 rounded-[var(--radius-card)] border border-[#ebe7fa] p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)] lg:p-8" data-revelar style={`--d:${i + 1}`}>
@@ -92,10 +88,7 @@ const apoios = [
       </ul>
       <p class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-[var(--radius-card)] border border-linha bg-white px-7 py-6 text-[1.0625rem] leading-relaxed text-tinta lg:px-10" data-revelar>
         <span>Tem um projeto social que precisa de ajuda com comunicação? Conte pra gente. Avaliamos iniciativas a cada semestre.</span>
-        <span class="flex flex-wrap items-center gap-3">
-          <a href={`mailto:${site.email}?subject=${encodeURIComponent('Projeto social')}`} class="link-seta font-semibold">Apresentar meu projeto <Icone nome="seta" class="size-4" /></a>
-          <span set:html={copy('[validar]')} />
-        </span>
+        <a href={`mailto:${site.email}?subject=${encodeURIComponent('Projeto social')}`} class="link-seta font-semibold">Apresentar meu projeto <Icone nome="seta" class="size-4" /></a>
       </p>
     </div>
   </section>

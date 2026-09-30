@@ -3,7 +3,7 @@ titulo: Quanto investir em Google Ads para começar a vender
 resumo: Como definir o orçamento inicial de mídia paga sem desperdiçar verba nos primeiros meses.
 categoria: Google Ads
 data: 2026-07-27
-autor: Equipe Otimizo
+autor: Lucas Belniaki
 ---
 
 Uma das perguntas que mais recebemos de pequenas e médias empresas é: quanto preciso investir em Google Ads para ver resultado?

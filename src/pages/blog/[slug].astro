@@ -6,7 +6,6 @@ import ChamadaBotoes from '../../components/home/ChamadaBotoes.astro';
 import CapaPost from '../../components/blog/CapaPost.astro';
 import { dataPorExtenso, tempoDeLeitura } from '../../data/blog';
 import { site } from '../../data/site';
-import { copy } from '../../lib/texto';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -25,7 +24,7 @@ const schema = {
   headline: titulo,
   description: resumo,
   datePublished: data.toISOString().slice(0, 10),
-  author: { '@type': 'Organization', name: autor },
+  author: { '@type': 'Person', name: autor },
   publisher: { '@id': `${site.url}/#empresa` },
   mainEntityOfPage: url,
   inLanguage: 'pt-BR',
@@ -60,12 +59,10 @@ const schema = {
 
       <!-- 12.4 Autor -->
       <div class="mt-14 flex items-center gap-4 border-t border-linha pt-8">
-        <span class="grid size-14 shrink-0 place-items-center rounded-full bg-tinta">
-          <img src="/img/simbolo-branco.svg" alt="" width="700" height="515" loading="lazy" class="w-8" />
-        </span>
+        <img src="/img/socios/lucas-belniaki-480.webp" alt="" width="480" height="600" loading="lazy" decoding="async" class="size-14 shrink-0 rounded-full object-cover object-[50%_15%]" />
         <p class="grid gap-0.5">
           <span class="font-mono text-xs uppercase tracking-[0.1em] text-cinza">Autor</span>
-          <span class="font-display text-lg font-semibold text-tinta">{autor} <span class="text-sm font-normal" set:html={copy('[ou nome do especialista]')} /></span>
+          <span class="font-display text-lg font-semibold text-tinta">{autor}</span>
         </p>
       </div>
     </div>

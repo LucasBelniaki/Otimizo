@@ -39,7 +39,7 @@ Copy final do novo site, página por página. Trechos entre [colchetes] são pen
 | Contato | /contato | Conversão direta |
 | Trabalhe conosco | /trabalhe-conosco | Captação de talentos |
 | Obrigado | /obrigado | Confirmar o envio e medir conversão (noindex) |
-| Política de privacidade | /politica-de-privacidade | Informar o uso dos dados (noindex até o texto final) |
+| Política de privacidade | /politica-de-privacidade | Informar o uso dos dados (LGPD) |
 
 ---
 
@@ -388,13 +388,13 @@ Mesmo bloco da Home: +100 empresas atendidas · +500 projetos entregues · +R$ 1
 
 **Texto:** Duas trajetórias que se completam: estratégia de marketing de um lado, vendas e relacionamento do outro.
 
-**Lucas Belniaki · Sócio**
-Empreendedor e estrategista, Lucas construiu sua trajetória na prática, entre negócios próprios, vendas e gestão. Acompanhando de perto os desafios de outros empresários, formou a visão que guia a Otimizo: marketing não se mede em anúncio publicado, e sim em crescimento do negócio. Hoje lidera a estratégia dos projetos. [validar função]
+**Lucas Belniaki · Sócio Administrador**
+Empreendedor e estrategista, Lucas construiu sua trajetória na prática, entre negócios próprios, vendas e gestão. Acompanhando de perto os desafios de outros empresários, formou a visão que guia a Otimizo: marketing não se mede em anúncio publicado, e sim em crescimento do negócio. Hoje lidera a estratégia dos projetos.
 
-**Lais Belniaki · Sócia**
+**Lais Belniaki · Sócia Administradora**
 Com trajetória na área comercial e em consultoria, Lais desenvolveu uma visão estratégica sobre relacionamento e vendas. Na Otimizo, transforma estratégia em oportunidade comercial, conectando marketing, time de vendas e pessoas para que o contato vire cliente.
 
-Cada card: foto profissional, link para o LinkedIn e uma credencial concreta. [preencher]
+Cada card: retrato do sócio, nome, cargo, texto e o link "LinkedIn da Otimizo" (https://br.linkedin.com/company/otimizodigital).
 
 ## 4.6 Método OTI
 
@@ -812,13 +812,13 @@ A Otimizo contribui de forma mensal e contínua para sustentar esse trabalho. Pa
 
 **Link externo:** Conheça e apoie o Pequeno Príncipe → (site oficial do hospital)
 
-## 11.3 Também apoiamos [manter só o que for real]
+## 11.3 Também apoiamos
 
 - Campanhas de arrecadação e ações de voluntariado com o time da agência
 - Comunicação pro bono para iniciativas sociais locais selecionadas
 - Ações internas de doação em datas especiais
 
-**Texto:** Tem um projeto social que precisa de ajuda com comunicação? Conte pra gente. Avaliamos iniciativas a cada semestre. **Apresentar meu projeto →** [validar]
+**Texto:** Tem um projeto social que precisa de ajuda com comunicação? Conte pra gente. Avaliamos iniciativas a cada semestre. **Apresentar meu projeto →** (abre um e-mail para contato@otimizodigital.com.br com o assunto "Projeto social")
 
 ## 11.4 Chamada final
 
@@ -862,7 +862,7 @@ Na listagem, o filtro mostra só as categorias que já têm posts.
 
 ## 12.4 Bloco no fim de cada post
 
-**Autor:** Equipe Otimizo [ou nome do especialista]
+**Autor:** Lucas Belniaki (com o retrato dele)
 
 **Título:** Quer aplicar isso na sua empresa?
 
@@ -914,7 +914,7 @@ Textos completos mantidos como estavam no site anterior. Cada post fica em `src/
 - **WhatsApp:** (41) 99984-2667 · botão "Chamar agora"
 - **E-mail:** contato@otimizodigital.com.br
 - **Endereço:** Rua Adelino Basso, 28, Centro, Araucária (PR)
-- **Horário:** [segunda a sexta, das X h às Y h]
+- **Horário:** Segunda a sexta, das 08:00 às 18:00
 
 **Texto:** Atendemos empresas de todo o Brasil com reuniões on-line. Em Araucária, Curitiba e região metropolitana, também presencialmente.
 
@@ -959,13 +959,12 @@ Mapa do Google com o endereço de Araucária, ligado ao Perfil da Empresa no Goo
 - **Resultado é o que conta.** Você vê o impacto do seu trabalho no negócio do cliente.
 - **Aprendizado de verdade.** Especialistas por canal, projetos em vários segmentos e treinamento contínuo.
 - **Erro vira aprendizado.** Testar faz parte do nosso jeito de trabalhar.
-- [Benefícios e modelo de trabalho: presencial, híbrido ou remoto. validar]
 
 **Link:** Conheça nossa cultura → (página Sobre)
 
 ## 14.3 Áreas em que costumamos contratar
 
-Tráfego pago · Social media · Design · Audiovisual · Comercial e atendimento ao cliente [validar]
+Tráfego pago · Social media · Design · Audiovisual · Comercial e atendimento ao cliente
 
 ## 14.4 Formulário
 
@@ -1043,16 +1042,62 @@ Página exibida quando o endereço não existe. Não indexar (noindex).
 
 # 17. Política de privacidade
 
-Página ligada a todos os formulários e ao rodapé. Fica fora do Google (noindex e fora do sitemap) até o texto definitivo ser publicado.
+Página ligada a todos os formulários e ao rodapé.
 
 | SEO | Texto |
 | --- | --- |
 | URL | /politica-de-privacidade |
 | Title | Política de privacidade · Otimizo |
-| Meta description | Como a Otimizo trata os dados enviados pelos formulários do site. |
+| Meta description | Como a Otimizo coleta, usa e protege os dados enviados pelo site, e como você pode exercer os seus direitos pela LGPD. |
 
 **Título (H1):** Política de privacidade
 
-**Texto:** [Texto da política de privacidade a definir: quais dados os formulários coletam, para que são usados, por quanto tempo ficam guardados, com quem são compartilhados, uso de cookies e ferramentas de medição, e como pedir acesso, correção ou exclusão dos dados, conforme a LGPD]
+*Última atualização: 30 de setembro de 2026*
+
+**Quem somos**
+Este site pertence à Otimizo Marketing e Assessoria Ltda, CNPJ 54.732.693/0001-36, com sede na Rua Adelino Basso, 28, Centro, Araucária (PR). Nesta política, "Otimizo", "nós" e "nosso" se referem a ela.
+
+Aqui explicamos, de forma simples, quais dados coletamos pelo site, para que usamos e quais são os seus direitos, de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018, LGPD).
+
+**Quais dados coletamos**
+Coletamos apenas os dados que você mesmo nos envia pelos formulários do site:
+- No pedido de consultoria gratuita: nome, WhatsApp, e-mail, nome da empresa, os serviços de interesse e o que você escrever sobre os seus objetivos.
+- Na candidatura de Trabalhe conosco: nome, e-mail, WhatsApp, área de interesse, link do LinkedIn ou portfólio, currículo e o que você escrever sobre o seu interesse.
+- Quando você nos chama pelo WhatsApp ou por e-mail, recebemos as informações que você compartilhar na conversa.
+
+**Para que usamos os seus dados**
+- Entrar em contato com você, agendar e realizar a consultoria gratuita.
+- Enviar propostas e dar continuidade ao atendimento, se você tiver interesse.
+- Avaliar candidaturas e falar com você sobre vagas na Otimizo.
+- Entender como o site é usado para melhorar o conteúdo e as campanhas da Otimizo.
+
+Os dados são de uso interno da Otimizo. Não vendemos, não alugamos e não divulgamos os seus dados.
+
+**Com quem compartilhamos**
+Só compartilhamos dados com fornecedores que precisamos para o site e o atendimento funcionarem, como hospedagem, e-mail e ferramentas de medição, e apenas na medida necessária para esse serviço. Também podemos informar dados quando houver obrigação legal ou ordem de autoridade competente.
+
+**Cookies e ferramentas de medição**
+O site pode usar cookies e ferramentas como Google Analytics, Google Tag Manager, Google Ads e Pixel da Meta para medir visitas, entender quais páginas ajudam mais e avaliar o resultado das nossas campanhas. Essas ferramentas não recebem os dados que você digita nos formulários.
+
+Você pode bloquear ou apagar cookies nas configurações do seu navegador. O site continua funcionando normalmente.
+
+**Por quanto tempo guardamos**
+Guardamos os dados pelo tempo necessário para o atendimento e para cumprir obrigações legais. Currículos ficam guardados para as próximas vagas. Em qualquer caso, você pode pedir a exclusão quando quiser.
+
+**Como protegemos**
+O site usa conexão segura (HTTPS) e o acesso aos dados recebidos fica restrito ao time da Otimizo que precisa deles para atender você.
+
+**Seus direitos**
+Pela LGPD, você pode, a qualquer momento:
+- Confirmar se temos dados seus e pedir uma cópia deles.
+- Corrigir dados incompletos ou desatualizados.
+- Pedir a exclusão dos seus dados.
+- Retirar o consentimento para o contato da Otimizo.
+
+**Como falar com a gente**
+Para exercer os seus direitos ou tirar dúvidas sobre esta política, escreva para contato@otimizodigital.com.br ou chame no WhatsApp (41) 99984-2667. Respondemos o mais rápido possível.
+
+**Atualizações desta política**
+Esta política pode ser atualizada. A versão em vigor é sempre a publicada nesta página.
 
 **Dados da empresa (abaixo do texto):** razão social, CNPJ, endereço e e-mail de contato.

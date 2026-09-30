@@ -5,7 +5,6 @@ import Botao from '../components/ui/Botao.astro';
 import Icone from '../components/ui/Icone.astro';
 import FormCandidatura from '../components/forms/FormCandidatura.astro';
 import { mensagensWhatsApp } from '../data/site';
-import { copy } from '../lib/texto';
 
 const mensagem = mensagensWhatsApp.trabalheConosco;
 
@@ -91,7 +90,7 @@ const pontos = [
         <h2 id="como-titulo" class="titulo-secao">Como é trabalhar aqui</h2>
         <a href="/sobre#cultura" class="link-seta text-[1.0625rem] lg:justify-self-end">Conheça nossa cultura <Icone nome="seta" class="size-4" /></a>
       </div>
-      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="grid gap-4 md:grid-cols-3">
         {comoE.map((c, i) => (
           <li class="luz card-roxo group grid content-start gap-5 rounded-[var(--radius-card)] border border-[#ebe7fa] p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)]" data-revelar style={`--d:${i + 1}`}>
             <span class="grid size-12 place-items-center rounded-xl bg-lavanda text-roxo transition-[background-color,color,transform] duration-300 group-hover:-rotate-6 group-hover:bg-roxo group-hover:text-white"><Icone nome={c.icone} class="size-5" /></span>
@@ -99,10 +98,6 @@ const pontos = [
             <p class="-mt-2 leading-relaxed text-cinza">{c.texto}</p>
           </li>
         ))}
-        <li class="grid content-start gap-5 rounded-[var(--radius-card)] border border-dashed border-[#e4c96a] bg-[#fffbea] p-7" data-revelar style="--d:4">
-          <span class="grid size-12 place-items-center rounded-xl bg-white text-[#8a6d00]"><Icone nome="presente" class="size-5" /></span>
-          <p class="leading-relaxed" set:html={copy('[Benefícios e modelo de trabalho: presencial, híbrido ou remoto. validar]')} />
-        </li>
       </ul>
     </div>
   </section>
@@ -116,7 +111,6 @@ const pontos = [
         <ul class="flex flex-wrap gap-2">
           {areas.map((a) => <li class="rounded-full border border-linha bg-white px-4 py-2 text-[0.9375rem] font-medium text-tinta shadow-[0_6px_16px_-12px_rgba(17,14,38,.4)]">{a}</li>)}
         </ul>
-        <p set:html={copy('[validar]')} />
       </div>
       <div data-revelar style="--d:1"><FormCandidatura areas={areas} /></div>
     </div>

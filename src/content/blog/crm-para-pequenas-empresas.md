@@ -3,7 +3,7 @@ titulo: 'CRM para pequenas empresas: por onde começar'
 resumo: Um processo de vendas simples e bem medido vende mais do que qualquer ferramenta complexa.
 categoria: CRM e vendas
 data: 2026-07-20
-autor: Equipe Otimizo
+autor: Lucas Belniaki
 ---
 
 Muita empresa contrata um CRM caro e continua perdendo vendas. O problema quase nunca é a ferramenta: é a falta de processo.
