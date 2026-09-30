@@ -10,6 +10,15 @@ DirectoryIndex index.html index.php
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # Endereços do site antigo (WordPress) levam para as páginas equivalentes do site novo
+  RewriteRule ^social-midia/?$ /servicos/social-media/ [L,R=301]
+  RewriteRule ^trafego-pago/?$ /servicos/ [L,R=301]
+  RewriteRule ^cultura-otimizo/?$ /sobre/ [L,R=301]
+  RewriteRule ^contabilidade/?$ / [L,R=301]
+  RewriteRule ^elementor-[0-9]+/?$ / [L,R=301]
+  RewriteRule ^(author|category)/ /blog/ [L,R=301]
+  RewriteRule ^(a-importancia-da-assessoria|assessoria-de-marketing-e-vendas|como-a-assessoria-de-marketing|transformando-vendas-online)[^/]*/?$ /blog/ [L,R=301]
 </IfModule>
 
 # Arquivo com a senha do SMTP e controle da publicação nunca podem ser acessados pelo navegador

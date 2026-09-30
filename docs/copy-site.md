@@ -19,6 +19,7 @@ Copy final do novo site, página por página. Trechos entre [colchetes] são pen
 14. Trabalhe conosco
 15. Obrigado
 16. Página não encontrada (404)
+17. Política de privacidade
 
 ## Mapa do site
 
@@ -38,6 +39,7 @@ Copy final do novo site, página por página. Trechos entre [colchetes] são pen
 | Contato | /contato | Conversão direta |
 | Trabalhe conosco | /trabalhe-conosco | Captação de talentos |
 | Obrigado | /obrigado | Confirmar o envio e medir conversão (noindex) |
+| Política de privacidade | /politica-de-privacidade | Informar o uso dos dados (noindex até o texto final) |
 
 ---
 
@@ -1036,3 +1038,21 @@ Página exibida quando o endereço não existe. Não indexar (noindex).
 **Texto:** Enquanto isso, você pode voltar para a página inicial ou agendar sua consultoria gratuita.
 
 **Botões:** Agendar minha consultoria gratuita · Voltar para a página inicial
+
+---
+
+# 17. Política de privacidade
+
+Página ligada a todos os formulários e ao rodapé. Fica fora do Google (noindex e fora do sitemap) até o texto definitivo ser publicado.
+
+| SEO | Texto |
+| --- | --- |
+| URL | /politica-de-privacidade |
+| Title | Política de privacidade · Otimizo |
+| Meta description | Como a Otimizo trata os dados enviados pelos formulários do site. |
+
+**Título (H1):** Política de privacidade
+
+**Texto:** [Texto da política de privacidade a definir: quais dados os formulários coletam, para que são usados, por quanto tempo ficam guardados, com quem são compartilhados, uso de cookies e ferramentas de medição, e como pedir acesso, correção ou exclusão dos dados, conforme a LGPD]
+
+**Dados da empresa (abaixo do texto):** razão social, CNPJ, endereço e e-mail de contato.

@@ -1,0 +1,29 @@
+---
+// Política de privacidade. Texto: docs/copy-site.md, seção 17 (pendente).
+// Fica fora do Google (noindex) até o texto definitivo ser publicado.
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { copy } from '../lib/texto';
+---
+<Base
+  title="Política de privacidade · Otimizo"
+  description="Como a Otimizo trata os dados enviados pelos formulários do site."
+  noindex
+>
+  <section class="granulado relative overflow-hidden pb-20 pt-28 lg:pb-28 lg:pt-40" style="--grao:.12" aria-labelledby="privacidade-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.18),rgba(31,94,255,.07)_60%,transparent)]"></div>
+    </div>
+    <div class="container-site">
+      <div class="entrada grid max-w-3xl gap-8">
+      <h1 id="privacidade-titulo" class="text-[2.375rem] leading-[1.06] tracking-[-0.035em] sm:text-5xl">Política de privacidade</h1>
+      <p class="text-[1.0625rem] leading-relaxed" set:html={copy('[Texto da política de privacidade a definir: quais dados os formulários coletam, para que são usados, por quanto tempo ficam guardados, com quem são compartilhados, uso de cookies e ferramentas de medição, e como pedir acesso, correção ou exclusão dos dados, conforme a LGPD]')} />
+      <div class="grid gap-1 rounded-[var(--radius-card)] border border-linha bg-white p-6 text-[0.9375rem] leading-relaxed text-cinza">
+        <p class="font-medium text-tinta">{site.razaoSocial} · CNPJ {site.cnpj}</p>
+        <p>{site.endereco.rua}, {site.endereco.bairro}, {site.endereco.cidade} ({site.endereco.uf}), CEP {site.endereco.cep}</p>
+        <p><a href={`mailto:${site.email}`} class="text-roxo underline underline-offset-2">{site.email}</a></p>
+      </div>
+      </div>
+    </div>
+  </section>
+</Base>
