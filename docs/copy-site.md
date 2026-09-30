@@ -703,7 +703,7 @@ Transformar visitas em conversas comerciais com uma página que responde às dú
 - Planejamento editorial mensal
 - Criação de posts, carrosséis e roteiros de vídeos curtos
 - Adequação à identidade visual da marca
-- Publicação e gestão de comentários
+- Agendamento das publicações nos horários mais adequados ao seu nicho
 - Relatório de alcance, engajamento e contatos gerados
 
 ## 9.4 O resultado que buscamos

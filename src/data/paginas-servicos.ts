@@ -143,7 +143,7 @@ export const paginasServicos: PaginaServico[] = [
       'Planejamento editorial mensal',
       'Criação de posts, carrosséis e roteiros de vídeos curtos',
       'Adequação à identidade visual da marca',
-      'Publicação e gestão de comentários',
+      'Agendamento das publicações nos horários mais adequados ao seu nicho',
       'Relatório de alcance, engajamento e contatos gerados',
     ],
     resultado: 'Dar credibilidade à sua marca no momento em que o cliente pesquisa antes de decidir.',
