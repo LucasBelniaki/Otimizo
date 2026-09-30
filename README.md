@@ -68,7 +68,6 @@ Sem esses dois segredos, o site tenta enviar pelo sistema padrão da Hostinger, 
 
 - **Círculo vermelho na aba Actions**: clique nele e depois em **Enviar para a Hostinger** para ver a mensagem de erro.
 - **Erro de conexão ou de certificado**: crie o segredo `FTP_PROTOCOLO` com o valor `ftp` e rode de novo.
-- **Arquivos foram parar numa pasta errada** (ex.: `public_html/public_html`): crie o segredo `FTP_PASTA` com o valor `./` e rode de novo.
 - **Aviso "Site não publicado"**: faltam os segredos do passo 2.
 
 ## Para quem for mexer no código

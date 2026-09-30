@@ -1,4 +1,4 @@
-# Otimizo · configuração para hospedagem Hostinger (Apache/LiteSpeed)
+# Otimizo · configuração do site otimizo.com.br na Hostinger (Apache/LiteSpeed)
 
 Options -Indexes
 DirectoryIndex index.html index.php

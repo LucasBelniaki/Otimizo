@@ -3,7 +3,6 @@
 # Configuração (uma vez só): no GitHub, Settings > Secrets and variables > Actions >
 # New repository secret. Veja o passo a passo no README.md.
 #   FTP_SERVIDOR, FTP_USUARIO, FTP_SENHA   obrigatórios para publicar
-#   FTP_PASTA                              opcional (padrão: public_html/)
 #   FTP_PROTOCOLO                          opcional (padrão: ftps; use ftp se der erro de conexão)
 #   SMTP_USUARIO, SMTP_SENHA               opcionais: e-mail da Hostinger que envia os formulários
 #
@@ -75,7 +74,8 @@ jobs:
           # "loose" mantém a conexão criptografada sem exigir esse nome.
           security: loose
           local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_PASTA || 'public_html/' }}
+          # Pasta do otimizo.com.br na Hostinger (fixa aqui para evitar erro de digitação).
+          server-dir: public_html/
 
       - name: Aviso
         if: env.TEM_FTP != 'true'
