@@ -1,0 +1,121 @@
+---
+// Serviços. Texto: docs/copy-site.md, seção 5.
+import Base from '../../layouts/Base.astro';
+import Icone from '../../components/ui/Icone.astro';
+import ChamadaBotoes from '../../components/home/ChamadaBotoes.astro';
+import { servicos } from '../../data/site';
+import { copy } from '../../lib/texto';
+
+const grupos = [
+  { nome: 'Atrair', sub: 'Levar as pessoas certas até você.', icone: 'alvo' },
+  { nome: 'Converter', sub: 'Transformar visita em conversa e conversa em contrato.', icone: 'funil' },
+  { nome: 'Fortalecer a marca', sub: 'Ser a escolha óbvia quando o cliente pesquisa antes de decidir.', icone: 'coracao' },
+].map((g) => ({ ...g, itens: servicos.filter((s) => s.grupo === g.nome) }));
+
+const combinacoes = [
+  { objetivo: 'Gerar contatos rápido', combinacao: ['Google Ads', 'landing page'], paraQuem: 'Quem precisa de orçamentos já nos próximos meses' },
+  { objetivo: 'Construir autoridade', combinacao: ['Social media', 'branding'], paraQuem: 'Quem quer ser lembrado e passar mais confiança' },
+  { objetivo: 'Estrutura completa', combinacao: ['Todas as frentes, com um só time'], paraQuem: 'Quem quer terceirizar o marketing inteiro' },
+];
+---
+<Base
+  title="Serviços de marketing digital e vendas · Otimizo"
+  description="Google Ads, Meta Ads, sites, social media e branding. Frentes que se conectam para gerar venda. Agende uma consultoria gratuita."
+>
+  <!-- 5.1 Abertura -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="servicos-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_60%_40%,#000_10%,transparent_75%)]"></div>
+    </div>
+    <div class="container-site grid gap-14 lg:gap-20">
+      <div class="entrada grid max-w-4xl gap-6 lg:gap-7">
+        <span class="chamada">Serviços</span>
+        <h1 id="servicos-titulo" class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[3.75rem]">
+          Frentes de trabalho que se conectam para <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">gerar venda</span>
+        </h1>
+        <p class="texto-secao max-w-[62ch]">Cada serviço pode ser contratado sozinho. Mas o resultado aparece mais rápido quando atrair, converter e fortalecer a marca andam juntos, com um só time olhando para o mesmo número.</p>
+      </div>
+
+      <!-- Caminho: Atrair → Converter → Fortalecer a marca -->
+      <ol class="relative grid gap-4 md:grid-cols-3" aria-label="Como as frentes se conectam">
+        <div aria-hidden="true" class="linha-caminho absolute left-[16%] right-[16%] top-[2.75rem] hidden h-[2px] rounded-full bg-gradient-to-r from-roxo via-azul to-roxo md:block"></div>
+        {grupos.map((g, i) => (
+          <li class="vidro-claro luz relative grid content-start justify-items-center gap-3 rounded-[var(--radius-card)] p-6 text-center" data-revelar style={`--d:${i + 1}`}>
+            <span class="relative grid size-14 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_12px_30px_-10px_rgba(91,60,240,.7),0_0_0_6px_#fff]"><Icone nome={g.icone as any} class="size-6" /></span>
+            <span class="font-mono text-xs uppercase tracking-[0.1em] text-roxo">0{i + 1}</span>
+            <a href={`#grupo-${i}`} class="font-display text-xl font-semibold tracking-tight transition-colors hover:text-roxo">{g.nome}</a>
+            <span class="flex flex-wrap justify-center gap-1.5">
+              {g.itens.map((s) => <span class="rounded-full border border-linha bg-white px-3 py-1 text-[0.8125rem] text-[#3a3852]">{s.nome}</span>)}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5.2 a 5.4 Grupos -->
+  {grupos.map((g, gi) => (
+    <section id={`grupo-${gi}`} class:list={['secao', { 'bg-nevoa': gi === 1 }]} aria-labelledby={`grupo-${gi}-titulo`}>
+      <div class="container-site grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div class="grid content-start gap-4 lg:sticky lg:top-28 lg:self-start" data-revelar>
+          <span class="chamada">0{gi + 1}</span>
+          <h2 id={`grupo-${gi}-titulo`} class="titulo-secao">{g.nome}</h2>
+          <p class="texto-secao">{g.sub}</p>
+        </div>
+        <ul class="grid content-start gap-4">
+          {g.itens.map((s, i) => (
+            <li data-revelar style={`--d:${i + 1}`}>
+              <a href={s.href} class:list={['luz group relative grid gap-6 overflow-hidden rounded-[var(--radius-card)] border p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 sm:grid-cols-[1fr_auto] sm:items-end lg:p-9', gi === 1 ? 'escuro granulado border-tinta bg-tinta text-white hover:shadow-[0_30px_60px_-30px_rgba(91,60,240,.8)]' : 'card-roxo border-[#ebe7fa] hover:border-[#cfc8f5] hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)]']} style={gi === 1 ? '--grao:.2' : undefined}>
+                {gi === 1 && <div aria-hidden="true" class="deriva-2 !absolute -bottom-24 -right-24 !-z-10 size-80 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.6),transparent)]"></div>}
+                <span class="grid gap-3">
+                  <h3 class:list={['text-2xl lg:text-[1.75rem]', { '!text-white': gi === 1 }]}>{s.nome}</h3>
+                  <span class:list={['max-w-[52ch] text-[1.0625rem] leading-relaxed', gi === 1 ? 'text-cinza-claro' : 'text-cinza']}>{s.frase}</span>
+                </span>
+                <span class="link-seta whitespace-nowrap">Ver detalhes <Icone nome="seta" class="size-4 transition-transform group-hover:translate-x-1" /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <!-- 5.5 Combinações mais comuns -->
+  <section class="secao border-t border-linha" aria-labelledby="combinacoes-titulo">
+    <div class="container-site grid gap-12">
+      <h2 id="combinacoes-titulo" class="titulo-secao max-w-3xl" data-revelar>Não sabe por onde começar? Estes são os pontos de partida mais comuns</h2>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {combinacoes.map((c, i) => (
+          <li class:list={['luz group grid content-start gap-6 rounded-[var(--radius-card)] border p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 lg:p-8', i === 2 ? 'escuro granulado border-tinta bg-tinta text-white' : 'card-roxo border-[#ebe7fa] hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)]']} style={i === 2 ? `--grao:.2;--d:${i + 1}` : `--d:${i + 1}`} data-revelar>
+            <span class:list={['font-mono text-xs uppercase tracking-[0.1em]', i === 2 ? 'text-roxo-claro' : 'text-roxo']}>Objetivo</span>
+            <h3 class:list={['-mt-3 text-2xl', { '!text-white': i === 2 }]}>{c.objetivo}</h3>
+            <div class="flex flex-wrap items-center gap-2">
+              {c.combinacao.map((x, xi) => (
+                <>
+                  {xi > 0 && <Icone nome="mais" class={`size-4 ${i === 2 ? 'text-roxo-claro' : 'text-roxo'}`} />}
+                  <span class:list={['rounded-full px-3.5 py-1.5 text-sm font-medium', i === 2 ? 'bg-white/10 text-white' : 'bg-lavanda text-roxo-700']}>{x}</span>
+                </>
+              ))}
+            </div>
+            <p class:list={['border-t pt-5 leading-relaxed', i === 2 ? 'border-white/10 text-cinza-claro' : 'border-linha text-cinza']}><span class="sr-only">Para quem: </span>{c.paraQuem}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="max-w-[70ch] leading-relaxed text-cinza" data-revelar set:html={copy('Na consultoria gratuita indicamos a combinação com mais retorno para o seu momento e o que esperar dela. [validar se a Otimizo trabalha com pacotes]')} />
+    </div>
+  </section>
+
+  <!-- 5.6 Chamada final -->
+  <ChamadaBotoes
+    titulo="Não sabe qual frente escolher? Vamos conversar"
+    texto="Agende uma consultoria gratuita de cerca de uma hora com um especialista da Otimizo. Você sai sabendo por onde começar."
+  />
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .linha-caminho { background-size: 200% 100%; animation: fluir 6s linear infinite; }
+    }
+    @keyframes fluir { to { background-position: -200% 0; } }
+  </style>
+</Base>

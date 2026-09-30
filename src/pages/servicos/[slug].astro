@@ -1,0 +1,132 @@
+---
+// Páginas de serviço. Texto: docs/copy-site.md, seções 6 a 10 (dados em src/data/paginas-servicos.ts).
+import Base from '../../layouts/Base.astro';
+import Botao from '../../components/ui/Botao.astro';
+import Icone from '../../components/ui/Icone.astro';
+import Microcopy from '../../components/ui/Microcopy.astro';
+import Faq from '../../components/home/Faq.astro';
+import ChamadaFinal from '../../components/home/ChamadaFinal.astro';
+import VisualServico from '../../components/servicos/VisualServico.astro';
+import { paginasServicos, type PaginaServico } from '../../data/paginas-servicos';
+import { servicos, mensagensWhatsApp } from '../../data/site';
+import { copy } from '../../lib/texto';
+
+export function getStaticPaths() {
+  return paginasServicos.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props as { p: PaginaServico };
+const mensagem = mensagensWhatsApp.servico(p.nome);
+const relacionados = p.vejaTambem.map((slug) => servicos.find((s) => s.href === `/servicos/${slug}`)!);
+---
+<Base title={p.title} description={p.description} hrefConsultoria="#agendar" mensagemWhatsApp={mensagem}>
+  <!-- Abertura -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="servico-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_72%_35%,#000_10%,transparent_75%)]"></div>
+    </div>
+    <div class="container-site grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
+      <div class="entrada grid content-start gap-6 lg:gap-7">
+        <nav aria-label="Você está em" class="text-sm text-cinza">
+          <a href="/servicos" class="transition-colors hover:text-roxo">Serviços</a> <span aria-hidden="true">/</span> <span class="text-tinta">{p.nome}</span>
+        </nav>
+        <span class="chamada">{p.chamada}</span>
+        <h1 id="servico-titulo" class="text-[2.375rem] leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[3.25rem]">{p.h1}</h1>
+        <p class="texto-secao max-w-[56ch]">{p.texto}</p>
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Botao href="#agendar" texto={p.botao} />
+          <Botao variante="whatsapp" mensagem={mensagem} />
+        </div>
+        <Microcopy />
+      </div>
+      <VisualServico tipo={p.slug} />
+    </div>
+  </section>
+
+  <!-- Sinais -->
+  <section class="escuro granulado relative overflow-hidden bg-tinta text-white" style="--grao:.2" aria-labelledby="sinais-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="deriva-2 absolute -right-40 -top-40 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.38),transparent)]"></div>
+    </div>
+    <div class="container-site secao grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <h2 id="sinais-titulo" class="titulo-secao !text-white lg:sticky lg:top-28 lg:self-start" data-revelar>Sinais de que você precisa desta frente</h2>
+      <ul class="grid content-start gap-3">
+        {p.sinais.map((s, i) => (
+          <li class="vidro luz flex items-start gap-4 rounded-2xl p-5" data-revelar style={`--d:${i + 1}`}>
+            <span class="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-[#ff6b6b]/15 text-[#ffb4b4]"><Icone nome="x" class="size-4" /></span>
+            <span class="text-[1.0625rem] leading-relaxed text-[#e6e4f2]">{s}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- O que está incluído -->
+  <section class="secao" aria-labelledby="incluido-titulo">
+    <div class="container-site grid gap-12">
+      <h2 id="incluido-titulo" class="titulo-secao" data-revelar>O que está incluído</h2>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {p.incluido.map((item, i) => (
+          <li class="luz card-roxo group flex items-start gap-4 rounded-[var(--radius-card)] border border-[#ebe7fa] p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)] lg:p-7" data-revelar style={`--d:${(i % 3) + 1}`}>
+            <span class="grid size-9 shrink-0 place-items-center rounded-full bg-lavanda text-roxo transition-colors duration-300 group-hover:bg-roxo group-hover:text-white">
+              <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 10 17l9-10" /></svg>
+            </span>
+            <span class="pt-1.5 leading-relaxed text-tinta">{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      {p.tambem && (
+        <div class="grid gap-6 pt-6" data-revelar>
+          <h3 class="text-2xl">Também anunciamos em</h3>
+          <ul class="grid gap-4 md:grid-cols-2">
+            {p.tambem.map((t) => (
+              <li class="luz grid content-start gap-3 rounded-[var(--radius-card)] border border-linha bg-white p-6 lg:p-7">
+                <span class="font-display text-xl font-semibold tracking-tight">{t.titulo}</span>
+                <p class="leading-relaxed text-cinza">{t.texto}</p>
+              </li>
+            ))}
+          </ul>
+          {p.tambemPendencia && <p class="text-sm" set:html={copy(p.tambemPendencia)} />}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- O resultado que buscamos -->
+  <section class="container-site" aria-labelledby="resultado-titulo" data-revelar>
+    <div class="luz granulado relative grid gap-5 overflow-hidden rounded-[var(--radius-card)] bg-[linear-gradient(110deg,#ece8ff_0%,#e6ecff_100%)] p-8 lg:p-14" style="--grao:.14">
+      <div aria-hidden="true" class="deriva-3 !absolute -right-24 -top-24 !-z-10 size-80 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.25),transparent)]"></div>
+      <h2 id="resultado-titulo" class="chamada">O resultado que buscamos</h2>
+      <p class="max-w-4xl font-display text-[1.5rem] font-medium leading-snug tracking-[-0.02em] text-tinta lg:text-[2.125rem]">{p.resultado}</p>
+    </div>
+  </section>
+
+  <!-- Perguntas frequentes -->
+  <Faq perguntas={p.faq} />
+
+  <!-- Chamada final com formulário -->
+  <ChamadaFinal titulo={p.final.titulo} texto={p.final.texto} />
+
+  <!-- Veja também -->
+  <section class="py-16 lg:py-20" aria-labelledby="veja-titulo">
+    <div class="container-site grid gap-6">
+      <h2 id="veja-titulo" class="font-mono text-xs font-medium uppercase tracking-[0.12em] text-cinza">Veja também</h2>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {relacionados.map((s) => (
+          <li>
+            <a href={s.href} class="luz card-roxo group grid h-full content-between gap-6 rounded-[var(--radius-card)] border border-[#ebe7fa] p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)]">
+              <span class="grid gap-2">
+                <span class="font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-roxo">{s.grupo}</span>
+                <span class="font-display text-xl font-semibold tracking-tight">{s.nome}</span>
+                <span class="text-[0.9375rem] leading-relaxed text-cinza">{s.frase}</span>
+              </span>
+              <span class="link-seta">Ver detalhes <Icone nome="seta" class="size-4 transition-transform group-hover:translate-x-1" /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,131 @@
+---
+// Ilustração decorativa da abertura de cada página de serviço (desenhada em código).
+// Sem textos ou números inventados: só rótulos com o nome do canal e linhas de esboço.
+import type { SlugServico } from '../../data/paginas-servicos';
+interface Props { tipo: SlugServico }
+const { tipo } = Astro.props;
+const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
+---
+<div class="vs relative mx-auto aspect-[1/0.9] w-full max-w-[32rem] [container-type:inline-size]" aria-hidden="true">
+  <div class="deriva-2 absolute inset-[6%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.3),rgba(31,94,255,.12)_55%,transparent)] blur-2xl"></div>
+
+  {tipo === 'google-ads' && (
+    <div class="flutua absolute inset-x-[4%] top-[10%] grid gap-[3cqw] rounded-[5cqw] border border-white/70 bg-white/85 p-[5cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.5)] backdrop-blur-xl">
+      <div class="flex items-center gap-[2.4cqw] rounded-full border border-linha bg-white px-[3.5cqw] py-[2.6cqw] shadow-[0_6px_16px_-10px_rgba(17,14,38,.3)]">
+        <svg viewBox="0 0 24 24" class="size-[4.5cqw] shrink-0 text-cinza" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></svg>
+        <span class={`${sk} w-[38%]`}></span>
+        <span class="digitar ml-[-1cqw] h-[4cqw] w-[.5cqw] bg-roxo"></span>
+      </div>
+      <div class="relative grid gap-[1.8cqw] rounded-[3.5cqw] border-2 border-roxo/70 bg-lavanda/60 p-[3.5cqw]">
+        <span class="absolute -top-[3cqw] right-[3cqw] rounded-full bg-roxo px-[2.4cqw] py-[.8cqw] text-[max(9px,2.6cqw)] font-medium text-white">Google Ads</span>
+        <span class="block h-[2.2cqw] w-[62%] rounded-full bg-roxo/70"></span>
+        <span class={`${sk} w-[88%]`}></span>
+        <span class={`${sk} w-[70%]`}></span>
+      </div>
+      {[80, 66].map((w) => (
+        <div class="grid gap-[1.8cqw] px-[3.5cqw] opacity-60">
+          <span class="block h-[2.2cqw] rounded-full bg-[#c9c5dc]" style={`width:${w - 20}%`}></span>
+          <span class={sk} style={`width:${w}%`}></span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {tipo === 'meta-ads' && (
+    <>
+      <div class="flutua absolute left-[18%] top-[4%] w-[64%] overflow-hidden rounded-[5cqw] border border-white/70 bg-white/90 shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+        <div class="flex items-center gap-[2cqw] p-[3.5cqw]">
+          <span class="size-[7cqw] rounded-full bg-gradient-to-br from-roxo to-azul"></span>
+          <span class="grid flex-1 gap-[1.2cqw]"><span class={`${sk} w-[55%]`}></span><span class="block h-[1.3cqw] w-[30%] rounded-full bg-lavanda"></span></span>
+        </div>
+        <div class="grid aspect-square place-items-center bg-[linear-gradient(150deg,#2a2355,#110e26)]">
+          <img src="/img/simbolo-gradiente.svg" alt="" width="200" height="147" class="w-[46%]" />
+        </div>
+        <div class="flex items-center gap-[3cqw] p-[3.5cqw] text-tinta">
+          <svg viewBox="0 0 24 24" class="coracao size-[5cqw] text-[#e0245e]" fill="currentColor"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /></svg>
+          <svg viewBox="0 0 24 24" class="size-[5cqw]" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 18.5V6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H9l-4 2.5Z" /></svg>
+          <span class="ml-auto rounded-full bg-roxo px-[3cqw] py-[1.2cqw]"><span class="block h-[1.4cqw] w-[10cqw] rounded-full bg-white/70"></span></span>
+        </div>
+      </div>
+      <span class="flutua absolute right-[2%] top-[58%] inline-flex items-center gap-[1.4cqw] rounded-full border border-linha bg-white py-[1.4cqw] pl-[1.6cqw] pr-[3cqw] text-[max(9px,2.8cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-3s"><b class="grid size-[4.6cqw] place-items-center rounded-full bg-lavanda text-roxo text-[max(8px,2.4cqw)]">f</b>Facebook</span>
+      <span class="flutua absolute left-[2%] top-[30%] inline-flex items-center gap-[1.4cqw] rounded-full border border-linha bg-white py-[1.4cqw] pl-[1.6cqw] pr-[3cqw] text-[max(9px,2.8cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-5s"><b class="grid size-[4.6cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.5" /></svg></b>Instagram</span>
+    </>
+  )}
+
+  {tipo === 'sites-e-landing-pages' && (
+    <>
+      <div class="flutua absolute left-0 top-[8%] w-[86%] overflow-hidden rounded-[4cqw] border border-white/70 bg-white/90 shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+        <div class="flex items-center gap-[1.4cqw] border-b border-linha px-[3cqw] py-[2.2cqw]">
+          <i class="size-[1.8cqw] rounded-full bg-[#ff6b6b]/70"></i><i class="size-[1.8cqw] rounded-full bg-[#ffc94d]/80"></i><i class="size-[1.8cqw] rounded-full bg-[#4cd18a]/80"></i>
+          <span class="ml-[3cqw] h-[3.2cqw] flex-1 rounded-full bg-nevoa"></span>
+        </div>
+        <div class="grid gap-[2.4cqw] bg-[linear-gradient(180deg,#fff,#f4f1ff)] p-[5cqw]">
+          <span class="block h-[1.6cqw] w-[24%] rounded-full bg-roxo/60"></span>
+          <span class="block h-[3.4cqw] w-[78%] rounded-[1cqw] bg-tinta"></span>
+          <span class="block h-[3.4cqw] w-[56%] rounded-[1cqw] bg-tinta"></span>
+          <span class={`${sk} w-[70%]`}></span>
+          <span class="mt-[1cqw] block h-[6cqw] w-[36%] rounded-full bg-roxo"></span>
+          <div class="mt-[2cqw] grid grid-cols-3 gap-[2cqw]">
+            {[0, 1, 2].map(() => <span class="block h-[10cqw] rounded-[2cqw] border border-linha bg-white"></span>)}
+          </div>
+        </div>
+      </div>
+      <div class="flutua absolute bottom-[2%] right-0 aspect-[9/17] w-[30%] rounded-[5cqw] bg-tinta p-[1.2cqw] shadow-[0_40px_60px_-28px_rgba(17,14,38,.6)]" style="animation-delay:-4s">
+        <div class="grid h-full content-start gap-[1.8cqw] overflow-hidden rounded-[4cqw] bg-[linear-gradient(180deg,#fff,#f4f1ff)] p-[3cqw] pt-[6cqw]">
+          <span class="block h-[2.4cqw] w-[80%] rounded-[1cqw] bg-tinta"></span>
+          <span class="block h-[2.4cqw] w-[60%] rounded-[1cqw] bg-tinta"></span>
+          <span class={`${sk} w-[90%]`}></span>
+          <span class="mt-[1cqw] block h-[4.6cqw] w-full rounded-full bg-roxo"></span>
+          <span class="mt-[2cqw] block h-[12cqw] rounded-[2cqw] border border-linha bg-white"></span>
+        </div>
+      </div>
+    </>
+  )}
+
+  {tipo === 'social-media' && (
+    <div class="flutua absolute inset-x-[10%] top-[4%] grid gap-[3cqw] rounded-[5cqw] border border-white/70 bg-white/90 p-[4.5cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+      <div class="flex items-center gap-[3cqw]">
+        <span class="grid size-[13cqw] place-items-center rounded-full bg-[conic-gradient(from_200deg,#5b3cf0,#1f5eff,#a99bff,#5b3cf0)] p-[.8cqw]"><span class="grid size-full place-items-center rounded-full bg-white"><img src="/img/simbolo-gradiente.svg" alt="" width="60" height="44" class="w-[60%]" /></span></span>
+        <div class="grid flex-1 gap-[1.6cqw]">
+          <span class={`${sk} w-[50%]`}></span>
+          <div class="flex gap-[3cqw]">{[0, 1, 2].map(() => <span class="block h-[1.4cqw] w-[9cqw] rounded-full bg-lavanda"></span>)}</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-[1.2cqw]">
+        {['#5b3cf0', '#ece8ff', '#1f5eff', '#110e26', '#a99bff', '#ece8ff', '#e3ecff', '#5b3cf0', '#2a2355'].map((c, i) => (
+          <span class="post block aspect-square rounded-[1.8cqw]" style={`background:${c};--i:${i}`}></span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {tipo === 'branding' && (
+    <div class="flutua absolute inset-x-[4%] top-[8%] grid grid-cols-[1.1fr_1fr] gap-[3cqw] rounded-[5cqw] border border-white/70 bg-white/90 p-[4.5cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+      <div class="grid aspect-square place-items-center rounded-[3.5cqw] bg-[linear-gradient(150deg,#2a2355,#110e26)]">
+        <img src="/img/simbolo-gradiente.svg" alt="" width="200" height="147" class="w-[64%]" />
+      </div>
+      <div class="grid content-between gap-[2.4cqw]">
+        <span class="font-display text-[14cqw] font-semibold leading-none tracking-[-0.04em] text-tinta">Aa</span>
+        <div class="grid grid-cols-2 gap-[1.6cqw]">
+          {['#5b3cf0', '#1f5eff', '#110e26', '#ece8ff'].map((c) => <span class="block aspect-[4/3] rounded-[1.8cqw] border border-linha" style={`background:${c}`}></span>)}
+        </div>
+      </div>
+      <div class="col-span-2 grid grid-cols-3 gap-[2cqw]">
+        <span class="grid place-items-center rounded-[2.4cqw] border border-linha bg-white py-[3cqw]"><img src="/img/logo-otimizo.svg" alt="" width="120" height="29" class="w-[78%]" /></span>
+        <span class="grid place-items-center rounded-[2.4cqw] bg-tinta py-[3cqw]"><img src="/img/logo-otimizo-branco.svg" alt="" width="120" height="29" class="w-[78%]" /></span>
+        <span class="grid place-items-center rounded-[2.4cqw] bg-roxo py-[3cqw]"><img src="/img/simbolo-branco.svg" alt="" width="60" height="44" class="w-[34%]" /></span>
+      </div>
+    </div>
+  )}
+</div>
+
+<style is:global>
+  @media (prefers-reduced-motion: no-preference) {
+    .vs .digitar { animation: vs-cursor 1s steps(1) infinite; }
+    .vs .coracao { animation: vs-pulsar 2.4s ease-in-out infinite; transform-origin: center; }
+    .vs .post { animation: vs-surgir .6s calc(.3s + var(--i) * 90ms) cubic-bezier(.2,.8,.2,1) both; }
+  }
+  @keyframes vs-cursor { 50% { opacity: 0; } }
+  @keyframes vs-pulsar { 0%, 70%, 100% { transform: scale(1); } 80% { transform: scale(1.25); } }
+  @keyframes vs-surgir { from { opacity: 0; transform: scale(.85); } }
+</style>
