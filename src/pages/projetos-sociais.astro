@@ -1,0 +1,117 @@
+---
+// Projetos sociais. Texto: docs/copy-site.md, seção 11.
+import Base from '../layouts/Base.astro';
+import Icone from '../components/ui/Icone.astro';
+import ChamadaBotoes from '../components/home/ChamadaBotoes.astro';
+import { site } from '../data/site';
+import { copy } from '../lib/texto';
+
+const siteHospital = 'https://pequenoprincipe.org.br/';
+
+const apoios = [
+  { texto: 'Campanhas de arrecadação e ações de voluntariado com o time da agência', icone: 'coracao' },
+  { texto: 'Comunicação pro bono para iniciativas sociais locais selecionadas', icone: 'chat' },
+  { texto: 'Ações internas de doação em datas especiais', icone: 'presente' },
+] as const;
+---
+<Base
+  title="Projetos sociais · Otimizo e Hospital Pequeno Príncipe"
+  description="A Otimizo é Empresa Apoiadora do Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. Conheça nosso compromisso social."
+>
+  <!-- 11.1 Abertura -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="sociais-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="deriva-3 absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(255,196,0,.12),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_72%_40%,#000_10%,transparent_75%)]"></div>
+    </div>
+    <div class="container-site grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+      <div class="entrada grid content-start gap-6 lg:gap-7">
+        <span class="chamada">Projetos sociais</span>
+        <h1 id="sociais-titulo" class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[3.75rem] lg:leading-[1.04]">
+          Crescer junto com <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">quem mais precisa</span>
+        </h1>
+        <p class="texto-secao max-w-[56ch]">Acreditamos que empresa que cresce tem responsabilidade com o lugar onde está. Por isso parte do resultado da Otimizo vai, todo mês, para causas que transformam vidas.</p>
+      </div>
+
+      <!-- selo em destaque -->
+      <div class="relative mx-auto grid aspect-square w-full max-w-[26rem] place-items-center lg:max-w-[30rem]" aria-hidden="true">
+        <div class="deriva-2 absolute inset-[4%] rounded-full bg-[radial-gradient(closest-side,rgba(255,200,0,.28),rgba(91,60,240,.14)_60%,transparent)] blur-2xl"></div>
+        <span class="onda absolute inset-[18%] rounded-full border border-roxo/30"></span>
+        <span class="onda absolute inset-[18%] rounded-full border border-roxo/30" style="--o:1"></span>
+        <span class="onda absolute inset-[18%] rounded-full border border-roxo/30" style="--o:2"></span>
+        <div class="vidro-claro absolute inset-[10%] rounded-full"></div>
+        <img
+          src="/img/selos/pequeno-principe-empresa-apoiadora-640.webp"
+          srcset="/img/selos/pequeno-principe-empresa-apoiadora.webp 320w, /img/selos/pequeno-principe-empresa-apoiadora-480.webp 480w, /img/selos/pequeno-principe-empresa-apoiadora-640.webp 640w"
+          sizes="(min-width: 1024px) 350px, 70vw"
+          alt="" width="640" height="640" fetchpriority="high"
+          class="flutua relative w-[72%] drop-shadow-[0_30px_40px_rgba(17,14,38,.22)]"
+        />
+        <span class="coracao-1 absolute left-[4%] top-[18%] grid size-12 place-items-center rounded-full bg-white text-[#e5484d] shadow-[0_14px_30px_-14px_rgba(17,14,38,.45)]"><Icone nome="coracao" class="size-5" /></span>
+        <span class="coracao-2 absolute bottom-[12%] right-[2%] grid size-10 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_14px_30px_-12px_rgba(91,60,240,.7)]"><Icone nome="coracao" class="size-4" /></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.2 Hospital Pequeno Príncipe -->
+  <section class="secao border-t border-linha" aria-labelledby="hospital-titulo">
+    <div class="container-site grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <div class="grid content-start gap-6 lg:sticky lg:top-28 lg:self-start" data-revelar>
+        <span class="grid size-14 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_14px_30px_-10px_rgba(91,60,240,.7)]" aria-hidden="true"><Icone nome="coracao" class="size-6" /></span>
+        <h2 id="hospital-titulo" class="titulo-secao">Empresa Apoiadora do Hospital Pequeno Príncipe</h2>
+      </div>
+      <div class="grid content-start gap-6 text-[1.0625rem] leading-relaxed text-[#3a3852] lg:pt-2 lg:text-lg">
+        <p data-revelar>O Pequeno Príncipe, em Curitiba, é o maior hospital exclusivamente pediátrico do Brasil e referência nacional em média e alta complexidade. Todos os anos, milhares de crianças e adolescentes de todo o país recebem ali um cuidado integral e humanizado, grande parte deles pelo SUS.</p>
+        <div data-revelar style="--d:1;--grao:.2" class="escuro granulado luz relative grid gap-6 overflow-hidden rounded-[var(--radius-card)] bg-tinta p-7 text-white lg:p-9">
+          <div aria-hidden="true" class="deriva-2 !absolute -bottom-28 -right-28 !-z-10 size-96 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.55),transparent)]"></div>
+          <p class="font-display text-xl font-medium leading-snug tracking-[-0.015em] text-white lg:text-2xl">A Otimizo contribui de forma mensal e contínua para sustentar esse trabalho. <span class="text-roxo-claro">Para nós, isso faz parte do resultado do negócio: cada projeto que dá certo com um cliente também ajuda a manter esse apoio.</span></p>
+          <a href={siteHospital} target="_blank" rel="noopener" class="link-seta justify-self-start !text-roxo-claro text-[0.9375rem] transition-colors hover:!text-white sm:text-[1.0625rem]">
+            Conheça e apoie o Pequeno Príncipe <Icone nome="seta" class="size-4" /><span class="sr-only"> (site oficial do hospital, abre em nova aba)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.3 Também apoiamos -->
+  <section class="granulado secao relative overflow-hidden bg-nevoa" style="--grao:.08" aria-labelledby="apoios-titulo">
+    <div aria-hidden="true" class="deriva-3 pointer-events-none absolute -right-40 top-0 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.12),transparent)]"></div>
+    <div class="container-site grid gap-12">
+      <div class="grid gap-3" data-revelar>
+        <h2 id="apoios-titulo" class="titulo-secao">Também apoiamos</h2>
+        <p set:html={copy('[manter só o que for real]')} />
+      </div>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {apoios.map((a, i) => (
+          <li class="luz card-roxo group grid content-start gap-5 rounded-[var(--radius-card)] border border-[#ebe7fa] p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)] lg:p-8" data-revelar style={`--d:${i + 1}`}>
+            <span class="grid size-12 place-items-center rounded-xl bg-lavanda text-roxo transition-[background-color,color,transform] duration-300 group-hover:-rotate-6 group-hover:bg-roxo group-hover:text-white"><Icone nome={a.icone} class="size-5" /></span>
+            <p class="text-[1.0625rem] leading-relaxed text-tinta">{a.texto}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-[var(--radius-card)] border border-linha bg-white px-7 py-6 text-[1.0625rem] leading-relaxed text-tinta lg:px-10" data-revelar>
+        <span>Tem um projeto social que precisa de ajuda com comunicação? Conte pra gente. Avaliamos iniciativas a cada semestre.</span>
+        <span class="flex flex-wrap items-center gap-3">
+          <a href={`mailto:${site.email}?subject=${encodeURIComponent('Projeto social')}`} class="link-seta font-semibold">Apresentar meu projeto <Icone nome="seta" class="size-4" /></a>
+          <span set:html={copy('[validar]')} />
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <!-- 11.4 Chamada final -->
+  <ChamadaBotoes
+    titulo="Quer crescer com uma agência que devolve valor para a comunidade?"
+    texto="Agende uma consultoria gratuita e conheça nossa forma de trabalhar."
+  />
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .onda { animation: onda 4.2s ease-out infinite; animation-delay: calc(var(--o, 0) * 1.4s); }
+      .coracao-1 { animation: flutua 5s ease-in-out infinite alternate; }
+      .coracao-2 { animation: flutua 6s ease-in-out -2s infinite alternate; }
+    }
+    @keyframes onda { from { transform: scale(0.9); opacity: 0.9; } to { transform: scale(1.45); opacity: 0; } }
+  </style>
+</Base>
