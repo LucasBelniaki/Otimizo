@@ -248,7 +248,7 @@ Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior ho
 
 ## 2.11 Perguntas frequentes
 
-**Quanto custa trabalhar com a Otimizo?** Depende das frentes contratadas e da verba de mídia. Depois da consultoria gratuita, se fizer sentido, você recebe uma proposta com escopo, prazos e valores fechados. [Opcional: "Projetos a partir de R$ X por mês"]
+**Quanto custa trabalhar com a Otimizo?** Depende das frentes contratadas e da verba de mídia. Depois da consultoria gratuita, se fizer sentido, você recebe uma proposta com escopo, prazos e valores fechados.
 
 **Vocês atendem fora de Curitiba?** Sim. Atendemos empresas de todo o Brasil com reuniões on-line. Em Araucária, Curitiba e região metropolitana, também presencialmente.
 
@@ -491,7 +491,7 @@ Quer crescer com a gente? **Veja como fazer parte do time →**
 | Construir autoridade | Social media + branding | Quem quer ser lembrado e passar mais confiança |
 | Estrutura completa | Todas as frentes, com um só time | Quem quer terceirizar o marketing inteiro |
 
-**Texto abaixo:** Na consultoria gratuita indicamos a combinação com mais retorno para o seu momento e o que esperar dela. [validar se a Otimizo trabalha com pacotes]
+**Texto abaixo:** Na consultoria gratuita indicamos a combinação com mais retorno para o seu momento e o que esperar dela.
 
 ## 5.6 Chamada final
 
@@ -551,7 +551,7 @@ Reduzir o custo por oportunidade qualificada e tornar previsível o volume de or
 
 **Em quanto tempo aparecem os primeiros contatos?** Normalmente nas primeiras semanas depois da publicação. O custo por venda ganha consistência entre o 2º e o 3º mês de otimização.
 
-**A verba de anúncio está inclusa no valor da Otimizo?** Não. A verba é paga direto ao Google, na conta da sua empresa. Você mantém a propriedade da conta e do histórico. [validar]
+**A verba de anúncio está inclusa no valor da Otimizo?** Não. A verba é paga direto ao Google, na conta da sua empresa. Você mantém a propriedade da conta e do histórico.
 
 ## 6.6 Chamada final
 
@@ -658,7 +658,7 @@ Transformar visitas em conversas comerciais com uma página que responde às dú
 
 ## 8.5 Perguntas frequentes
 
-**Em quanto tempo o site fica pronto?** Uma landing page leva cerca de [X] semanas; um site institucional, cerca de [X] semanas, a partir da aprovação do conteúdo.
+**Em quanto tempo o site fica pronto?** Cerca de 3 semanas, a partir da aprovação do conteúdo.
 
 **Vou conseguir editar o site depois?** As atualizações ficam com a gente: quando precisar mudar algo no site, é só pedir que o nosso time cuida disso para você.
 
@@ -711,8 +711,6 @@ Transformar visitas em conversas comerciais com uma página que responde às dú
 Dar credibilidade à sua marca no momento em que o cliente pesquisa antes de decidir.
 
 ## 9.5 Perguntas frequentes
-
-**Quantos posts por mês?** Definimos a frequência no plano, conforme o objetivo e a verba. [validar pacotes]
 
 **Vocês gravam os vídeos?** Não. Roteirizamos todos e orientamos a gravação, que é feita pelo seu time.
 

@@ -52,7 +52,7 @@ export const paginasServicos: PaginaServico[] = [
     faq: [
       { p: 'Quanto preciso investir em Google Ads?', r: 'Depende da concorrência do seu serviço e da sua região. Na consultoria gratuita estimamos a verba mínima para gerar um volume de contatos que justifique o investimento.' },
       { p: 'Em quanto tempo aparecem os primeiros contatos?', r: 'Normalmente nas primeiras semanas depois da publicação. O custo por venda ganha consistência entre o 2º e o 3º mês de otimização.' },
-      { p: 'A verba de anúncio está inclusa no valor da Otimizo?', r: 'Não. A verba é paga direto ao Google, na conta da sua empresa. Você mantém a propriedade da conta e do histórico. [validar]' },
+      { p: 'A verba de anúncio está inclusa no valor da Otimizo?', r: 'Não. A verba é paga direto ao Google, na conta da sua empresa. Você mantém a propriedade da conta e do histórico.' },
     ],
     final: {
       titulo: 'Quero avançar com Google Ads',
@@ -116,7 +116,7 @@ export const paginasServicos: PaginaServico[] = [
     ],
     resultado: 'Transformar visitas em conversas comerciais com uma página que responde às dúvidas do cliente antes que ele precise perguntar.',
     faq: [
-      { p: 'Em quanto tempo o site fica pronto?', r: 'Uma landing page leva cerca de [X] semanas; um site institucional, cerca de [X] semanas, a partir da aprovação do conteúdo.' },
+      { p: 'Em quanto tempo o site fica pronto?', r: 'Cerca de 3 semanas, a partir da aprovação do conteúdo.' },
       { p: 'Vou conseguir editar o site depois?', r: 'As atualizações ficam com a gente: quando precisar mudar algo no site, é só pedir que o nosso time cuida disso para você.' },
     ],
     final: {
@@ -148,7 +148,6 @@ export const paginasServicos: PaginaServico[] = [
     ],
     resultado: 'Dar credibilidade à sua marca no momento em que o cliente pesquisa antes de decidir.',
     faq: [
-      { p: 'Quantos posts por mês?', r: 'Definimos a frequência no plano, conforme o objetivo e a verba. [validar pacotes]' },
       { p: 'Vocês gravam os vídeos?', r: 'Não. Roteirizamos todos e orientamos a gravação, que é feita pelo seu time.' },
     ],
     final: {
