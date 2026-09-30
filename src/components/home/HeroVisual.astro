@@ -13,11 +13,11 @@ const bolhasIniciais = [
   <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="flutua absolute -right-[4%] -top-[4%] w-[70%] drop-shadow-[0_30px_40px_rgba(91,60,240,.25)]" fetchpriority="high" />
 
   <!-- painel -->
-  <div class="painel absolute left-[25%] top-[15%] grid w-[75%] gap-[3cqw] rounded-[4.5cqw] border border-white/70 bg-white/80 p-[4cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.45)] backdrop-blur-xl">
+  <div class="painel vl luz absolute [--luz-cor:rgba(124,92,255,.22)] left-[25%] top-[15%] grid w-[75%] gap-[3cqw] rounded-[4.5cqw] p-[4cqw]" data-escala="64">
     <div class="flex flex-wrap items-center gap-[1.6cqw]">
       <span class="mr-auto font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.1em] text-cinza">Campanhas</span>
-      <span class="rounded-full bg-lavanda px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] font-medium text-roxo-700">Google Ads</span>
-      <span class="rounded-full border border-linha bg-white px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] text-[#3a3852]">Meta Ads</span>
+      <span class="rounded-full bg-roxo/10 px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] font-medium text-roxo-700 shadow-[inset_0_0_0_1px_rgba(91,60,240,.12)]">Google Ads</span>
+      <span class="rounded-full bg-white/60 px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] text-[#3a3852] shadow-[inset_0_0_0_1px_rgba(255,255,255,.9)]">Meta Ads</span>
     </div>
     <div class="grid gap-[1.2cqw]">
       <span class="font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.08em] text-tinta">Vendas</span>
@@ -26,7 +26,7 @@ const bolhasIniciais = [
           <linearGradient id="hv-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B3CF0" stop-opacity=".22" /><stop offset="1" stop-color="#1F5EFF" stop-opacity="0" /></linearGradient>
           <linearGradient id="hv-linha" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F5EFF" /><stop offset="1" stop-color="#5B3CF0" /></linearGradient>
         </defs>
-        <g stroke="#E6E4F0" stroke-width="1" stroke-dasharray="3 4"><line x1="0" y1="20" x2="330" y2="20" /><line x1="0" y1="55" x2="330" y2="55" /><line x1="0" y1="90" x2="330" y2="90" /></g>
+        <g stroke="rgba(91,60,240,.16)" stroke-width="1" stroke-dasharray="3 4"><line x1="0" y1="20" x2="330" y2="20" /><line x1="0" y1="55" x2="330" y2="55" /><line x1="0" y1="90" x2="330" y2="90" /></g>
         <path class="hv-area" d="M4,104 C40,102 60,92 94,86 S148,76 176,64 S236,40 262,36 S300,24 318,18 L318,118 L4,118 Z" fill="url(#hv-area)" />
         <path class="hv-traco" d="M4,104 C40,102 60,92 94,86 S148,76 176,64 S236,40 262,36 S300,24 318,18" fill="none" stroke="url(#hv-linha)" stroke-width="3" stroke-linecap="round" pathLength="1" />
         <circle class="hv-pulso" cx="318" cy="18" r="6" fill="none" stroke="#5B3CF0" stroke-width="2" />
@@ -35,11 +35,11 @@ const bolhasIniciais = [
     </div>
     <div class="grid grid-cols-2 gap-[2.4cqw]">
       {[['Leads', [30, 44, 40, 60, 76, 100], 'bg-roxo'], ['Custo por lead', [100, 84, 78, 60, 48, 36], 'bg-azul']].map(([rotulo, barras, cor]) => (
-        <div class="grid gap-[2cqw] rounded-[3cqw] border border-linha bg-white p-[2.6cqw]">
+        <div class="vl-miolo grid gap-[2cqw] rounded-[3cqw] p-[2.6cqw]">
           <span class="font-mono text-[max(9px,2.3cqw)] uppercase tracking-[0.08em] text-cinza">{rotulo}</span>
           <div class="flex h-[9cqw] items-end gap-[1.2cqw]">
             {(barras as number[]).map((h, i, arr) => (
-              <i class:list={['hv-barra block flex-1 rounded-t-[1cqw]', i === arr.length - 1 ? cor : 'bg-lavanda']} style={`height:${h}%;--i:${i}`}></i>
+              <i class:list={['hv-barra block flex-1 rounded-t-[1cqw]', i === arr.length - 1 ? cor : 'bg-roxo/15']} style={`height:${h}%;--i:${i}`}></i>
             ))}
           </div>
         </div>
@@ -48,7 +48,7 @@ const bolhasIniciais = [
   </div>
 
   <!-- celular com conversa -->
-  <div class="celular absolute bottom-[1%] left-0 aspect-[9/18.5] w-[31%] rounded-[6cqw] bg-tinta p-[1.3cqw] shadow-[0_40px_60px_-28px_rgba(17,14,38,.6)]">
+  <div class="celular vl-aparelho absolute bottom-[1%] left-0 aspect-[9/18.5] w-[31%] rounded-[6cqw] bg-tinta p-[1.3cqw]">
     <div class="grid h-full grid-rows-[auto_1fr_auto] overflow-hidden rounded-[4.8cqw] bg-[#f5f4fa]">
       <div class="relative z-10 flex items-center gap-[1.6cqw] border-b border-linha bg-white px-[2.4cqw] pb-[2cqw] pt-[3.8cqw]">
         <span class="size-[5cqw] shrink-0 rounded-full bg-gradient-to-br from-roxo to-azul"></span>
@@ -71,11 +71,11 @@ const bolhasIniciais = [
   </div>
 
   <!-- etiquetas flutuantes -->
-  <span class="flutua absolute right-[1%] top-[5%] inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-2s">
-    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 9h18" /></svg></b>Site
+  <span class="flutua vl absolute right-[1%] top-[5%] z-10 inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium text-tinta" style="animation-delay:-2s">
+    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 9h18" /></svg></b>Site
   </span>
-  <span class="flutua absolute bottom-[4%] left-[23%] z-10 inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full border border-linha bg-white py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-4.5s">
-    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="currentColor"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20Z" /></svg></b>WhatsApp
+  <span class="flutua absolute bottom-[4%] left-[23%] z-10 vl inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium text-tinta" style="animation-delay:-4.5s">
+    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="currentColor"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20Z" /></svg></b>WhatsApp
   </span>
 </div>
 

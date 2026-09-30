@@ -87,7 +87,11 @@ const schema = {
     <BarraMobile hrefConsultoria={hrefConsultoria} mensagem={mensagemWhatsApp} />
 
     <script>
+      import { iniciarRefracao } from '../lib/refracao';
       const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Refração do vidro líquido nas bordas (Chromium), depois que a página carrega
+      ('requestIdleCallback' in window ? (window as any).requestIdleCallback : setTimeout)(iniciarRefracao);
 
       // Revelação suave ao rolar (só liga com JS e movimento permitido)
       if (!semMovimento && 'IntersectionObserver' in window) {

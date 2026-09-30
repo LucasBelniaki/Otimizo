@@ -10,7 +10,7 @@ const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
   <div class="deriva-2 absolute inset-[6%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.3),rgba(31,94,255,.12)_55%,transparent)] blur-2xl"></div>
 
   {tipo === 'google-ads' && (
-    <div class="flutua absolute inset-x-[4%] top-[10%] grid gap-[3cqw] rounded-[5cqw] border border-white/70 bg-white/85 p-[5cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.5)] backdrop-blur-xl">
+    <div class="flutua absolute inset-x-[4%] top-[10%] grid gap-[3cqw] rounded-[5cqw] p-[5cqw] vl">
       <div class="flex items-center gap-[2.4cqw] rounded-full border border-linha bg-white px-[3.5cqw] py-[2.6cqw] shadow-[0_6px_16px_-10px_rgba(17,14,38,.3)]">
         <svg viewBox="0 0 24 24" class="size-[4.5cqw] shrink-0 text-cinza" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></svg>
         <span class={`${sk} w-[38%]`}></span>
@@ -33,7 +33,7 @@ const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
 
   {tipo === 'meta-ads' && (
     <>
-      <div class="flutua absolute left-[18%] top-[4%] w-[64%] overflow-hidden rounded-[5cqw] border border-white/70 bg-white/90 shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+      <div class="flutua absolute left-[18%] top-[4%] w-[64%] overflow-hidden rounded-[5cqw] vl">
         <div class="flex items-center gap-[2cqw] p-[3.5cqw]">
           <span class="size-[7cqw] rounded-full bg-gradient-to-br from-roxo to-azul"></span>
           <span class="grid flex-1 gap-[1.2cqw]"><span class={`${sk} w-[55%]`}></span><span class="block h-[1.3cqw] w-[30%] rounded-full bg-lavanda"></span></span>
@@ -47,14 +47,14 @@ const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
           <span class="ml-auto rounded-full bg-roxo px-[3cqw] py-[1.2cqw]"><span class="block h-[1.4cqw] w-[10cqw] rounded-full bg-white/70"></span></span>
         </div>
       </div>
-      <span class="flutua absolute right-[2%] top-[58%] inline-flex items-center gap-[1.4cqw] rounded-full border border-linha bg-white py-[1.4cqw] pl-[1.6cqw] pr-[3cqw] text-[max(9px,2.8cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-3s"><b class="grid size-[4.6cqw] place-items-center rounded-full bg-lavanda text-roxo text-[max(8px,2.4cqw)]">f</b>Facebook</span>
-      <span class="flutua absolute left-[2%] top-[30%] inline-flex items-center gap-[1.4cqw] rounded-full border border-linha bg-white py-[1.4cqw] pl-[1.6cqw] pr-[3cqw] text-[max(9px,2.8cqw)] font-medium shadow-[0_12px_24px_-14px_rgba(17,14,38,.35)]" style="animation-delay:-5s"><b class="grid size-[4.6cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.5" /></svg></b>Instagram</span>
+      <span class="flutua absolute right-[2%] top-[58%] inline-flex items-center gap-[1.4cqw] vl rounded-full py-[1.4cqw] pl-[1.6cqw] pr-[3cqw] text-[max(9px,2.8cqw)] font-medium text-tinta" style="animation-delay:-3s"><b class="grid size-[4.6cqw] place-items-center rounded-full bg-lavanda text-roxo text-[max(8px,2.4cqw)]">f</b>Facebook</span>
+      <span class="flutua absolute left-[2%] top-[30%] inline-flex items-center gap-[1.4cqw] vl rounded-full py-[1.4cqw] pl-[1.6cqw] pr-[3cqw] text-[max(9px,2.8cqw)] font-medium text-tinta" style="animation-delay:-5s"><b class="grid size-[4.6cqw] place-items-center rounded-full bg-lavanda text-roxo"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.5" /></svg></b>Instagram</span>
     </>
   )}
 
   {tipo === 'sites-e-landing-pages' && (
     <>
-      <div class="flutua absolute left-0 top-[8%] w-[86%] overflow-hidden rounded-[4cqw] border border-white/70 bg-white/90 shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+      <div class="flutua absolute left-0 top-[8%] w-[86%] overflow-hidden rounded-[4cqw] vl">
         <div class="flex items-center gap-[1.4cqw] border-b border-linha px-[3cqw] py-[2.2cqw]">
           <i class="size-[1.8cqw] rounded-full bg-[#ff6b6b]/70"></i><i class="size-[1.8cqw] rounded-full bg-[#ffc94d]/80"></i><i class="size-[1.8cqw] rounded-full bg-[#4cd18a]/80"></i>
           <span class="ml-[3cqw] h-[3.2cqw] flex-1 rounded-full bg-nevoa"></span>
@@ -70,7 +70,7 @@ const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
           </div>
         </div>
       </div>
-      <div class="flutua absolute bottom-[2%] right-0 aspect-[9/17] w-[30%] rounded-[5cqw] bg-tinta p-[1.2cqw] shadow-[0_40px_60px_-28px_rgba(17,14,38,.6)]" style="animation-delay:-4s">
+      <div class="flutua absolute bottom-[2%] right-0 aspect-[9/17] w-[30%] rounded-[5cqw] bg-tinta p-[1.2cqw] vl-aparelho" style="animation-delay:-4s">
         <div class="grid h-full content-start gap-[1.8cqw] overflow-hidden rounded-[4cqw] bg-[linear-gradient(180deg,#fff,#f4f1ff)] p-[3cqw] pt-[6cqw]">
           <span class="block h-[2.4cqw] w-[80%] rounded-[1cqw] bg-tinta"></span>
           <span class="block h-[2.4cqw] w-[60%] rounded-[1cqw] bg-tinta"></span>
@@ -83,7 +83,7 @@ const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
   )}
 
   {tipo === 'social-media' && (
-    <div class="flutua absolute inset-x-[10%] top-[4%] grid gap-[3cqw] rounded-[5cqw] border border-white/70 bg-white/90 p-[4.5cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+    <div class="flutua absolute inset-x-[10%] top-[4%] grid gap-[3cqw] rounded-[5cqw] p-[4.5cqw] vl">
       <div class="flex items-center gap-[3cqw]">
         <span class="grid size-[13cqw] place-items-center rounded-full bg-[conic-gradient(from_200deg,#5b3cf0,#1f5eff,#a99bff,#5b3cf0)] p-[.8cqw]"><span class="grid size-full place-items-center rounded-full bg-white"><img src="/img/simbolo-gradiente.svg" alt="" width="60" height="44" class="w-[60%]" /></span></span>
         <div class="grid flex-1 gap-[1.6cqw]">
@@ -100,7 +100,7 @@ const sk = 'block h-[1.6cqw] rounded-full bg-[#dad7e8]';
   )}
 
   {tipo === 'branding' && (
-    <div class="flutua absolute inset-x-[4%] top-[8%] grid grid-cols-[1.1fr_1fr] gap-[3cqw] rounded-[5cqw] border border-white/70 bg-white/90 p-[4.5cqw] shadow-[0_40px_80px_-40px_rgba(31,25,90,.55)] backdrop-blur-xl">
+    <div class="flutua absolute inset-x-[4%] top-[8%] grid grid-cols-[1.1fr_1fr] gap-[3cqw] rounded-[5cqw] p-[4.5cqw] vl">
       <div class="grid aspect-square place-items-center rounded-[3.5cqw] bg-[linear-gradient(150deg,#2a2355,#110e26)]">
         <img src="/img/simbolo-gradiente.svg" alt="" width="200" height="147" class="w-[64%]" />
       </div>
