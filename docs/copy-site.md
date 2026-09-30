@@ -252,9 +252,7 @@ Parte do nosso resultado ajuda a manter o Hospital Pequeno Príncipe, o maior ho
 
 **Vocês atendem fora de Curitiba?** Sim. Atendemos empresas de todo o Brasil com reuniões on-line. Em Araucária, Curitiba e região metropolitana, também presencialmente.
 
-**Em quanto tempo vejo resultado?** Campanhas de Google Ads e Meta Ads costumam gerar os primeiros contatos nas primeiras semanas. O custo por venda fica consistente entre o 2º e o 3º mês de otimização. [validar prazos]
-
-**Existe fidelidade no contrato?** [Resposta conforme a política real da Otimizo]
+**Em quanto tempo vejo resultado?** Campanhas de Google Ads e Meta Ads costumam gerar os primeiros contatos nas primeiras semanas. O custo por venda fica consistente entre o 2º e o 3º mês de otimização.
 
 **Como funciona a consultoria gratuita?** É uma conversa on-line de cerca de uma hora com um especialista em marketing da Otimizo. Você sai com os pilares do marketing digital prontos para aplicar no seu negócio, contratando a Otimizo ou não.
 
@@ -539,6 +537,10 @@ Quer crescer com a gente? **Veja como fazer parte do time →**
 - Otimização semanal de lances, termos e anúncios
 - Relatório mensal com custo por lead e por venda
 
+**Também anunciamos em**
+
+- **YouTube Ads.** Anúncios em vídeo no YouTube, criados e gerenciados pelo próprio Google Ads, para apresentar sua empresa a quem pesquisa o seu tema.
+
 ## 6.4 O resultado que buscamos
 
 Reduzir o custo por oportunidade qualificada e tornar previsível o volume de orçamentos que entra todo mês.
@@ -547,7 +549,7 @@ Reduzir o custo por oportunidade qualificada e tornar previsível o volume de or
 
 **Quanto preciso investir em Google Ads?** Depende da concorrência do seu serviço e da sua região. Na consultoria gratuita estimamos a verba mínima para gerar um volume de contatos que justifique o investimento.
 
-**Em quanto tempo aparecem os primeiros contatos?** Normalmente nas primeiras semanas depois da publicação. O custo por venda ganha consistência entre o 2º e o 3º mês de otimização. [validar]
+**Em quanto tempo aparecem os primeiros contatos?** Normalmente nas primeiras semanas depois da publicação. O custo por venda ganha consistência entre o 2º e o 3º mês de otimização.
 
 **A verba de anúncio está inclusa no valor da Otimizo?** Não. A verba é paga direto ao Google, na conta da sua empresa. Você mantém a propriedade da conta e do histórico. [validar]
 
@@ -569,7 +571,7 @@ Reduzir o custo por oportunidade qualificada e tornar previsível o volume de or
 | --- | --- |
 | URL | /servicos/meta-ads |
 | Title | Meta Ads: Facebook e Instagram para vender · Otimizo |
-| Meta description | Gestão de Meta Ads com criativos testados, públicos certos e leads qualificados para o seu time comercial. Também LinkedIn e YouTube Ads. |
+| Meta description | Gestão de Meta Ads com criativos testados, públicos certos e leads qualificados para o seu time comercial. |
 
 ## 7.1 Abertura
 
@@ -595,24 +597,17 @@ Reduzir o custo por oportunidade qualificada e tornar previsível o volume de or
 - Remarketing por etapa de interesse
 - Relatório mensal com volume de leads e taxa de qualificação
 
-## 7.4 Também anunciamos em
-
-- **LinkedIn Ads.** Para serviços B2B e de alto tíquete: alcance decisores por cargo, setor e porte de empresa.
-- **YouTube Ads.** Vídeos que apresentam sua empresa para quem pesquisa o seu tema.
-
-[validar canais que a Otimizo opera hoje]
-
-## 7.5 O resultado que buscamos
+## 7.4 O resultado que buscamos
 
 Gerar demanda constante para times comerciais que dependem de volume de contatos qualificados.
 
-## 7.6 Perguntas frequentes
+## 7.5 Perguntas frequentes
 
 **Leads baratos valem a pena?** Só se viram clientes. Por isso acompanhamos a qualificação junto com o seu comercial e ajustamos formulários e públicos quando é melhor trocar volume por qualidade.
 
 **Preciso ter vídeos e fotos próprios?** Não é obrigatório para começar, mas material próprio costuma performar melhor que imagem de banco. Orientamos você a gravar o que for preciso.
 
-## 7.7 Chamada final
+## 7.6 Chamada final
 
 **Título:** Quero avançar com Meta Ads
 
@@ -663,9 +658,9 @@ Transformar visitas em conversas comerciais com uma página que responde às dú
 
 ## 8.5 Perguntas frequentes
 
-**Em quanto tempo o site fica pronto?** Uma landing page leva cerca de [X] semanas; um site institucional, cerca de [X] semanas, a partir da aprovação do conteúdo. [validar]
+**Em quanto tempo o site fica pronto?** Uma landing page leva cerca de [X] semanas; um site institucional, cerca de [X] semanas, a partir da aprovação do conteúdo.
 
-**Vou conseguir editar o site depois?** [Resposta conforme a plataforma usada pela Otimizo]
+**Vou conseguir editar o site depois?** As atualizações ficam com a gente: quando precisar mudar algo no site, é só pedir que o nosso time cuida disso para você.
 
 ## 8.6 Chamada final
 
@@ -719,7 +714,7 @@ Dar credibilidade à sua marca no momento em que o cliente pesquisa antes de dec
 
 **Quantos posts por mês?** Definimos a frequência no plano, conforme o objetivo e a verba. [validar pacotes]
 
-**Vocês gravam os vídeos?** Roteirizamos todos e orientamos a gravação, que pode ser feita pelo seu time. [validar se a Otimizo grava]
+**Vocês gravam os vídeos?** Não. Roteirizamos todos e orientamos a gravação, que é feita pelo seu time.
 
 ## 9.6 Chamada final
 

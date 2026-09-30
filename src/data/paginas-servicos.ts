@@ -45,10 +45,13 @@ export const paginasServicos: PaginaServico[] = [
       'Otimização semanal de lances, termos e anúncios',
       'Relatório mensal com custo por lead e por venda',
     ],
+    tambem: [
+      { titulo: 'YouTube Ads', nome: 'youtube', texto: 'Anúncios em vídeo no YouTube, criados e gerenciados pelo próprio Google Ads, para apresentar sua empresa a quem pesquisa o seu tema.' },
+    ],
     resultado: 'Reduzir o custo por oportunidade qualificada e tornar previsível o volume de orçamentos que entra todo mês.',
     faq: [
       { p: 'Quanto preciso investir em Google Ads?', r: 'Depende da concorrência do seu serviço e da sua região. Na consultoria gratuita estimamos a verba mínima para gerar um volume de contatos que justifique o investimento.' },
-      { p: 'Em quanto tempo aparecem os primeiros contatos?', r: 'Normalmente nas primeiras semanas depois da publicação. O custo por venda ganha consistência entre o 2º e o 3º mês de otimização. [validar]' },
+      { p: 'Em quanto tempo aparecem os primeiros contatos?', r: 'Normalmente nas primeiras semanas depois da publicação. O custo por venda ganha consistência entre o 2º e o 3º mês de otimização.' },
       { p: 'A verba de anúncio está inclusa no valor da Otimizo?', r: 'Não. A verba é paga direto ao Google, na conta da sua empresa. Você mantém a propriedade da conta e do histórico. [validar]' },
     ],
     final: {
@@ -61,7 +64,7 @@ export const paginasServicos: PaginaServico[] = [
     slug: 'meta-ads',
     nome: 'Meta Ads',
     title: 'Meta Ads: Facebook e Instagram para vender · Otimizo',
-    description: 'Gestão de Meta Ads com criativos testados, públicos certos e leads qualificados para o seu time comercial. Também LinkedIn e YouTube Ads.',
+    description: 'Gestão de Meta Ads com criativos testados, públicos certos e leads qualificados para o seu time comercial.',
     chamada: 'Serviços · Meta Ads',
     h1: 'Meta Ads: Facebook e Instagram para gerar demanda qualificada',
     texto: 'Criamos campanhas de prospecção, remarketing e reativação no Facebook e no Instagram, com criativos pensados para o seu público e testes contínuos de oferta. O objetivo não é lead barato. É lead que vira cliente.',
@@ -78,11 +81,6 @@ export const paginasServicos: PaginaServico[] = [
       'Remarketing por etapa de interesse',
       'Relatório mensal com volume de leads e taxa de qualificação',
     ],
-    tambem: [
-      { titulo: 'LinkedIn Ads', nome: 'linkedin', texto: 'Para serviços B2B e de alto tíquete: alcance decisores por cargo, setor e porte de empresa.' },
-      { titulo: 'YouTube Ads', nome: 'youtube', texto: 'Vídeos que apresentam sua empresa para quem pesquisa o seu tema.' },
-    ],
-    tambemPendencia: '[validar canais que a Otimizo opera hoje]',
     resultado: 'Gerar demanda constante para times comerciais que dependem de volume de contatos qualificados.',
     faq: [
       { p: 'Leads baratos valem a pena?', r: 'Só se viram clientes. Por isso acompanhamos a qualificação junto com o seu comercial e ajustamos formulários e públicos quando é melhor trocar volume por qualidade.' },
@@ -118,8 +116,8 @@ export const paginasServicos: PaginaServico[] = [
     ],
     resultado: 'Transformar visitas em conversas comerciais com uma página que responde às dúvidas do cliente antes que ele precise perguntar.',
     faq: [
-      { p: 'Em quanto tempo o site fica pronto?', r: 'Uma landing page leva cerca de [X] semanas; um site institucional, cerca de [X] semanas, a partir da aprovação do conteúdo. [validar]' },
-      { p: 'Vou conseguir editar o site depois?', r: '[Resposta conforme a plataforma usada pela Otimizo]' },
+      { p: 'Em quanto tempo o site fica pronto?', r: 'Uma landing page leva cerca de [X] semanas; um site institucional, cerca de [X] semanas, a partir da aprovação do conteúdo.' },
+      { p: 'Vou conseguir editar o site depois?', r: 'As atualizações ficam com a gente: quando precisar mudar algo no site, é só pedir que o nosso time cuida disso para você.' },
     ],
     final: {
       titulo: 'Quero avançar com meu site',
@@ -151,7 +149,7 @@ export const paginasServicos: PaginaServico[] = [
     resultado: 'Dar credibilidade à sua marca no momento em que o cliente pesquisa antes de decidir.',
     faq: [
       { p: 'Quantos posts por mês?', r: 'Definimos a frequência no plano, conforme o objetivo e a verba. [validar pacotes]' },
-      { p: 'Vocês gravam os vídeos?', r: 'Roteirizamos todos e orientamos a gravação, que pode ser feita pelo seu time. [validar se a Otimizo grava]' },
+      { p: 'Vocês gravam os vídeos?', r: 'Não. Roteirizamos todos e orientamos a gravação, que é feita pelo seu time.' },
     ],
     final: {
       titulo: 'Quero avançar com social media',
