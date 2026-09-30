@@ -1,7 +1,7 @@
 ---
 // Ícones de linha usados no site. Decorativos por padrão (aria-hidden).
 interface Props {
-  nome: 'whatsapp' | 'seta' | 'chevron' | 'menu' | 'fechar' | 'mais' | 'calculadora' | 'balanca' | 'grade' | 'relatorio' | 'pessoa' | 'alvo' | 'chat' | 'funil' | 'elo' | 'coracao' | 'aspas' | 'x';
+  nome: 'whatsapp' | 'seta' | 'chevron' | 'menu' | 'fechar' | 'mais' | 'calculadora' | 'balanca' | 'grade' | 'relatorio' | 'pessoa' | 'alvo' | 'chat' | 'funil' | 'elo' | 'coracao' | 'aspas' | 'pin' | 'x';
   class?: string;
 }
 const { nome, class: classe = 'size-5' } = Astro.props;
@@ -26,6 +26,7 @@ const { nome, class: classe = 'size-5' } = Astro.props;
     {nome === 'funil' && <path d="M4 5h16l-6 7.5V19l-4 1.5v-8L4 5Z" />}
     {nome === 'elo' && <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />}
     {nome === 'coracao' && <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" />}
+    {nome === 'pin' && <><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" /><circle cx="12" cy="10" r="2.4" /></>}
     {nome === 'aspas' && <path d="M9 7H6.5A1.5 1.5 0 0 0 5 8.5V12h4V7Zm0 5c0 3-1.5 4.5-4 5M19 7h-2.5A1.5 1.5 0 0 0 15 8.5V12h4V7Zm0 5c0 3-1.5 4.5-4 5" />}
   </svg>
 )}

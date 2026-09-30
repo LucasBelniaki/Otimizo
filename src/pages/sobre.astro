@@ -1,0 +1,244 @@
+---
+// Sobre. Texto: docs/copy-site.md, seção 4.
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+import Icone from '../components/ui/Icone.astro';
+import Microcopy from '../components/ui/Microcopy.astro';
+import Numeros from '../components/home/Numeros.astro';
+import ChamadaBotoes from '../components/home/ChamadaBotoes.astro';
+import VisualSobre from '../components/sobre/VisualSobre.astro';
+import { copy } from '../lib/texto';
+
+const socios = [
+  {
+    nome: 'Lucas Belniaki',
+    cargo: 'Sócio',
+    foto: 'lucas-belniaki',
+    alt: 'Lucas Belniaki, sócio da Otimizo, de terno cinza e braços cruzados',
+    texto: 'Empreendedor e estrategista, Lucas construiu sua trajetória na prática, entre negócios próprios, vendas e gestão. Acompanhando de perto os desafios de outros empresários, formou a visão que guia a Otimizo: marketing não se mede em anúncio publicado, e sim em crescimento do negócio. Hoje lidera a estratégia dos projetos. [validar função]',
+  },
+  {
+    nome: 'Lais Belniaki',
+    cargo: 'Sócia',
+    foto: 'lais-belniaki',
+    alt: 'Lais Belniaki, sócia da Otimizo, de blazer branco e braços cruzados',
+    texto: 'Com trajetória na área comercial e em consultoria, Lais desenvolveu uma visão estratégica sobre relacionamento e vendas. Na Otimizo, transforma estratégia em oportunidade comercial, conectando marketing, time de vendas e pessoas para que o contato vire cliente.',
+  },
+];
+
+const etapas = [
+  { nome: 'Diagnóstico', texto: 'Posicionamento digital, concorrência, histórico de campanhas e processo comercial atual.' },
+  { nome: 'Organização', texto: 'Oferta, canais, verba, metas de custo por lead e por venda, ferramentas e páginas.' },
+  { nome: 'Tração', texto: 'Estratégia no ar, com especialistas de cada canal e ajustes semanais.' },
+  { nome: 'Investigação', texto: 'Reunião mensal de resultado com números reais de venda e o plano do próximo ciclo.' },
+];
+
+const principios = [
+  { nome: 'Foco em resultado', texto: 'Nosso trabalho é medido pelo resultado do cliente, não pelo volume de entregas.' },
+  { nome: 'Atitude de dono', texto: 'Cuidamos da verba do cliente como se fosse nossa.' },
+  { nome: 'Autorresponsabilidade', texto: 'Quando algo não funciona, a primeira pergunta é o que nós podemos fazer diferente.' },
+  { nome: 'Fracasso bem-sucedido', texto: 'Testar faz parte. Todo teste que não dá certo vira aprendizado para o próximo ciclo.' },
+  { nome: 'Fazer acontecer', texto: 'Plano bom é plano executado. Preferimos entregar e ajustar a esperar o cenário perfeito.' },
+  { nome: 'Não ter braço curto', texto: 'Se é importante para o resultado do cliente, é responsabilidade nossa.' },
+  { nome: 'Crescer juntos', texto: 'Temos ambição: queremos que clientes, time e comunidade cresçam no mesmo ritmo.' },
+];
+---
+<Base
+  title="Sobre a Otimizo · Agência de marketing e vendas em Araucária (PR)"
+  description="Conheça a Otimizo, agência de marketing e vendas de Araucária (PR) que atende empresas e empreendedores de todo o Brasil com foco em custo por venda."
+>
+  <!-- 4.1 Abertura -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="sobre-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="deriva-3 absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.12),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_72%_40%,#000_10%,transparent_75%)]"></div>
+    </div>
+    <div class="container-site grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+      <div class="entrada grid content-start gap-6 lg:gap-7">
+        <span class="chamada">Sobre a Otimizo</span>
+        <h1 id="sobre-titulo" class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[3.625rem] lg:leading-[1.04]">
+          Existimos para que o marketing prove o seu valor <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">em vendas.</span>
+        </h1>
+        <p class="texto-secao max-w-[56ch]">A Otimizo nasceu de uma percepção simples: muitas empresas investem em marketing sem saber o que volta. Nosso trabalho começa entendendo o comercial e termina em número de venda.</p>
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Botao href="/consultoria-gratuita" />
+          <Botao variante="whatsapp" />
+        </div>
+        <Microcopy />
+      </div>
+      <VisualSobre />
+    </div>
+  </section>
+
+  <!-- 4.2 Nossa história -->
+  <section class="secao border-t border-linha" aria-labelledby="historia-titulo">
+    <div class="container-site grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <div class="grid content-start gap-8 lg:sticky lg:top-28 lg:self-start" data-revelar>
+        <h2 id="historia-titulo" class="titulo-secao">De Araucária para empresas de todo o Brasil</h2>
+        <!-- sede e alcance -->
+        <div class="luz granulado relative grid aspect-[16/10] place-items-center overflow-hidden rounded-[var(--radius-card)] border border-[#ebe7fa] bg-[linear-gradient(160deg,#fff_0%,#f1eeff_100%)]" style="--grao:.1" aria-hidden="true">
+          <div class="grade-fundo absolute inset-0 opacity-80 [mask-image:radial-gradient(60%_70%_at_50%_50%,#000,transparent)]"></div>
+          <span class="onda absolute size-24 rounded-full border border-roxo/40"></span>
+          <span class="onda absolute size-24 rounded-full border border-roxo/40" style="--o:1"></span>
+          <span class="onda absolute size-24 rounded-full border border-roxo/40" style="--o:2"></span>
+          <span class="relative grid size-14 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_14px_30px_-10px_rgba(91,60,240,.7),0_0_0_8px_rgba(255,255,255,.8)]"><Icone nome="pin" class="size-6" /></span>
+          <span class="vidro-claro absolute bottom-4 left-4 rounded-full px-3.5 py-2 text-[0.8125rem] font-medium text-tinta sm:bottom-5 sm:left-5 sm:text-sm">Araucária (PR)</span>
+          <span class="vidro-claro absolute right-4 top-4 rounded-full px-3.5 py-2 text-[0.8125rem] font-medium text-tinta sm:right-5 sm:top-5 sm:text-sm">Atendemos todo o Brasil</span>
+        </div>
+      </div>
+      <div class="grid content-start gap-6 text-[1.0625rem] leading-relaxed text-[#3a3852] lg:pt-2 lg:text-lg">
+        <p data-revelar>Somos uma agência de marketing digital e assessoria em vendas com sede em Araucária, na região metropolitana de Curitiba. Atuamos como a área de marketing terceirizada de empresas que precisam crescer com previsibilidade.</p>
+        <p data-revelar style="--d:1">Atendemos empresas e empreendedores de vários segmentos, como serviços profissionais, serviços financeiros, indústria, gráficas e varejo especializado.</p>
+        <p data-revelar style="--d:2" class="relative mt-2 rounded-[var(--radius-card)] bg-tinta p-7 font-display text-xl font-medium leading-snug tracking-[-0.015em] text-white lg:p-9 lg:text-2xl">
+          <Icone nome="aspas" class="mb-4 block size-8 text-roxo-claro" />
+          Nosso diferencial vem da origem. Antes de sermos agência, vivemos o lado comercial. Por isso não entregamos só anúncio: <span class="text-roxo-claro">entregamos processo, do primeiro clique ao contrato assinado.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.3 Missão e crença + 4.4 Números -->
+  <section class="granulado secao relative overflow-hidden bg-nevoa" style="--grao:.08" aria-label="Missão, crença e números">
+    <div aria-hidden="true" class="deriva-3 pointer-events-none absolute -right-40 top-0 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.12),transparent)]"></div>
+    <div class="container-site grid gap-6 lg:gap-8">
+      <div class="grid gap-4 lg:grid-cols-2">
+        <div class="escuro granulado luz relative grid content-start gap-5 overflow-hidden rounded-[var(--radius-card)] bg-tinta p-8 text-white lg:p-12" style="--grao:.2" data-revelar>
+          <div aria-hidden="true" class="deriva-2 !absolute -bottom-28 -right-28 !-z-10 size-96 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.6),transparent)]"></div>
+          <h2 class="chamada !text-roxo-claro">Nossa missão</h2>
+          <p class="font-display text-[1.5rem] font-medium leading-snug tracking-[-0.02em] text-white lg:text-[2rem]">Ajudar pequenas e médias empresas a vender mais e a serem reconhecidas pela internet, com um marketing que presta contas em resultado.</p>
+        </div>
+        <div class="card-roxo luz relative grid content-start gap-5 overflow-hidden rounded-[var(--radius-card)] border border-[#ebe7fa] p-8 lg:p-12" data-revelar style="--d:1">
+          <h2 class="chamada">No que acreditamos</h2>
+          <p class="font-display text-[1.5rem] font-medium leading-snug tracking-[-0.02em] text-tinta lg:text-[2rem]">Marketing não é despesa criativa, é investimento com meta.</p>
+          <p class="text-[1.0625rem] leading-relaxed text-cinza">Por isso todo projeto começa em diagnóstico e termina em indicador acompanhado.</p>
+        </div>
+      </div>
+      <div data-revelar style="--d:2"><Numeros /></div>
+    </div>
+  </section>
+
+  <!-- 4.5 Sócios -->
+  <section class="secao" aria-labelledby="socios-titulo">
+    <div class="container-site grid gap-12">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16" data-revelar>
+        <div class="grid gap-6">
+          <span class="chamada">Quem conduz</span>
+          <h2 id="socios-titulo" class="titulo-secao">Os sócios da Otimizo</h2>
+        </div>
+        <p class="texto-secao">Duas trajetórias que se completam: estratégia de marketing de um lado, vendas e relacionamento do outro.</p>
+      </div>
+      <ul class="grid gap-4 lg:grid-cols-2">
+        {socios.map((s, i) => (
+          <li class="luz card-roxo group grid overflow-hidden rounded-[var(--radius-card)] border border-[#ebe7fa] transition-[box-shadow] duration-300 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)] sm:grid-cols-[14rem_1fr] lg:grid-cols-[13rem_1fr] xl:grid-cols-[15rem_1fr]" data-revelar style={`--d:${i + 1}`}>
+            <div class="relative overflow-hidden bg-nevoa">
+              <img
+                src={`/img/socios/${s.foto}-960.webp`}
+                srcset={`/img/socios/${s.foto}-480.webp 480w, /img/socios/${s.foto}-960.webp 960w`}
+                sizes="(min-width: 640px) 240px, calc(100vw - 40px)"
+                alt={s.alt} width="960" height="1200" loading="lazy" decoding="async"
+                class="aspect-[4/3.6] w-full object-cover object-[50%_18%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04] sm:aspect-auto sm:h-full"
+              />
+            </div>
+            <div class="grid content-start gap-4 p-7 lg:p-8">
+              <div class="grid gap-1">
+                <h3 class="text-2xl">{s.nome}</h3>
+                <span class="font-mono text-xs uppercase tracking-[0.1em] text-roxo">{s.cargo}</span>
+              </div>
+              <p class="leading-relaxed text-cinza" set:html={copy(s.texto)} />
+              <p class="border-t border-linha pt-4 text-sm" set:html={copy('[preencher: credencial concreta e link do LinkedIn]')} />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4.6 Método OTI -->
+  <section class="escuro granulado relative overflow-hidden bg-tinta text-white" style="--grao:.2" aria-labelledby="metodo-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="deriva-1 absolute left-[calc(50%-35rem)] -top-60 h-[30rem] w-[70rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.4),transparent)]"></div>
+      <div class="grade-fundo absolute inset-0 opacity-[0.06] [--cor-grade:#fff] [mask-image:linear-gradient(180deg,#000,transparent_70%)]"></div>
+    </div>
+    <div class="container-site secao grid gap-14">
+      <div class="grid max-w-3xl gap-6" data-revelar>
+        <span class="chamada">Método OTI</span>
+        <h2 id="metodo-titulo" class="titulo-secao !text-white">Como um projeto Otimizo acontece</h2>
+      </div>
+
+      <ol class="relative grid gap-10 md:grid-cols-4 md:gap-6">
+        <div aria-hidden="true" class="linha-metodo absolute bottom-2 left-6 top-2 w-[2px] rounded-full bg-gradient-to-b from-roxo via-azul to-roxo md:bottom-auto md:left-6 md:right-6 md:top-6 md:h-[2px] md:w-auto md:bg-gradient-to-r"></div>
+        {etapas.map((e, i) => (
+          <li class="group relative grid content-start gap-4 pl-20 md:pl-0" data-revelar style={`--d:${i + 1}`}>
+            <span class="absolute left-0 top-0 grid size-12 place-items-center rounded-full border border-white/15 bg-tinta-2 font-mono text-sm text-roxo-claro shadow-[0_0_0_6px_#110e26] transition-[border-color,color,transform] duration-300 group-hover:scale-110 group-hover:border-roxo-claro/60 group-hover:text-white md:relative">0{i + 1}</span>
+            <h3 class="text-xl !text-white md:mt-2">{e.nome}</h3>
+            <p class="leading-relaxed text-cinza-claro">{e.texto}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p data-revelar class="flex items-center gap-4 font-display text-xl font-medium tracking-[-0.02em] text-white lg:text-2xl">
+        <svg viewBox="0 0 24 24" class="giro size-8 shrink-0 text-roxo-claro" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4.5h-4.5" /></svg>
+        A cada ciclo, otimizamos. Está no nome.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4.7 Cultura -->
+  <section class="secao" aria-labelledby="cultura-titulo">
+    <div class="container-site grid gap-12">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16" data-revelar>
+        <div class="grid gap-6">
+          <span class="chamada">Cultura Otimizo</span>
+          <h2 id="cultura-titulo" class="titulo-secao">O jeito Otimizo de trabalhar</h2>
+        </div>
+        <p class="texto-secao">Sete princípios que valem para o time, para os clientes e para cada real de verba que passa pelas nossas mãos.</p>
+      </div>
+      <ol class="grid border-t border-linha">
+        {principios.map((p, i) => (
+          <li class="luz group grid gap-2 border-b border-linha py-6 transition-colors duration-300 hover:bg-[#faf9ff] sm:grid-cols-[4rem_1fr] md:grid-cols-[4.5rem_minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-baseline md:gap-8 md:px-4 lg:py-8" data-revelar style={`--d:${(i % 3) + 1}`}>
+            <span class="font-mono text-sm text-roxo">0{i + 1}</span>
+            <h3 class="text-xl transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-roxo lg:text-2xl">{p.nome}</h3>
+            <p class="leading-relaxed text-cinza sm:col-start-2 md:col-start-auto lg:text-[1.0625rem]">{p.texto}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4.8 Impacto social + 4.9 Trabalhe conosco -->
+  <section class="container-site grid gap-4 pb-20 lg:pb-28" aria-labelledby="impacto-titulo">
+    <div class="luz group granulado relative grid gap-7 overflow-hidden rounded-[var(--radius-card)] bg-[linear-gradient(110deg,#ece8ff_0%,#e6ecff_100%)] p-8 sm:grid-cols-[auto_1fr] sm:items-center lg:gap-12 lg:p-14" style="--grao:.14" data-revelar>
+      <div aria-hidden="true" class="deriva-3 !absolute -right-24 -top-24 !-z-10 size-80 rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.25),transparent)]"></div>
+      <img src="/img/selos/pequeno-principe-empresa-apoiadora.webp" alt="Selo Empresa Apoiadora 2026 do Hospital Pequeno Príncipe" width="320" height="320" loading="lazy" decoding="async" class="size-28 drop-shadow-[0_10px_18px_rgba(17,14,38,.18)] transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-105 lg:size-40" />
+      <div class="grid content-start gap-4">
+        <h2 id="impacto-titulo" class="titulo-secao">Crescer também é devolver</h2>
+        <p class="max-w-[62ch] text-[1.0625rem] leading-relaxed text-tinta lg:text-lg">A Otimizo é Empresa Apoiadora do Hospital Pequeno Príncipe, o maior hospital exclusivamente pediátrico do Brasil. Cada projeto que dá certo com um cliente ajuda a sustentar esse apoio.</p>
+        <a href="/projetos-sociais" class="link-seta text-[1.0625rem]">Conheça nossos projetos sociais <Icone nome="seta" class="size-4" /></a>
+      </div>
+    </div>
+    <p class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-[var(--radius-card)] border border-linha px-7 py-6 text-[1.0625rem] text-tinta lg:px-10" data-revelar>
+      Quer crescer com a gente?
+      <a href="/trabalhe-conosco" class="link-seta font-semibold">Veja como fazer parte do time <Icone nome="seta" class="size-4" /></a>
+    </p>
+  </section>
+
+  <!-- 4.10 Chamada final -->
+  <ChamadaBotoes
+    titulo="Agora que você conhece a Otimizo, que tal a gente conhecer a sua empresa?"
+    texto="Agende uma consultoria gratuita de cerca de uma hora com um especialista da Otimizo. Entendemos o seu negócio e mostramos o que o marketing digital pode fazer por ele."
+  />
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .onda { animation: onda 3.6s ease-out infinite; animation-delay: calc(var(--o, 0) * 1.2s); }
+      .linha-metodo { background-size: 100% 200%; animation: fluir-v 6s linear infinite; }
+      @media (min-width: 768px) {
+        .linha-metodo { background-size: 200% 100%; animation-name: fluir-h; }
+      }
+    }
+    @keyframes onda { from { transform: scale(0.6); opacity: 0.9; } to { transform: scale(3.2); opacity: 0; } }
+    @keyframes fluir-v { to { background-position: 0 -200%; } }
+    @keyframes fluir-h { to { background-position: -200% 0; } }
+  </style>
+</Base>

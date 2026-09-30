@@ -347,7 +347,7 @@ Faixa de logos de clientes logo abaixo.
 | --- | --- |
 | URL | /sobre |
 | Title | Sobre a Otimizo · Agência de marketing e vendas em Araucária (PR) |
-| Meta description | Conheça a Otimizo, agência de marketing e vendas de Araucária (PR) que atende escritórios e PMEs de todo o Brasil com foco em custo por venda. |
+| Meta description | Conheça a Otimizo, agência de marketing e vendas de Araucária (PR) que atende empresas e empreendedores de todo o Brasil com foco em custo por venda. |
 
 ## 4.1 Abertura
 
@@ -364,7 +364,7 @@ Faixa de logos de clientes logo abaixo.
 **Texto:**
 Somos uma agência de marketing digital e assessoria em vendas com sede em Araucária, na região metropolitana de Curitiba. Atuamos como a área de marketing terceirizada de empresas que precisam crescer com previsibilidade.
 
-A maior parte dos nossos clientes são escritórios de contabilidade e advocacia. Também atendemos serviços financeiros, indústria, gráficas e varejo especializado.
+Atendemos empresas e empreendedores de vários segmentos, como serviços profissionais, serviços financeiros, indústria, gráficas e varejo especializado.
 
 Nosso diferencial vem da origem. Antes de sermos agência, vivemos o lado comercial. Por isso não entregamos só anúncio: entregamos processo, do primeiro clique ao contrato assinado.
 

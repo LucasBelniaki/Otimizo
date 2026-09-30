@@ -1,0 +1,57 @@
+---
+// Composição da abertura do Sobre: o símbolo da marca no centro de uma "mesa"
+// com estratégia, execução e números girando em volta (texto do rodapé).
+import Icone from '../ui/Icone.astro';
+
+const pontos = [
+  { nome: 'Estratégia', icone: 'alvo', pos: 'left-1/2 top-0' },
+  { nome: 'Execução', icone: 'elo', pos: 'left-[93.3%] top-3/4' },
+  { nome: 'Números', icone: 'relatorio', pos: 'left-[6.7%] top-3/4' },
+] as const;
+---
+<div class="vs relative mx-auto aspect-square w-full max-w-[32rem] lg:max-w-[38rem] [container-type:inline-size]" aria-hidden="true">
+  <div class="deriva-2 absolute inset-[10%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.28),rgba(31,94,255,.12)_60%,transparent)] blur-2xl"></div>
+
+  <!-- anéis -->
+  <div class="absolute inset-[16%] rounded-full border border-dashed border-[#cfc6fb]"></div>
+  <div class="absolute inset-[28%] rounded-full border border-[#e3ddff] bg-white/35"></div>
+  <div class="absolute inset-[28%] rounded-full shadow-[inset_0_0_60px_rgba(91,60,240,.08)]"></div>
+
+  <!-- pontos que giram no anel interno -->
+  <div class="vs-orbita-2 absolute inset-[28%]">
+    <i class="absolute left-1/2 top-0 block size-[2.2cqw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-azul shadow-[0_0_0_1.2cqw_rgba(31,94,255,.14)]"></i>
+    <i class="absolute bottom-0 left-1/2 block size-[1.6cqw] -translate-x-1/2 translate-y-1/2 rounded-full bg-roxo-claro"></i>
+  </div>
+
+  <!-- centro -->
+  <div class="vidro-claro absolute inset-[37%] grid place-items-center rounded-full">
+    <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="flutua w-[62%] drop-shadow-[0_18px_24px_rgba(91,60,240,.28)]" fetchpriority="high" />
+  </div>
+
+  <!-- anel externo: rastro de luz e os três pilares -->
+  <div class="vs-orbita absolute inset-[16%]">
+    <svg viewBox="0 0 100 100" class="absolute inset-0 size-full -rotate-90 overflow-visible">
+      <defs>
+        <linearGradient id="vs-rastro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B3CF0" stop-opacity="0" /><stop offset="1" stop-color="#5B3CF0" /></linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="50" fill="none" stroke="url(#vs-rastro)" stroke-width=".9" stroke-linecap="round" stroke-dasharray="44 270" pathLength="314" transform="rotate(-62 50 50)" />
+    </svg>
+    {pontos.map((p) => (
+      <div class={`absolute ${p.pos} -translate-x-1/2 -translate-y-1/2`}>
+        <span class="vs-contra vidro-claro flex items-center gap-[2cqw] whitespace-nowrap rounded-full py-[1.6cqw] pl-[1.6cqw] pr-[3.6cqw] shadow-[0_18px_40px_-20px_rgba(31,25,90,.45)]">
+          <span class="grid size-[7.4cqw] place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white"><Icone nome={p.icone} class="size-[3.8cqw]" /></span>
+          <span class="font-display text-[max(12px,3.6cqw)] font-semibold tracking-tight text-tinta">{p.nome}</span>
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .vs-orbita { animation: vs-girar 48s linear infinite; }
+    .vs-orbita .vs-contra { display: flex; animation: vs-girar 48s linear infinite reverse; }
+    .vs-orbita-2 { animation: vs-girar 30s linear infinite reverse; }
+  }
+  @keyframes vs-girar { to { transform: rotate(360deg); } }
+</style>
