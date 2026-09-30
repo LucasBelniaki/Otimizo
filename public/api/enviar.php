@@ -64,8 +64,8 @@ if ($tipo === 'consultoria') {
         'Página de origem' => $origem,
     ];
 } else {
-    if ($nome === '' || $email === '') {
-        voltar(($origem ?: '/trabalhe-conosco') . '?erro=campos');
+    if ($nome === '' || $email === '' || strlen(preg_replace('/\D/', '', $whatsapp)) < 10) {
+        voltar(($origem ?: '/trabalhe-conosco') . '?erro=campos#candidatura');
     }
     $assunto = "Nova candidatura: {$nome}";
     $linhas = [

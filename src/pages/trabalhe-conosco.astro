@@ -1,0 +1,136 @@
+---
+// Trabalhe conosco. Texto: docs/copy-site.md, seção 14.
+import Base from '../layouts/Base.astro';
+import Botao from '../components/ui/Botao.astro';
+import Icone from '../components/ui/Icone.astro';
+import FormCandidatura from '../components/forms/FormCandidatura.astro';
+import { mensagensWhatsApp } from '../data/site';
+import { copy } from '../lib/texto';
+
+const mensagem = mensagensWhatsApp.trabalheConosco;
+
+const comoE = [
+  { titulo: 'Resultado é o que conta.', texto: 'Você vê o impacto do seu trabalho no negócio do cliente.', icone: 'relatorio' },
+  { titulo: 'Aprendizado de verdade.', texto: 'Especialistas por canal, projetos em vários segmentos e treinamento contínuo.', icone: 'alvo' },
+  { titulo: 'Erro vira aprendizado.', texto: 'Testar faz parte do nosso jeito de trabalhar.', icone: 'elo' },
+] as const;
+
+const areas = ['Tráfego pago', 'Social media', 'Design', 'Audiovisual', 'Comercial e atendimento ao cliente'] as const;
+
+// Pontos da curva do visual (viewBox 400 x 340) com os princípios da cultura (Sobre, 4.7)
+const pontos = [
+  { x: 100, y: 282, nome: 'Atitude de dono', icone: 'pessoa', ajuste: '-translate-x-[12%]' },
+  { x: 205, y: 197, nome: 'Fazer acontecer', icone: 'alvo', ajuste: '-translate-x-[40%]' },
+  { x: 320, y: 95, nome: 'Crescer juntos', icone: 'coracao', ajuste: '-translate-x-[88%]' },
+] as const;
+---
+<Base
+  title="Trabalhe na Otimizo · Vagas em marketing digital"
+  description="Quer crescer em marketing digital e vendas? Conheça a cultura da Otimizo e envie seu currículo para as próximas vagas."
+  mensagemWhatsApp={mensagem}
+>
+  <!-- 14.1 Abertura -->
+  <section class="granulado relative overflow-hidden pb-16 pt-28 lg:pb-24 lg:pt-40" style="--grao:.12" aria-labelledby="trabalhe-titulo">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+      <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+      <div class="deriva-3 absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.12),transparent)]"></div>
+    </div>
+    <div class="container-site grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+      <div class="entrada grid content-start gap-6 lg:gap-7">
+        <span class="chamada">Trabalhe conosco</span>
+        <h1 id="trabalhe-titulo" class="text-[2.375rem] leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[3.375rem]">
+          Cresça em uma das áreas que mais crescem, <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">ao lado de quem cresce junto</span>
+        </h1>
+        <p class="texto-secao max-w-[54ch]">Procuramos pessoas com atitude de dono, que gostam de ver o resultado do próprio trabalho em número e que não têm braço curto.</p>
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Botao href="#candidatura" texto="Enviar minha candidatura" rastreio="clique_candidatura" />
+          <Botao variante="whatsapp" mensagem={mensagem} />
+        </div>
+      </div>
+
+      <!-- curva de crescimento com os princípios da cultura -->
+      <div class="tc relative mx-auto aspect-[400/340] w-full max-w-[36rem] [container-type:inline-size]" aria-hidden="true">
+        <div class="deriva-2 absolute inset-[6%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.26),rgba(31,94,255,.1)_60%,transparent)] blur-2xl"></div>
+        <div class="vidro-claro absolute inset-0 rounded-[6cqw]"></div>
+        <div class="grade-fundo absolute inset-0 rounded-[6cqw] opacity-70 [mask-image:linear-gradient(180deg,#000_30%,transparent)]"></div>
+        <div class="absolute inset-0 overflow-hidden rounded-[6cqw]">
+        <svg viewBox="0 0 400 340" class="absolute inset-0 size-full">
+          <defs>
+            <linearGradient id="tc-linha" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1F5EFF" /><stop offset="1" stop-color="#5B3CF0" /></linearGradient>
+            <linearGradient id="tc-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B3CF0" stop-opacity=".18" /><stop offset="1" stop-color="#1F5EFF" stop-opacity="0" /></linearGradient>
+          </defs>
+          <path class="tc-area" d="M0,312 C70,305 80,290 100,282 S170,215 205,197 S290,120 320,95 S370,48 400,26 L400,340 L0,340 Z" fill="url(#tc-area)" />
+          <path class="tc-traco" d="M0,312 C70,305 80,290 100,282 S170,215 205,197 S290,120 320,95 S370,48 400,26" fill="none" stroke="url(#tc-linha)" stroke-width="3.5" stroke-linecap="round" pathLength="1" />
+          {pontos.map((p, i) => (
+            <g>
+              <circle class="tc-pulso" cx={p.x} cy={p.y} r="7" fill="none" stroke="#5B3CF0" stroke-width="2" style={`--i:${i}`} />
+              <circle cx={p.x} cy={p.y} r="7" fill="#fff" stroke="#5B3CF0" stroke-width="3.5" />
+            </g>
+          ))}
+        </svg>
+        </div>
+        <span class="flutua absolute right-[2%] top-[2%] grid size-[15cqw] place-items-center rounded-full bg-white shadow-[0_18px_40px_-18px_rgba(31,25,90,.5)]">
+          <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="w-[64%]" />
+        </span>
+        {pontos.map((p, i) => (
+          <span class={`tc-chip absolute ${p.ajuste} -translate-y-[135%]`} style={`left:${(p.x / 400) * 100}%;top:${(p.y / 340) * 100}%;--i:${i}`}>
+            <span class="flex items-center gap-[2cqw] whitespace-nowrap rounded-full border border-white/80 bg-white/90 py-[1.4cqw] pl-[1.4cqw] pr-[3.2cqw] shadow-[0_18px_40px_-20px_rgba(31,25,90,.45)] backdrop-blur">
+              <span class="grid size-[7cqw] place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white"><Icone nome={p.icone} class="size-[3.6cqw]" /></span>
+              <span class="font-display text-[max(12px,3.5cqw)] font-semibold tracking-tight text-tinta">{p.nome}</span>
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 14.2 Como é trabalhar aqui -->
+  <section class="secao border-t border-linha" aria-labelledby="como-titulo">
+    <div class="container-site grid gap-12">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16" data-revelar>
+        <h2 id="como-titulo" class="titulo-secao">Como é trabalhar aqui</h2>
+        <a href="/sobre#cultura" class="link-seta text-[1.0625rem] lg:justify-self-end">Conheça nossa cultura <Icone nome="seta" class="size-4" /></a>
+      </div>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {comoE.map((c, i) => (
+          <li class="luz card-roxo group grid content-start gap-5 rounded-[var(--radius-card)] border border-[#ebe7fa] p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-34px_rgba(91,60,240,.45)]" data-revelar style={`--d:${i + 1}`}>
+            <span class="grid size-12 place-items-center rounded-xl bg-lavanda text-roxo transition-[background-color,color,transform] duration-300 group-hover:-rotate-6 group-hover:bg-roxo group-hover:text-white"><Icone nome={c.icone} class="size-5" /></span>
+            <h3 class="text-xl">{c.titulo}</h3>
+            <p class="-mt-2 leading-relaxed text-cinza">{c.texto}</p>
+          </li>
+        ))}
+        <li class="grid content-start gap-5 rounded-[var(--radius-card)] border border-dashed border-[#e4c96a] bg-[#fffbea] p-7" data-revelar style="--d:4">
+          <span class="grid size-12 place-items-center rounded-xl bg-white text-[#8a6d00]"><Icone nome="presente" class="size-5" /></span>
+          <p class="leading-relaxed" set:html={copy('[Benefícios e modelo de trabalho: presencial, híbrido ou remoto. validar]')} />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 14.3 Áreas + 14.4 Formulário -->
+  <section id="candidatura" class="granulado secao relative scroll-mt-16 overflow-hidden bg-nevoa" style="--grao:.08" aria-labelledby="areas-titulo">
+    <div aria-hidden="true" class="deriva-3 pointer-events-none absolute -left-40 top-10 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.12),transparent)]"></div>
+    <div class="container-site grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div class="grid content-start gap-6 lg:sticky lg:top-28 lg:self-start" data-revelar>
+        <h2 id="areas-titulo" class="titulo-secao">Áreas em que costumamos contratar</h2>
+        <ul class="flex flex-wrap gap-2">
+          {areas.map((a) => <li class="rounded-full border border-linha bg-white px-4 py-2 text-[0.9375rem] font-medium text-tinta shadow-[0_6px_16px_-12px_rgba(17,14,38,.4)]">{a}</li>)}
+        </ul>
+        <p set:html={copy('[validar]')} />
+      </div>
+      <div data-revelar style="--d:1"><FormCandidatura areas={areas} /></div>
+    </div>
+  </section>
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .tc-traco { stroke-dasharray: 1; stroke-dashoffset: 1; animation: tc-desenhar 1.8s .3s cubic-bezier(.3,.7,.2,1) forwards; }
+      .tc-area { opacity: 0; animation: tc-surgir 1s 1.2s ease forwards; }
+      .tc-chip { opacity: 0; animation: tc-surgir .6s calc(.7s + var(--i) * .45s) ease forwards; }
+      .tc-pulso { transform-box: fill-box; transform-origin: center; animation: tc-pulsar 2.6s calc(var(--i) * .8s) ease-out infinite; }
+    }
+    @keyframes tc-desenhar { to { stroke-dashoffset: 0; } }
+    @keyframes tc-surgir { to { opacity: 1; } }
+    @keyframes tc-pulsar { from { transform: scale(1); opacity: .8; } to { transform: scale(2.8); opacity: 0; } }
+  </style>
+</Base>

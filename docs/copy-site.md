@@ -975,6 +975,10 @@ Tráfego pago · Social media · Design · Audiovisual · Comercial e atendiment
 
 **Abaixo do botão:** Guardamos seu currículo para as próximas vagas. Seus dados são usados só para o processo seletivo.
 
+Opções do campo "Área de interesse": as áreas da seção 14.3 e "Outra". Currículo em PDF, DOC ou DOCX, até 5 MB.
+
+Após o envio, redirecionar para /obrigado, com a variação para candidaturas (ver 15.5).
+
 ---
 
 # 15. Obrigado
@@ -1004,6 +1008,16 @@ Página exibida depois do envio do formulário da consultoria. Onde ficam os eve
 **Título:** Leituras rápidas para aproveitar ainda mais a consultoria
 
 3 posts do blog, escolhidos pelo segmento informado no formulário quando possível.
+
+## 15.5 Variação para candidaturas
+
+Exibida quando o envio vem do formulário de Trabalhe conosco. Substitui 15.1 a 15.3 e não conta como conversão de lead.
+
+**Título (H1):** Recebemos sua candidatura, [Nome]!
+
+**Texto:** Obrigado pelo interesse em fazer parte do time da Otimizo. Guardamos seu currículo para as próximas vagas e entramos em contato quando surgir uma oportunidade com o seu perfil.
+
+**Link:** Conheça nossa cultura → (página Sobre, seção Cultura)
 
 ---
 

@@ -1,0 +1,127 @@
+---
+// Formulário de candidatura (copy: Trabalhe conosco, 14.4).
+// Envia para /api/enviar.php com o currículo anexo e redireciona para /obrigado.
+interface Props { areas: readonly string[]; id?: string; class?: string }
+const { areas, id = 'form-candidatura', class: classe = '' } = Astro.props;
+const campo = 'w-full rounded-xl border border-[#cfcce0] bg-white px-3.5 py-3 text-[0.9375rem] text-tinta placeholder:text-[#8e8ca3] transition-[border-color,box-shadow] focus:border-roxo focus:shadow-[0_0_0_3px_rgba(91,60,240,.18)] focus:outline-none aria-[invalid=true]:border-[#c0262d]';
+const rotulo = 'text-sm font-medium text-tinta';
+---
+<form
+  id={id}
+  action="/api/enviar.php"
+  method="post"
+  enctype="multipart/form-data"
+  novalidate
+  aria-label="Formulário de candidatura"
+  class:list={['relative grid gap-4 rounded-[1.75rem] border border-white/80 bg-white p-5 text-tinta shadow-[0_30px_80px_-40px_rgba(17,14,38,.45),0_0_0_8px_rgba(91,60,240,.05)] transition-shadow duration-500 hover:shadow-[0_40px_90px_-40px_rgba(91,60,240,.55),0_0_0_8px_rgba(91,60,240,.07)] sm:p-7', classe]}
+  data-form-candidatura
+>
+  <input type="hidden" name="tipo" value="candidatura" />
+  <input type="hidden" name="origem" value={Astro.url.pathname} />
+  <input type="hidden" name="inicio" value="" data-inicio />
+  <div class="absolute -left-[9999px]" aria-hidden="true">
+    <label for={`${id}-site`}>Não preencha este campo</label>
+    <input id={`${id}-site`} type="text" name="site_url" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid gap-1.5 sm:col-span-2">
+      <label for={`${id}-nome`} class={rotulo}>Nome <span aria-hidden="true">*</span></label>
+      <input id={`${id}-nome`} name="nome" type="text" required autocomplete="name" class={campo} />
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-email`} class={rotulo}>E-mail <span aria-hidden="true">*</span></label>
+      <input id={`${id}-email`} name="email" type="email" required autocomplete="email" class={campo} />
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-whatsapp`} class={rotulo}>WhatsApp <span aria-hidden="true">*</span></label>
+      <input id={`${id}-whatsapp`} name="whatsapp" type="tel" inputmode="tel" required autocomplete="tel" placeholder="(00) 00000-0000" class={campo} data-mascara-tel />
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-area`} class={rotulo}>Área de interesse</label>
+      <div class="relative">
+        <select id={`${id}-area`} name="area" class:list={[campo, 'appearance-none pr-10']}>
+          <option value="">Selecione</option>
+          {areas.map((a) => <option value={a}>{a}</option>)}
+          <option value="Outra">Outra</option>
+        </select>
+        <svg viewBox="0 0 24 24" class="pointer-events-none absolute right-3.5 top-1/2 size-4 -translate-y-1/2 text-cinza" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+      </div>
+    </div>
+    <div class="grid gap-1.5">
+      <label for={`${id}-linkedin`} class={rotulo}>LinkedIn ou portfólio</label>
+      <input id={`${id}-linkedin`} name="linkedin" type="url" inputmode="url" autocomplete="url" placeholder="https://" class={campo} />
+    </div>
+  </div>
+
+  <div class="grid gap-1.5">
+    <label for={`${id}-curriculo`} class={rotulo}>Currículo (anexo)</label>
+    <input
+      id={`${id}-curriculo`} name="curriculo" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      aria-describedby={`${id}-curriculo-dica`}
+      class="w-full cursor-pointer rounded-xl border border-dashed border-[#cfcce0] bg-[#faf9ff] p-2 text-sm text-cinza transition-colors file:mr-3 file:cursor-pointer file:rounded-full file:border-0 file:bg-lavanda file:px-4 file:py-2 file:text-sm file:font-medium file:text-roxo-700 hover:border-roxo/60 focus:border-roxo focus:outline-none focus-visible:shadow-[0_0_0_3px_rgba(91,60,240,.18)] aria-[invalid=true]:border-[#c0262d]"
+      data-curriculo
+    />
+    <p id={`${id}-curriculo-dica`} class="text-[0.8125rem] text-cinza">PDF, DOC ou DOCX, até 5 MB.</p>
+  </div>
+
+  <div class="grid gap-1.5">
+    <label for={`${id}-motivo`} class={rotulo}>Por que você quer trabalhar na Otimizo?</label>
+    <textarea id={`${id}-motivo`} name="motivo" rows="4" class:list={[campo, 'min-h-28 resize-y']}></textarea>
+  </div>
+
+  <p class="hidden rounded-xl bg-[#fdecec] px-3.5 py-2.5 text-sm text-[#9b1c22]" role="alert" data-erro></p>
+
+  <button type="submit" class="btn btn-primario w-full">
+    <span>Enviar minha candidatura</span>
+    <span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+  </button>
+
+  <p class="text-[0.8125rem] leading-relaxed text-cinza">Guardamos seu currículo para as próximas vagas. Seus dados são usados só para o processo seletivo.</p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-form-candidatura]').forEach((form) => {
+    form.querySelector<HTMLInputElement>('[data-inicio]')!.value = String(Date.now());
+    const erro = form.querySelector<HTMLElement>('[data-erro]')!;
+    const arquivo = form.querySelector<HTMLInputElement>('[data-curriculo]')!;
+
+    form.querySelectorAll<HTMLInputElement>('[data-mascara-tel]').forEach((el) => {
+      el.addEventListener('input', () => {
+        const d = el.value.replace(/\D/g, '').slice(0, 11);
+        el.value = d.length > 10
+          ? d.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3')
+          : d.replace(/(\d{2})(\d{0,4})(\d{0,4})/, (_, a, b, c) => (b ? `(${a}) ${b}` : a) + (c ? `-${c}` : ''));
+      });
+    });
+
+    const mostrarErro = (msg: string, el: HTMLElement) => {
+      erro.textContent = msg;
+      erro.classList.remove('hidden');
+      el.focus();
+    };
+
+    form.addEventListener('submit', (e) => {
+      const invalidos = [...form.querySelectorAll<HTMLInputElement>('[required]')].filter((el) => {
+        const ok = el.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())
+          : el.name === 'whatsapp' ? el.value.replace(/\D/g, '').length >= 10
+          : el.value.trim().length > 1;
+        el.setAttribute('aria-invalid', String(!ok));
+        return !ok;
+      });
+      if (invalidos.length) {
+        e.preventDefault();
+        return mostrarErro('Preencha nome, e-mail e WhatsApp com DDD para continuar.', invalidos[0]);
+      }
+      const f = arquivo.files?.[0];
+      const arquivoOk = !f || (/\.(pdf|docx?)$/i.test(f.name) && f.size <= 5 * 1024 * 1024);
+      arquivo.setAttribute('aria-invalid', String(!arquivoOk));
+      if (!arquivoOk) {
+        e.preventDefault();
+        return mostrarErro('Envie o currículo em PDF, DOC ou DOCX, com até 5 MB.', arquivo);
+      }
+      erro.classList.add('hidden');
+      (window as any).dataLayer.push({ event: 'envio_formulario', tipo_formulario: 'candidatura', pagina: location.pathname });
+    });
+  });
+</script>

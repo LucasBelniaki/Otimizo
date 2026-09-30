@@ -11,7 +11,7 @@ const passos = [
 ];
 ---
 <Base title="Recebemos seus dados · Otimizo" description="Seu pedido de consultoria gratuita chegou." noindex>
-  <section class="granulado relative overflow-hidden pb-20 pt-32 lg:pb-28 lg:pt-44" style="--grao:.12" aria-labelledby="obrigado-titulo">
+  <section id="obrigado" class="granulado relative overflow-hidden pb-20 pt-32 lg:pb-28 lg:pt-44" style="--grao:.12" aria-labelledby="obrigado-titulo">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_60%,#fff_100%)]">
       <div class="deriva-1 absolute -right-48 -top-56 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
       <div class="grade-fundo absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_30%,#000_10%,transparent_75%)]"></div>
@@ -22,12 +22,20 @@ const passos = [
         <span class="grid size-16 place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white shadow-[0_18px_40px_-16px_rgba(91,60,240,.8)]">
           <svg viewBox="0 0 24 24" class="check size-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 10 17l9-10" pathLength="1" /></svg>
         </span>
-        <h1 id="obrigado-titulo" class="text-[2.25rem] leading-[1.08] tracking-[-0.035em] sm:text-5xl">Recebemos seus dados<span data-nome></span>!</h1>
-        <p class="texto-secao mx-auto">Seu pedido de consultoria gratuita chegou. Em até 1 dia útil, nosso time entra em contato pelo WhatsApp que você informou para confirmar o horário.</p>
+        <div class="grid justify-items-center gap-6" data-variante="consultoria">
+          <h1 id="obrigado-titulo" class="text-[2.25rem] leading-[1.08] tracking-[-0.035em] sm:text-5xl">Recebemos seus dados<span data-nome></span>!</h1>
+          <p class="texto-secao mx-auto">Seu pedido de consultoria gratuita chegou. Em até 1 dia útil, nosso time entra em contato pelo WhatsApp que você informou para confirmar o horário.</p>
+        </div>
+        <!-- 15.5 Variação para candidaturas (Trabalhe conosco) -->
+        <div class="grid justify-items-center gap-6" data-variante="candidatura" hidden>
+          <p class="text-[2.25rem] font-display font-semibold leading-[1.08] tracking-[-0.035em] text-tinta sm:text-5xl" id="obrigado-titulo-candidatura" role="heading" aria-level="1">Recebemos sua candidatura<span data-nome></span>!</p>
+          <p class="texto-secao mx-auto">Obrigado pelo interesse em fazer parte do time da Otimizo. Guardamos seu currículo para as próximas vagas e entramos em contato quando surgir uma oportunidade com o seu perfil.</p>
+          <a href="/sobre#cultura" class="link-seta text-[1.0625rem]">Conheça nossa cultura <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        </div>
       </div>
     </div>
 
-    <div class="container-site mt-14 grid max-w-5xl gap-4 lg:mt-20">
+    <div class="container-site mt-14 grid max-w-5xl gap-4 lg:mt-20" data-variante="consultoria">
       <h2 class="text-center font-mono text-xs font-medium uppercase tracking-[0.12em] text-cinza" data-revelar>Próximos passos</h2>
       <ol class="grid gap-4 md:grid-cols-3">
         {passos.map((p, i) => (
@@ -47,6 +55,16 @@ const passos = [
         <Botao variante="whatsapp" texto="Falar no WhatsApp agora" />
       </div>
     </div>
+    <script is:inline>
+      // Troca o conteúdo antes da pintura quando o envio foi uma candidatura
+      if (new URLSearchParams(location.search).get('tipo') === 'candidatura') {
+        document.querySelectorAll('[data-variante]').forEach(function (el) {
+          var candidatura = el.getAttribute('data-variante') === 'candidatura';
+          el.hidden = !candidatura;
+        });
+        document.getElementById('obrigado').setAttribute('aria-labelledby', 'obrigado-titulo-candidatura');
+      }
+    </script>
   </section>
 
   <style>
@@ -59,8 +77,7 @@ const passos = [
   <script>
     const params = new URLSearchParams(location.search);
     const nome = (params.get('nome') || '').trim().slice(0, 40);
-    const alvo = document.querySelector<HTMLElement>('[data-nome]');
-    if (nome && alvo) alvo.textContent = `, ${nome}`;
+    if (nome) document.querySelectorAll<HTMLElement>('[data-nome]').forEach((alvo) => (alvo.textContent = `, ${nome}`));
 
     // Conversão para GTM (Google Ads, GA4 e Pixel da Meta). Candidaturas não contam como lead.
     const tipo = params.get('tipo') || 'consultoria';
