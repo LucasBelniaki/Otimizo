@@ -74,8 +74,9 @@ jobs:
           # "loose" mantém a conexão criptografada sem exigir esse nome.
           security: loose
           local-dir: ./dist/
-          # Pasta do otimizo.com.br na Hostinger (fixa aqui para evitar erro de digitação).
-          server-dir: public_html/
+          # A conta de FTP já entra direto na pasta public_html do otimizo.com.br,
+          # então os arquivos vão para a raiz do FTP (./).
+          server-dir: ./
 
       - name: Aviso
         if: env.TEM_FTP != 'true'
