@@ -1,0 +1,67 @@
+---
+// PROTÓTIPO (não publicar): hero da Home com a ilustração atual e a versão em vidro líquido.
+import '../styles/global.css';
+import HeroVisual from '../components/home/HeroVisual.astro';
+import HeroVisualVidro from '../components/home/HeroVisualVidro.astro';
+---
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Hero em vidro líquido</title>
+  </head>
+  <body class="bg-white">
+    <section class="granulado relative overflow-hidden pb-16 pt-10 lg:pb-24 lg:pt-16" style="--grao:.12">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fff_0%,#f6f4ff_55%,#fff_100%)]">
+        <div class="deriva-1 absolute -right-48 -top-56 size-[52rem] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.2),rgba(31,94,255,.08)_60%,transparent)]"></div>
+        <div class="deriva-3 absolute -left-60 top-1/2 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(31,94,255,.12),transparent)]"></div>
+        <div class="grade-fundo absolute inset-0 opacity-70 [mask-image:radial-gradient(70%_65%_at_72%_35%,#000_10%,transparent_75%)]"></div>
+      </div>
+
+      <div class="container-site grid gap-10">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <img src="/img/logo-otimizo.svg" alt="Otimizo" width="130" height="32" class="h-7 w-auto" />
+          <div class="vidro-claro inline-flex rounded-full p-1" role="group" aria-label="Versão da ilustração">
+            <button type="button" class="alternar rounded-full px-4 py-2 text-sm font-medium" data-versao="atual" aria-pressed="false">Atual</button>
+            <button type="button" class="alternar rounded-full px-4 py-2 text-sm font-medium" data-versao="vidro" aria-pressed="true">Vidro líquido</button>
+          </div>
+        </div>
+
+        <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_1fr] lg:gap-10">
+          <div class="grid content-start gap-6 lg:gap-7">
+            <span class="chamada">Agência de marketing e vendas</span>
+            <h1 class="text-[2.5rem] leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-[3.75rem] lg:leading-[1.04]">
+              Marketing digital que termina em venda, <span class="bg-gradient-to-r from-roxo to-azul bg-clip-text text-transparent">não em relatório bonito.</span>
+            </h1>
+            <p class="texto-secao max-w-[54ch]">Estruturamos a captação de clientes de empresas e empreendedores de todo o Brasil. Campanhas, site e conteúdo medidos por um número só: quanto custa cada cliente novo.</p>
+            <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <span class="btn btn-primario">Agendar minha consultoria gratuita</span>
+              <span class="btn btn-secundario">Falar no WhatsApp</span>
+            </div>
+          </div>
+          <div class="grid [&>*]:col-start-1 [&>*]:row-start-1">
+            <div data-painel-versao="atual" hidden><HeroVisual /></div>
+            <div data-painel-versao="vidro"><HeroVisualVidro /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .alternar { color: var(--color-cinza); transition: background-color .2s, color .2s; }
+      .alternar[aria-pressed='true'] { background: var(--color-tinta); color: #fff; }
+      .alternar:focus-visible { outline: 2px solid var(--color-roxo); outline-offset: 2px; }
+    </style>
+
+    <script>
+      const botoes = [...document.querySelectorAll<HTMLButtonElement>('[data-versao]')];
+      const paineis = [...document.querySelectorAll<HTMLElement>('[data-painel-versao]')];
+      botoes.forEach((b) => b.addEventListener('click', () => {
+        botoes.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        paineis.forEach((p) => { p.hidden = p.dataset.painelVersao !== b.dataset.versao; });
+        window.dispatchEvent(new Event('resize'));
+      }));
+    </script>
+  </body>
+</html>

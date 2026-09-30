@@ -1,0 +1,339 @@
+---
+// PROTÓTIPO: ilustração do hero em vidro líquido (fosco + refração nas bordas + granulado).
+// Mesma composição do HeroVisual; muda o material dos painéis e o fundo atrás deles.
+// A refração usa um filtro SVG no backdrop-filter e só roda em navegadores Chromium;
+// nos demais fica o vidro fosco, sem distorção.
+const bolhasIniciais = [
+  { lado: 'in', linhas: [9, 14] },
+  { lado: 'out', linhas: [13, 8] },
+  { lado: 'in', linhas: [12] },
+];
+---
+<div class="hv hvv relative mx-auto aspect-[1/0.94] w-full max-w-[36rem] [container-type:inline-size]" aria-hidden="true" data-vidro-liquido>
+  <!-- cena atrás do vidro: é ela que aparece distorcida nas bordas -->
+  <div class="deriva-2 absolute left-[8%] top-[6%] size-[80%] rounded-full bg-[radial-gradient(closest-side,rgba(91,60,240,.32),rgba(31,94,255,.14)_55%,transparent)] blur-2xl"></div>
+  <div class="vl-orbe vl-orbe-1 absolute left-[31%] top-[7%] size-[15%] rounded-full bg-[radial-gradient(circle_at_35%_30%,#c9bbff,#7c5cff_55%,#5b3cf0)]"></div>
+  <div class="vl-orbe vl-orbe-2 absolute right-[-5%] top-[62%] size-[21%] rounded-full bg-[radial-gradient(circle_at_35%_30%,#a9c1ff,#3d74ff_55%,#1f5eff)]"></div>
+  <img src="/img/simbolo-gradiente.svg" alt="" width="560" height="412" class="flutua absolute -right-[4%] -top-[4%] w-[70%] drop-shadow-[0_30px_40px_rgba(91,60,240,.25)]" fetchpriority="high" />
+
+  <!-- painel -->
+  <div class="painel vl absolute left-[25%] top-[15%] grid w-[75%] gap-[3cqw] rounded-[4.5cqw] p-[4cqw]" data-refrata data-escala="64">
+    <span class="vl-brilho"></span>
+    <div class="flex flex-wrap items-center gap-[1.6cqw]">
+      <span class="mr-auto font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.1em] text-cinza">Campanhas</span>
+      <span class="rounded-full bg-roxo/10 px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] font-medium text-roxo-700 shadow-[inset_0_0_0_1px_rgba(91,60,240,.12)]">Google Ads</span>
+      <span class="rounded-full bg-white/60 px-[2cqw] py-[.6cqw] text-[max(9px,2.4cqw)] text-[#3a3852] shadow-[inset_0_0_0_1px_rgba(255,255,255,.9)]">Meta Ads</span>
+    </div>
+    <div class="grid gap-[1.2cqw]">
+      <span class="font-mono text-[max(9px,2.4cqw)] uppercase tracking-[0.08em] text-tinta">Vendas</span>
+      <svg viewBox="0 0 330 120" class="block h-auto w-full overflow-visible">
+        <defs>
+          <linearGradient id="hvv-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B3CF0" stop-opacity=".24" /><stop offset="1" stop-color="#1F5EFF" stop-opacity="0" /></linearGradient>
+          <linearGradient id="hvv-linha" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F5EFF" /><stop offset="1" stop-color="#5B3CF0" /></linearGradient>
+        </defs>
+        <g stroke="rgba(91,60,240,.16)" stroke-width="1" stroke-dasharray="3 4"><line x1="0" y1="20" x2="330" y2="20" /><line x1="0" y1="55" x2="330" y2="55" /><line x1="0" y1="90" x2="330" y2="90" /></g>
+        <path class="hv-area" d="M4,104 C40,102 60,92 94,86 S148,76 176,64 S236,40 262,36 S300,24 318,18 L318,118 L4,118 Z" fill="url(#hvv-area)" />
+        <path class="hv-traco" d="M4,104 C40,102 60,92 94,86 S148,76 176,64 S236,40 262,36 S300,24 318,18" fill="none" stroke="url(#hvv-linha)" stroke-width="3" stroke-linecap="round" pathLength="1" />
+        <circle class="hv-pulso" cx="318" cy="18" r="6" fill="none" stroke="#5B3CF0" stroke-width="2" />
+        <circle class="hv-ponto" cx="318" cy="18" r="6" fill="#fff" stroke="#5B3CF0" stroke-width="3" />
+      </svg>
+    </div>
+    <div class="grid grid-cols-2 gap-[2.4cqw]">
+      {[['Leads', [30, 44, 40, 60, 76, 100], 'bg-roxo'], ['Custo por lead', [100, 84, 78, 60, 48, 36], 'bg-azul']].map(([rotulo, barras, cor]) => (
+        <div class="vl-miolo grid gap-[2cqw] rounded-[3cqw] p-[2.6cqw]">
+          <span class="font-mono text-[max(9px,2.3cqw)] uppercase tracking-[0.08em] text-cinza">{rotulo}</span>
+          <div class="flex h-[9cqw] items-end gap-[1.2cqw]">
+            {(barras as number[]).map((h, i, arr) => (
+              <i class:list={['hv-barra block flex-1 rounded-t-[1cqw]', i === arr.length - 1 ? cor : 'bg-roxo/15']} style={`height:${h}%;--i:${i}`}></i>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- celular com conversa -->
+  <div class="celular vl-aparelho absolute bottom-[1%] left-0 aspect-[9/18.5] w-[31%] rounded-[6cqw] bg-tinta p-[1.3cqw]">
+    <div class="grid h-full grid-rows-[auto_1fr_auto] overflow-hidden rounded-[4.8cqw] bg-[#f5f4fa]">
+      <div class="relative z-10 flex items-center gap-[1.6cqw] border-b border-linha bg-white px-[2.4cqw] pb-[2cqw] pt-[3.8cqw]">
+        <span class="size-[5cqw] shrink-0 rounded-full bg-gradient-to-br from-roxo to-azul"></span>
+        <span class="grid flex-1 gap-[0.8cqw]">
+          <span class="block h-[1.3cqw] w-[70%] rounded-full bg-[#dad7e8]"></span>
+          <span class="hv-online block h-[0.9cqw] w-[40%] rounded-full bg-[#b9e8cf]"></span>
+        </span>
+      </div>
+      <div class="relative overflow-hidden">
+        <div class="hv-chat absolute inset-x-0 bottom-0 flex flex-col gap-[1.8cqw] p-[2.4cqw]" data-chat-v>
+          {bolhasIniciais.map((b) => (
+            <div class:list={['bolha grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] p-[1.8cqw]', b.lado === 'in' ? 'self-start border border-linha bg-white' : 'self-end bg-roxo']}>
+              {b.linhas.map((w) => <span class:list={['block h-[1.3cqw] rounded-full', b.lado === 'in' ? 'bg-[#dad7e8]' : 'bg-white/55']} style={`width:${w}cqw`}></span>)}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="relative z-10 m-[2.4cqw] h-[5cqw] rounded-full border border-linha bg-white"></div>
+    </div>
+  </div>
+
+  <!-- etiquetas flutuantes em vidro -->
+  <span class="flutua vl vl-pilula absolute right-[1%] top-[5%] z-10 inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium text-tinta" style="animation-delay:-2s" data-refrata data-escala="26">
+    <span class="vl-brilho"></span>
+    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white"><svg viewBox="0 0 24 24" class="size-[2.6cqw]" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 9h18" /></svg></b>Site
+  </span>
+  <span class="flutua vl vl-pilula absolute bottom-[4%] left-[23%] z-10 inline-flex items-center gap-[1.4cqw] whitespace-nowrap rounded-full py-[1.2cqw] pl-[1.4cqw] pr-[2.6cqw] text-[max(9px,2.5cqw)] font-medium text-tinta" style="animation-delay:-4.5s" data-refrata data-escala="26">
+    <span class="vl-brilho"></span>
+    <b class="grid size-[4.2cqw] place-items-center rounded-full bg-gradient-to-br from-roxo to-azul text-white"><svg viewBox="0 0 24 24" class="size-[2.8cqw]" fill="currentColor"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20Z" /></svg></b>WhatsApp
+  </span>
+
+  <!-- filtros de refração gerados pelo script -->
+  <svg class="absolute size-0" width="0" height="0" data-filtros-vidro></svg>
+</div>
+
+<style is:global>
+  /* Vidro líquido: base fosca (todos os navegadores) */
+  .hvv .vl {
+    --mx: 50%;
+    --my: 50%;
+    isolation: isolate;
+    background:
+      radial-gradient(120% 70% at 15% 0%, rgba(255, 255, 255, 0.6), transparent 55%),
+      linear-gradient(160deg, rgba(255, 255, 255, 0.8) 0%, rgba(251, 250, 255, 0.7) 50%, rgba(238, 234, 255, 0.74) 100%);
+    -webkit-backdrop-filter: blur(14px) saturate(185%);
+    backdrop-filter: blur(14px) saturate(185%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+      inset 0 -22px 34px -26px rgba(91, 60, 240, 0.38),
+      0 40px 80px -42px rgba(31, 25, 90, 0.5),
+      0 12px 26px -18px rgba(31, 25, 90, 0.28);
+    transition: box-shadow 0.45s ease;
+  }
+  /* borda especular: clara no alto à esquerda, lilás embaixo */
+  .hvv .vl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 1.2px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(140deg, #fff 0%, rgba(255, 255, 255, 0.3) 28%, rgba(169, 155, 255, 0.55) 62%, rgba(255, 255, 255, 0.85) 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    transition: opacity 0.45s ease;
+  }
+  /* granulado bem leve */
+  .hvv .vl::after,
+  .hvv .vl-aparelho::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.2;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+  .hvv .vl > :not(.vl-brilho) { position: relative; z-index: 1; }
+
+  /* brilho roxo que segue o mouse */
+  .hvv .vl-brilho {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(260px circle at var(--mx) var(--my), rgba(124, 92, 255, 0.28), rgba(91, 60, 240, 0.08) 45%, transparent 70%);
+    transition: opacity 0.4s ease;
+  }
+  .hvv .vl:hover .vl-brilho { opacity: 1; }
+  .hvv .vl:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 0 0 1px rgba(169, 155, 255, 0.55),
+      inset 0 -26px 40px -26px rgba(91, 60, 240, 0.5),
+      0 0 0 1px rgba(169, 155, 255, 0.35),
+      0 40px 90px -38px rgba(91, 60, 240, 0.65),
+      0 12px 26px -18px rgba(31, 25, 90, 0.28);
+  }
+
+  /* cartões internos do painel: vidro mais claro, sem desfoque próprio */
+  .hvv .vl-miolo {
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
+    box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 10px 22px -18px rgba(31, 25, 90, 0.35);
+  }
+  .hvv .vl-pilula { box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 14px 28px -16px rgba(31, 25, 90, 0.4); }
+
+  /* celular: reflexo de vidro sobre a moldura */
+  .hvv .vl-aparelho { isolation: isolate; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 40px 60px -28px rgba(17, 14, 38, 0.6); }
+  .hvv .vl-aparelho::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 70%, rgba(169, 155, 255, 0.12) 100%);
+  }
+
+  /* orbes atrás do vidro */
+  .hvv .vl-orbe { box-shadow: inset -4px -8px 18px rgba(20, 10, 90, 0.18), inset 4px 6px 14px rgba(255, 255, 255, 0.4); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hvv .vl-orbe-1 { animation: vl-orbita-1 14s ease-in-out infinite alternate; }
+    .hvv .vl-orbe-2 { animation: vl-orbita-2 17s ease-in-out infinite alternate; }
+  }
+  @keyframes vl-orbita-1 { to { transform: translate(4cqw, 2.5cqw); } }
+  @keyframes vl-orbita-2 { to { transform: translate(-3cqw, -4cqw); } }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .hvv .vl { background: rgba(255, 255, 255, 0.94); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  }
+</style>
+
+<script>
+  // 1) Brilho roxo que acompanha o mouse em cada peça de vidro
+  document.querySelectorAll<HTMLElement>('.hvv .vl').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+
+  // 2) Refração nas bordas (Chromium): para cada peça, um mapa de deslocamento
+  //    neutro no centro que empurra o fundo para dentro perto das bordas, como uma lente.
+  const chromium = (navigator as any).userAgentData?.brands?.some((b: { brand: string }) => b.brand === 'Chromium');
+  const reduzir = matchMedia('(prefers-reduced-transparency: reduce)').matches;
+  const svg = document.querySelector<SVGSVGElement>('[data-filtros-vidro]');
+
+  if (chromium && !reduzir && svg) {
+    const NS = 'http://www.w3.org/2000/svg';
+
+    const mapa = (w: number, h: number, raio: number, borda: number) => {
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      const ctx = c.getContext('2d')!;
+      const img = ctx.createImageData(w, h);
+      const d = img.data;
+      const r = Math.min(raio, w / 2, h / 2);
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const cx = x + 0.5 - w / 2, cy = y + 0.5 - h / 2;
+          const px = Math.abs(cx) - (w / 2 - r), py = Math.abs(cy) - (h / 2 - r);
+          const ox = Math.max(px, 0), oy = Math.max(py, 0);
+          const fora = Math.hypot(ox, oy) + Math.min(Math.max(px, py), 0) - r; // < 0 dentro
+          const dist = -fora;
+          let dx = 0, dy = 0;
+          if (dist > 0 && dist < borda) {
+            const t = 1 - dist / borda;
+            const m = Math.pow(t, 1.7); // mais forte na borda, some em direção ao centro
+            let nx = 0, ny = 0;
+            if (px > 0 && py > 0) { const l = Math.hypot(ox, oy) || 1; nx = ox / l; ny = oy / l; }
+            else if (px > py) nx = 1; else ny = 1;
+            dx = -nx * Math.sign(cx) * m;
+            dy = -ny * Math.sign(cy) * m;
+          }
+          const i = (y * w + x) * 4;
+          d[i] = 128 + dx * 127; d[i + 1] = 128 + dy * 127; d[i + 2] = 128; d[i + 3] = 255;
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+      return c.toDataURL();
+    };
+
+    const criar = (tag: string, attrs: Record<string, string | number>) => {
+      const el = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, String(v));
+      return el;
+    };
+
+    const aplicar = (el: HTMLElement, idx: number) => {
+      const w = Math.round(el.offsetWidth), h = Math.round(el.offsetHeight);
+      if (!w || !h) return;
+      const raio = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
+      const escala = Number(el.dataset.escala || 40);
+      const borda = Math.min(w, h) * (h < 60 ? 0.5 : 0.24);
+      const id = `vl-refracao-${idx}`;
+      svg.querySelector(`#${id}`)?.remove();
+      const f = criar('filter', { id, x: 0, y: 0, width: w, height: h, filterUnits: 'userSpaceOnUse', primitiveUnits: 'userSpaceOnUse', 'color-interpolation-filters': 'sRGB' });
+      const im = criar('feImage', { x: 0, y: 0, width: w, height: h, preserveAspectRatio: 'none', result: 'mapa' });
+      im.setAttribute('href', mapa(w, h, raio, borda));
+      f.appendChild(im);
+      // leve aberração cromática: cada canal desloca um pouco diferente
+      [['R', 1.08, '1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'], ['G', 1, '0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0'], ['B', 0.92, '0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0']].forEach(([c, k, m]) => {
+        f.appendChild(criar('feDisplacementMap', { in: 'SourceGraphic', in2: 'mapa', scale: escala * (k as number), xChannelSelector: 'R', yChannelSelector: 'G', result: `d${c}` }));
+        f.appendChild(criar('feColorMatrix', { in: `d${c}`, type: 'matrix', values: m as string, result: `c${c}` }));
+      });
+      f.appendChild(criar('feBlend', { in: 'cR', in2: 'cG', mode: 'screen', result: 'rg' }));
+      f.appendChild(criar('feBlend', { in: 'rg', in2: 'cB', mode: 'screen' }));
+      svg.appendChild(f);
+      const desfoque = h < 60 ? 8 : 14;
+      el.style.backdropFilter = `url(#${id}) blur(${desfoque}px) saturate(185%)`;
+    };
+
+    const pecas = [...document.querySelectorAll<HTMLElement>('.hvv [data-refrata]')];
+    const iniciar = () => pecas.forEach(aplicar);
+    ('requestIdleCallback' in window ? (window as any).requestIdleCallback : setTimeout)(iniciar);
+    let espera = 0;
+    new ResizeObserver(() => { clearTimeout(espera); espera = window.setTimeout(iniciar, 150); }).observe(document.querySelector('.hvv')!);
+  }
+
+  // 3) Conversa em loop no celular (igual à ilustração atual)
+  const lista = document.querySelector<HTMLElement>('[data-chat-v]');
+  const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (lista && !semMovimento) {
+    let visivel = true;
+    let lado: 'in' | 'out' = 'out';
+    const sorteio = (a: number, b: number) => a + Math.random() * (b - a);
+    const criarBolha = (tipo: 'in' | 'out') => {
+      const el = document.createElement('div');
+      el.className = `bolha grid max-w-[82%] gap-[1.1cqw] rounded-[2.4cqw] p-[1.8cqw] ${tipo === 'in' ? 'self-start border border-linha bg-white' : 'self-end bg-roxo'}`;
+      const linhas = Math.random() < 0.45 ? 2 : 1;
+      for (let i = 0; i < linhas; i++) {
+        const s = document.createElement('span');
+        s.className = `block h-[1.3cqw] rounded-full ${tipo === 'in' ? 'bg-[#dad7e8]' : 'bg-white/55'}`;
+        s.style.width = `${Math.round(sorteio(6, 15))}cqw`;
+        el.appendChild(s);
+      }
+      return el;
+    };
+    const empurrar = (el: HTMLElement) => {
+      lista.appendChild(el);
+      const altura = el.offsetHeight + parseFloat(getComputedStyle(lista).rowGap || '0');
+      lista.style.transition = 'none';
+      lista.style.transform = `translateY(${altura}px)`;
+      void lista.offsetHeight;
+      lista.style.transition = 'transform .65s cubic-bezier(.2,.8,.2,1)';
+      lista.style.transform = 'translateY(0)';
+      el.animate([{ opacity: 0, transform: 'translateY(8px) scale(.92)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      while (lista.children.length > 8) lista.firstElementChild?.remove();
+    };
+    const proxima = () => {
+      if (!visivel || document.hidden) { setTimeout(proxima, 1200); return; }
+      lado = Math.random() < 0.72 ? (lado === 'in' ? 'out' : 'in') : lado;
+      if (lado === 'in') {
+        const digitando = document.createElement('div');
+        digitando.className = 'bolha digitando self-start w-max rounded-[2.4cqw] border border-linha bg-white';
+        digitando.innerHTML = '<i></i><i></i><i></i>';
+        empurrar(digitando);
+        setTimeout(() => {
+          const nova = criarBolha('in');
+          digitando.replaceWith(nova);
+          nova.animate([{ opacity: 0.4 }, { opacity: 1 }], { duration: 300 });
+          setTimeout(proxima, sorteio(1100, 2000));
+        }, sorteio(900, 1500));
+      } else {
+        empurrar(criarBolha('out'));
+        setTimeout(proxima, sorteio(1300, 2300));
+      }
+    };
+    new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }).observe(lista);
+    setTimeout(proxima, 2200);
+  }
+</script>
